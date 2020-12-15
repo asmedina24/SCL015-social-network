@@ -2,6 +2,7 @@ import { menu } from './view/templateMenu.js';
 import { home } from './view/templateHome.js';
 import { register } from './view/templateRegister.js';
 import { login } from './view/templateLogin.js';
+import { muro } from './view/templateMuro.js';
 
 const showtemplate = (hash) => {
   const containerRoot = document.getElementById('root');
@@ -17,6 +18,9 @@ const showtemplate = (hash) => {
     case '#/login':
       containerRoot.appendChild(login());
       break;
+    case '#/muro':
+      containerRoot.appendChild(muro());
+      break;
     default:
       containerRoot.innerHTML = '<h2>No Existe</h2>';
   }
@@ -31,7 +35,8 @@ export const changeroute = (hash) => {
     return showtemplate(hash);
   } if (hash === '#/login') {
     return showtemplate(hash);
+  } if (hash === '#/muro') {
+    return showtemplate(hash);
   }
-
   return showtemplate(hash);
 };

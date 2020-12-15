@@ -21,12 +21,12 @@ export const register = () => {
       <br>
       <br>
       </form>
-      <button id="enviar">Enviar</button>
+      <button id="registrar">Registrar</button>
       </fieldset> 
     `;
 
   divRegister.innerHTML = viewRegister;
-  const enviar = divRegister.querySelector('#enviar');
+  const enviar = divRegister.querySelector('#registrar');
   enviar.addEventListener('click', () => {
     const mail = document.getElementById('mail_register').value;
     const pass = document.getElementById('pass_register').value;
@@ -36,6 +36,7 @@ export const register = () => {
       .then((userCredential) => {
         const form = divRegister.querySelector('#form_register');
         form.reset();
+        window.location.hash;
       })
       .catch((error) => {
         const errorCode = error.code;
