@@ -4,7 +4,6 @@ import { myFunction } from './lib/index.js';
 import { menu } from './lib/view/templateMenu.js';
 import { changeroute } from './lib/router.js';
 import { home } from './lib/view/templateHome.js';
-import { register } from './lib/view/templateRegister.js';
 
 const init = () => {
   document.getElementById('root1').appendChild(home());
@@ -16,5 +15,3 @@ const init = () => {
   });
 };
 window.addEventListener('load', init);
-
-

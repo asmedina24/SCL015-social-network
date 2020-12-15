@@ -1,4 +1,4 @@
-import {login} from '../index.js';
+import { login } from '../index.js';
 
 export const home = () => {
   const divHome = document.createElement('div');
@@ -25,6 +25,7 @@ export const home = () => {
     <hr>
     <img src="./img/LogoGoogle.png" alt="">
     <button id="loginGoogle">Ingresar con Google</button>
+    
   
 `;
   divHome.innerHTML = viewHome;
