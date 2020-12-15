@@ -1,4 +1,4 @@
-import {login} from '../index.js';
+import { login } from '../index.js';
 
 export const home = () => {
   const divHome = document.createElement('div');
