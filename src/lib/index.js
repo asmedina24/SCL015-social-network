@@ -1,5 +1,5 @@
+/* eslint-disable no-alert */
 // aqui exportaras las funciones que necesites
-
 export const myFunction = () => {
   // aqui tu codigo
 };
@@ -11,6 +11,7 @@ export const login = () => {
     const token = result.credential.accessToken;
     // The signed-in user info.
     const user = result.user;
+    alert(token, user);
     // ...
   }).catch((error) => {
     // Handle Errors here.
@@ -21,5 +22,6 @@ export const login = () => {
     // The firebase.auth.AuthCredential type that was used.
     const credential = error.credential;
     // ...
+    alert(errorCode, errorMessage, email, credential);
   });
 };

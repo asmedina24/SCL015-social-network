@@ -18,7 +18,9 @@ export const login = () => {
     const pass = document.getElementById('pass_login').value;
     firebase.auth().signInWithEmailAndPassword(mail, pass)
       .then((user) => {
-
+        const form = divLogin.querySelector('#form_login');
+        form.reset();
+        window.location = ('#/muro');
       })
       .catch((error) => {
         const errorCode = error.code;

@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
 export const register = () => {
   const divRegister = document.createElement('div');
   const viewRegister = `
@@ -33,14 +35,16 @@ export const register = () => {
     console.log(mail);
     console.log(pass);
     firebase.auth().createUserWithEmailAndPassword(mail, pass)
-      .then((userCredential) => {
+      .then((user) => {
+        console.log(user);
         const form = divRegister.querySelector('#form_register');
         form.reset();
-        window.location.hash;
+        window.location = ('#/login');
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMensagge = error.message;
+        alert(errorCode, errorMensagge);
       });
   });
   return divRegister;
