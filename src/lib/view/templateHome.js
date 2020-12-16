@@ -6,7 +6,8 @@ export const home = () => {
   <div class= "caja">
   <img class='img_centerpet' src="/img/Fondo.jpg">
 <h1 class = "contenc_home"></h1> 
-<fieldset>
+<div class= "caja_login">
+<fieldset class= 'login'>
    <form action="" id= 'form_login'>
    <h3> Login </h1> 
     <label for="">Mail</label>
@@ -31,6 +32,7 @@ export const home = () => {
     <button id="loginGoogle">Ingresar con Google</button>
     </div>
     </fieldset>  
+    </div>
     </div>
     
   
