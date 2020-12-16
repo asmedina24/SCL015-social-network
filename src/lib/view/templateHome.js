@@ -2,9 +2,13 @@ import { login } from '../index.js';
 
 export const home = () => {
   const divHome = document.createElement('div');
-  const viewHome = `
-<h1>BIenvenidos a nuestra pagina</h1> 
-    <form action="" id= 'form_login'>
+  const viewHome = ` <div class = "home_style">
+  <div class= "caja">
+  <img class='img_centerpet' src="/img/Fondo.jpg">
+<h1 class = "contenc_home"></h1> 
+<fieldset>
+   <form action="" id= 'form_login'>
+   <h3> Login </h1> 
     <label for="">Mail</label>
     <input type="mail" id = 'mail_login' alt="" value="" name="" required>
     <br>
@@ -18,13 +22,16 @@ export const home = () => {
     <br>
     <br>
 
-    <h2>¿Aun no te registras?</h2>
-    <button><a href="#/register" class="btn">registrate</a></button>
+    <h2>¿Todavía no eres miembro?</h2>
+    <button class = "btn_register"><a href="#/register" class="btn">Únete</a></button>
     <br>
     <br>
     <hr>
     <img src="./img/LogoGoogle.png" alt="">
     <button id="loginGoogle">Ingresar con Google</button>
+    </div>
+    </fieldset>  
+    </div>
     
   
 `;

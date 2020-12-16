@@ -1,4 +1,82 @@
+/* Pantalla Movil */
+
 body {
-    /* background-image: url(/src/img/Fondo.jpg); */
-    background-color: aqua;
+    background-color: #f6f6f6;
+}
+
+#nav {
+    background-color: #ECA12C;
+    font-size: 140%;
+ }
+
+ #coment_muro{
+    border-radius: 5%;
+    border-color: red;
+ }
+ p {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    
+} 
+
+ul {
+
+    font-size: x-large;
+    display: flex;
+    margin-left: 45%;
+    font-weight: 900;
+    margin-top: -15%;
+}
+
+
+a{
+   margin-bottom: 10%; 
+   color: white;
+   text-decoration: none;
+   padding: 4%;
+}
+
+fieldset {
+    margin-top: 10%;
+    text-align: center;
+    border-color: white;
+    position: relative;
+}
+
+.btn_register {
+    background-color: #5FA9B6;
+    font-size: larger;
+   
+}
+
+.img_infopet {
+    display: flex;
+    width: 60%;
+    margin-top: 10px;
+}
+
+.contenc_home {
+    display: flex;
+    text-align: center;
+    margin-top: -40%;
+    position: absolute;
+    color: black;
+    margin-left: 20%;
+}
+
+.img_centerpet {
+    margin-top: -1%;
+    width: 100%;
+    opacity: 90%;
+}
+
+.caja {
+    position: relative;
+    display: inline-block;
+
 }
