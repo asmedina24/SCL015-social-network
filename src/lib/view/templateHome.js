@@ -18,7 +18,7 @@ export const home = () => {
     <input type="password" id = 'pass_login' alt="" value="" name="" required>
     <br>
     <br>
-    <button id="register">Entar</button>
+    <button id="login">Entrar</button>
     </form>
     <br>
     <br>
@@ -42,7 +42,7 @@ export const home = () => {
   btn.addEventListener('click', () => {
     login();
   });
-  const loginNew = divHome.querySelector('#register');
+  const loginNew = divHome.querySelector('#login');
 
   loginNew.addEventListener('click', () => {
     const mailLogin = document.getElementById('mail_login').value;
@@ -60,9 +60,17 @@ export const home = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(errorCode, errorMessage);
+        alert('no esta registrado');
+        window.location = ('#/register');
       });
+    // firebase.auth().onAuthStateChanged((user) => {
+    //   if (user) {
+    //     window.location = ('#/muro');
+    //   } else {
+    //     window.location = ('#/register');
+    //     alert('no esta registrado');
+    //   }
+    // });
   });
-
   return divHome;
 };

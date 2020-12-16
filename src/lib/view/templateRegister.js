@@ -37,13 +37,21 @@ export const register = () => {
         console.log(user);
         const form = divRegister.querySelector('#form_register');
         form.reset();
-        window.location = ('#/login');
+      }).then(() => {
+        const user2 = firebase.auth().currentUser;
+
+        user2.sendEmailVerification().then(() => {
+          window.location = ('#/');
+          // Email sent.
+        });
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMensagge = error.message;
-        alert(errorCode, errorMensagge);
       });
+    firebase.auth().signOut().then(() => {
+      alert('verifica tu correo');
+    });
   });
   return divRegister;
 };
