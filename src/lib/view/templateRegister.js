@@ -33,11 +33,12 @@ export const register = () => {
     console.log(mail);
     console.log(pass);
     firebase.auth().createUserWithEmailAndPassword(mail, pass)
-      .then((user) => {
-        console.log(user);
-        const form = divRegister.querySelector('#form_register');
-        form.reset();
-      }).then(() => {
+      // .then((user) => {
+      //   console.log(user);
+      //   const form = divRegister.querySelector('#form_register');
+      //   form.reset();
+      // })
+      .then(() => {
         const user2 = firebase.auth().currentUser;
 
         user2.sendEmailVerification().then(() => {

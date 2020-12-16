@@ -11,6 +11,7 @@ export const login = () => {
     const token = result.credential.accessToken;
     // The signed-in user info.
     const user = result.user;
+    window.location = ('#/muro');
   // ...
   }).catch((error) => {
     // Handle Errors here.
