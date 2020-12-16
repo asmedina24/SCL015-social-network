@@ -11,8 +11,7 @@ export const login = () => {
     const token = result.credential.accessToken;
     // The signed-in user info.
     const user = result.user;
-    alert(token, user);
-    // ...
+  // ...
   }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;
@@ -22,6 +21,5 @@ export const login = () => {
     // The firebase.auth.AuthCredential type that was used.
     const credential = error.credential;
     // ...
-    alert(errorCode, errorMessage, email, credential);
   });
 };

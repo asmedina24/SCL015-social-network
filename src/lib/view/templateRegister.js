@@ -1,5 +1,3 @@
-/* eslint-disable no-alert */
-/* eslint-disable no-console */
 export const register = () => {
   const divRegister = document.createElement('div');
   const viewRegister = `
