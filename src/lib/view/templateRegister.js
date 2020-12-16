@@ -21,72 +21,29 @@ export const register = () => {
       <br>
       <br>
       </form>
-      <button id="enviar">Enviar</button>
+      <button id="registrar">Registrar</button>
       </fieldset> 
     `;
 
   divRegister.innerHTML = viewRegister;
-  const enviar = divRegister.querySelector('#enviar');
+  const enviar = divRegister.querySelector('#registrar');
   enviar.addEventListener('click', () => {
     const mail = document.getElementById('mail_register').value;
     const pass = document.getElementById('pass_register').value;
     console.log(mail);
     console.log(pass);
     firebase.auth().createUserWithEmailAndPassword(mail, pass)
-      .then((userCredential) => {
+      .then((user) => {
+        console.log(user);
         const form = divRegister.querySelector('#form_register');
         form.reset();
+        window.location = ('#/login');
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMensagge = error.message;
+        alert(errorCode, errorMensagge);
       });
   });
   return divRegister;
 };
-
-/* export const register = () => {
-  const divRegister = document.createElement('div');
-  const viewRegister = `
-  <fieldset>
-      <form id='signup-form'>
-      <label for="">Nombre</label>
-      <input type="text" alt="" value="" name="">
-      <br>
-      <br>
-      <label for="">Apellido</label>
-      <input type="text" alt="" value="" name="">
-      <br>
-      <br>
-      <label for="">Correo</label>
-      <input type="mail" id='signup-mail' alt="" value="" name="">
-      <br>
-      <br>
-      <label for="">Contraseña</label>
-      <input type="password"  id='signup-password' alt="" value="" name="">
-      <br>
-      <br>
-      <button id="enviar">Enviar</button>
-      </form>
-      </fieldset>
-    `;
-
-  divRegister.innerHTML = viewRegister;
-  const enviar = divRegister.querySelector('#enviar');
-  enviar.addEventListener('click', () => {
-    const mail = document.getElementById('signup-mail').value;
-    const password = document.getElementById('signup-password').value;
-    console.log(mail);
-    console.log(password);
-    firebase.auth().createUserWithEmailAndPassword(mail, password)
-      .then((user) => {
-        console.log('¡Creamos al usuario!');
-      })
-      .catch((error) => {
-        console.error(error);
-        console.log(mail);
-        console.log(password);
-      });
-  });
-  return divRegister;
-}; */

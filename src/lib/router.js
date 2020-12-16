@@ -22,7 +22,7 @@ const showtemplate = (hash) => {
       containerRoot.appendChild(muro());
       break;
     default:
-      containerRoot.innerHTML = '<h2>No Existe</h2>';
+      containerRoot.innerHTML = '<h2>La pagina que busca no existe</h2>';
   }
 };
 
@@ -38,6 +38,5 @@ export const changeroute = (hash) => {
   } if (hash === '#/muro') {
     return showtemplate(hash);
   }
-
   return showtemplate(hash);
 };

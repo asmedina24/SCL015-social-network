@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 // aqui exportaras las funciones que necesites
 export const myFunction = () => {
   // aqui tu codigo
@@ -10,7 +11,7 @@ export const login = () => {
     const token = result.credential.accessToken;
     // The signed-in user info.
     const user = result.user;
-    // ...
+  // ...
   }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;
