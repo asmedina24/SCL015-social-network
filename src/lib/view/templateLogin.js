@@ -26,6 +26,8 @@ export const login = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
       });
+    const database = firebase.database();
+    
     console.log(firebase.auth().signInWithEmailAndPassword(mail, pass));
   });
   return divLogin;

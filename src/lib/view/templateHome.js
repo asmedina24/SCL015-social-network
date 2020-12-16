@@ -34,9 +34,11 @@ export const home = () => {
     login();
   });
   const loginNew = divHome.querySelector('#register');
+  
   loginNew.addEventListener('click', () => {
     const mailLogin = document.getElementById('mail_login').value;
     const passLogin = document.getElementById('pass_login').value;
+    
     console.log(mailLogin);
     console.log(passLogin);
     firebase.auth().signInWithEmailAndPassword(mailLogin, passLogin)

@@ -18,7 +18,6 @@ export const muro = () => {
   const publicar = divMuro.querySelector(('#btn_muro'));
   publicar.addEventListener('click', () => {
     const comentario = document.getElementById('coment_muro').value;
-    const comentPublicado = document.getElementById('public_muro');
     const lista = document.getElementById('lista_comentario');
     const listaComentario = document.createElement('p');
     listaComentario.appendChild(document.createTextNode(comentario));
