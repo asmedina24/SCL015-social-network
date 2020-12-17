@@ -61,21 +61,3 @@ export const register = () => {
   });
   return divRegister;
 };
-
-// const botonRegister = divRegister.querySelector('#registrar2');
-// botonRegister.addEventListener('click', () => {
-//   const unaNombre = document.getElementById('name_register');
-//   const unaApellido = document.getElementById('ape_register');
-//   const firestore = firebase.firestore();
-//   const docRef = firestore.doc('samples/registro');
-//   const textoSave = unaNombre.value;
-//   const textoApe = unaApellido.value;
-//   docRef.collection('user').add({
-//     nombre: textoSave,
-//     apellido: textoApe,
-//   });
-// .then(() => {
-//   console.log('muy bien');
-// }).catch((error) => {
-//   console.log('hay un error', error);
-// });

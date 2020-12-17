@@ -13,15 +13,7 @@ body {
     border-radius: 5%;
     border-color: red;
  }
- p {
-    display: block;
-    list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
-} 
+ 
 
 ul {
     font-size: x-large;
@@ -92,3 +84,17 @@ fieldset{
     position: relative;
     margin: 10%;
 }
+
+#public_muro {
+    display: flex;
+    flex-direction: column;
+    display: block; 
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    text-decoration: none;
+}  
+
