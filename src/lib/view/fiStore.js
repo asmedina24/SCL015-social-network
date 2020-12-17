@@ -1,3 +1,7 @@
+export const guardaruser = {
+
+
+};
 // export const login = () => {
 //   const divLogin = document.createElement('div');
 //   const viewlogin = `
