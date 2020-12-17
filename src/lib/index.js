@@ -3,7 +3,6 @@
 export const myFunction = () => {
   // aqui tu codigo
 };
-
 export const login = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider).then((result) => {
