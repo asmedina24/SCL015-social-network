@@ -22,7 +22,6 @@ export const register = () => {
       <br>
       </form>
       <button id="registrar">Registrar</button>
-      <button id="registrar2">prueba</button>
       </fieldset> 
     `;
 
@@ -31,20 +30,25 @@ export const register = () => {
   enviar.addEventListener('click', () => {
     const mail = document.getElementById('mail_register').value;
     const pass = document.getElementById('pass_register').value;
-    // console.log(mail);
-    // console.log(pass);
+    const unaNombre = document.getElementById('name_register');
+    const unaApellido = document.getElementById('ape_register');
     firebase.auth().createUserWithEmailAndPassword(mail, pass)
-      // .then((user) => {
-      //   console.log(user);
-      //   const form = divRegister.querySelector('#form_register');
-      //   form.reset();
-      // })
       .then(() => {
         const user2 = firebase.auth().currentUser;
-
         user2.sendEmailVerification().then(() => {
-          window.location = ('#/');
-          // Email sent.
+          const firestore = firebase.firestore();
+          const docRef = firestore.doc('samples/registro');
+          const textoSave = unaNombre.value;
+          const textoApe = unaApellido.value;
+          docRef.collection('user').add({
+            nombre: textoSave,
+            apellido: textoApe,
+            correo: mail,
+            contraseña: pass,
+          }).then(() => {
+            window.location = ('#/');
+            console.log('muy bien');
+          });
         });
       })
       .catch((error) => {
@@ -55,20 +59,23 @@ export const register = () => {
       alert('verifica tu correo');
     });
   });
-  const botonRegister = divRegister.querySelector('#registrar2');
-  botonRegister.addEventListener('click', () => {
-    const unaNombre = document.getElementById('name_register');
-    const firestore = firebase.firestore();
-    const docRef = firestore.doc('samples/registro');
-    const textoSave = unaNombre.value;
-    docRef.set({
-      nombre: textoSave,
-    })
-      .then(() => {
-        console.log('muy bien');
-      }).catch((error) => {
-        console.log('hay un error', error);
-      });
-  });
   return divRegister;
 };
+
+// const botonRegister = divRegister.querySelector('#registrar2');
+// botonRegister.addEventListener('click', () => {
+//   const unaNombre = document.getElementById('name_register');
+//   const unaApellido = document.getElementById('ape_register');
+//   const firestore = firebase.firestore();
+//   const docRef = firestore.doc('samples/registro');
+//   const textoSave = unaNombre.value;
+//   const textoApe = unaApellido.value;
+//   docRef.collection('user').add({
+//     nombre: textoSave,
+//     apellido: textoApe,
+//   });
+// .then(() => {
+//   console.log('muy bien');
+// }).catch((error) => {
+//   console.log('hay un error', error);
+// });
