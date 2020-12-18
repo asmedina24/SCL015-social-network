@@ -52,12 +52,17 @@ export const home = () => {
     // console.log(mailLogin);
     // console.log(passLogin);
     firebase.auth().signInWithEmailAndPassword(mailLogin, passLogin)
-      // eslint-disable-next-line no-unused-vars
-      .then((user) => {
-        // console.log(user);
-        const form = divHome.querySelector('#form_login');
-        form.reset();
-        window.location = ('#/muro');
+      .then(() => {
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            const emailVerified = user.emailVerified;
+            if (emailVerified === false) {
+              alert('verifica tu correo');
+            } else {
+              window.location = ('#/muro');
+            }
+          }
+        });
       })
       .catch((error) => {
         // eslint-disable-next-line no-unused-vars
@@ -67,14 +72,6 @@ export const home = () => {
         alert('no esta registrado');
         window.location = ('#/register');
       });
-    // firebase.auth().onAuthStateChanged((user) => {
-    //   if (user) {
-    //     window.location = ('#/muro');
-    //   } else {
-    //     window.location = ('#/register');
-    //     alert('no esta registrado');
-    //   }
-    // });
   });
   return divHome;
 };

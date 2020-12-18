@@ -30,19 +30,17 @@ export const register = () => {
   enviar.addEventListener('click', () => {
     const mail = document.getElementById('mail_register').value;
     const pass = document.getElementById('pass_register').value;
-    const unaNombre = document.getElementById('name_register');
-    const unaApellido = document.getElementById('ape_register');
+    const name = document.getElementById('name_register').value;
+    const lastName = document.getElementById('ape_register').value;
     firebase.auth().createUserWithEmailAndPassword(mail, pass)
       .then(() => {
         const user2 = firebase.auth().currentUser;
         user2.sendEmailVerification().then(() => {
           const firestore = firebase.firestore();
           const docRef = firestore.doc('samples/registro');
-          const textoSave = unaNombre.value;
-          const textoApe = unaApellido.value;
           docRef.collection('user').add({
-            nombre: textoSave,
-            apellido: textoApe,
+            nombre: name,
+            apellido: lastName,
             correo: mail,
             contraseña: pass,
           }).then(() => {
