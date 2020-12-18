@@ -47,15 +47,18 @@ export const register = () => {
             contraseña: pass,
           }).then(() => {
             window.location = ('#/');
-            console.log('muy bien');
+            // console.log('muy bien');
           });
         });
       })
       .catch((error) => {
+        // eslint-disable-next-line no-unused-vars
         const errorCode = error.code;
+        // eslint-disable-next-line no-unused-vars
         const errorMensagge = error.message;
       });
     firebase.auth().signOut().then(() => {
+      // eslint-disable-next-line no-alert
       alert('verifica tu correo');
     });
   });

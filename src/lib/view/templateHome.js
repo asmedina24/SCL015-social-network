@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import { login } from '../index.js';
 
 export const home = () => {
@@ -48,17 +49,20 @@ export const home = () => {
     const mailLogin = document.getElementById('mail_login').value;
     const passLogin = document.getElementById('pass_login').value;
 
-    console.log(mailLogin);
-    console.log(passLogin);
+    // console.log(mailLogin);
+    // console.log(passLogin);
     firebase.auth().signInWithEmailAndPassword(mailLogin, passLogin)
+      // eslint-disable-next-line no-unused-vars
       .then((user) => {
-        console.log(user);
+        // console.log(user);
         const form = divHome.querySelector('#form_login');
         form.reset();
         window.location = ('#/muro');
       })
       .catch((error) => {
+        // eslint-disable-next-line no-unused-vars
         const errorCode = error.code;
+        // eslint-disable-next-line no-unused-vars
         const errorMessage = error.message;
         alert('no esta registrado');
         window.location = ('#/register');
