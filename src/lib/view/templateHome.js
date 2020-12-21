@@ -8,6 +8,7 @@ export const home = () => {
   <img class='img_centerpet' src="/img/Fondo.jpg">
 <h1 class = "contenc_home"></h1> 
 <div class= "caja_login">
+<img class='img_circulo' src="/img/Ellipse 2.png">
 <fieldset class= 'login'>
    <form action="" id= 'form_login'>
    <h3> Login </h1> 

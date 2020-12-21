@@ -1,12 +1,20 @@
 /* Pantalla Movil */
+@media (min-width : 425px) {
 
 body {
-    background-color: #f6f6f6;
+    
+    display: block;
+    margin: 0px;
 }
 
-#nav {
+.navegacion{
     background-color: #ECA12C;
-    font-size: 140%;
+    width: 100%;
+    position: fixed;
+ }
+
+ #root {
+     position: absolute;
  }
 
  #coment_muro{
@@ -18,27 +26,32 @@ body {
 ul {
     font-size: x-large;
     display: flex;
-    margin-left: 45%;
+    margin-left: -150px;
     font-weight: 900;
-    margin-top: -15%;
+    /* margin-top: -10%; */
+    width: 100%;
+    /* padding: 0px; */
+    /* position: relative; */
+    /* background-color: #ECA12C; */
+      justify-content: flex-end;
+      position: relative;
 }
 
 a{
-   margin-bottom: 10%; 
-   color: white;
-   text-decoration: none;
-   padding: 4%;
+    color: white;
+    text-decoration: none;
 }
 
 .login {
     margin: 10px;
-    margin-top: 10%; 
+    margin-top: -95%;
     text-align: center;
     position: relative;
     margin-right: 40px;
     margin-left: 10%;
     width: 70%;
     background-color: whitesmoke;
+    
 }
 
 .btn_register {
@@ -48,8 +61,9 @@ a{
 
 .img_infopet {
     display: flex;
-    width: 60%;
-    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+    margin-top: 0px;
 }
 
 .contenc_home {
@@ -62,7 +76,7 @@ a{
 }
 
 .img_centerpet {
-    margin-top: -1%;
+    margin-top: 15%;
     width: 100%;
     opacity: 90%;
 }
@@ -74,7 +88,8 @@ a{
 }
 
 .caja_login {
-    margin-top: -29%;
+    margin-top: -20%;
+    text-align: -webkit-center;
 }
 
 fieldset{
@@ -98,3 +113,10 @@ fieldset{
     text-decoration: none;
 }  
 
+.img_circulo {
+    margin-top: -1%;
+    width: 100%;
+    opacity: 90%;
+}
+
+}
