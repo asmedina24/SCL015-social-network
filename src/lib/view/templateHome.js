@@ -4,37 +4,36 @@ import { login } from '../index.js';
 export const home = () => {
   const divHome = document.createElement('div');
   const viewHome = ` <div class = "home_style">
-  <div class= "caja">
+
   <img class='img_centerpet' src="/img/Fondo.jpg">
 <h1 class = "contenc_home"></h1> 
 <div class= "caja_login">
 <img class='img_circulo' src="/img/Ellipse 2.png">
 <fieldset class= 'login'>
    <form action="" id= 'form_login'>
-   <h3> Login </h1> 
-    <label for="">Mail</label>
-    <input type="mail" id = 'mail_login' alt="" value="" name="" required>
+   <img class='img_mail' src="/img/image_3.png">
+    <label class="label_form">Mail</label>
+    <input type="mail" class="input_login" id = 'mail_login' alt="" value="" name="" required>
+    <img class='img_pass' src="/img/image_4.png">
+    <label class="label_form">Contraseña</label>
+    <input type="password" class="input_login" id = 'pass_login' alt="" value="" name="" required>
     <br>
     <br>
-    <label for="">Contraseña</label>
-    <input type="password" id = 'pass_login' alt="" value="" name="" required>
-    <br>
-    <br>
-    <button id="login">Entrar</button>
+    <button id="login">Ingresar</button>
     </form>
     <br>
     <br>
 
     <h2>¿Todavía no eres miembro?</h2>
-    <button class = "btn_register"><a href="#/register" class="btn">Únete</a></button>
+    <button class = "btn_register"><a href="#/register" class="btn">Únete ahora</a></button>
     <br>
     <br>
     <hr>
-    <img src="./img/LogoGoogle.png" alt="">
+    <img src="./img/LogoGoogle.png" class="img_google"alt="">
     <button id="loginGoogle">Ingresar con Google</button>
     </div>
     </fieldset>  
-    </div>
+
     </div>
     
   
