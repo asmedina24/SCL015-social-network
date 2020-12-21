@@ -39,7 +39,9 @@ ul {
 
 a{
     color: white;
+    letter-spacing: 1px;
     text-decoration: none;
+    margin: 5px;
 }
 
 .login {
