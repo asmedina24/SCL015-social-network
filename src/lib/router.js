@@ -6,7 +6,7 @@ import { muro } from './view/templateMuro.js';
 
 const showtemplate = (hash) => {
   const containerRoot = document.getElementById('root');
-  const containerRoot2= document.getElementById('root1');
+  const containerRoot2 = document.getElementById('root1');
   containerRoot.innerHTML = menu();
 
   switch (hash) {
