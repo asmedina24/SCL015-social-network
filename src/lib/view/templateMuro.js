@@ -1,19 +1,18 @@
 export const muro = () => {
   const divMuro = document.createElement('div');
-  const ViewMuro = `  <h3>¿Qué estas pensando?</h3>
-  <form id ="form_muro">
+  const ViewMuro = ` <div class= "muro">  <h3>¿Qué estas pensando?</h3>
+  <form id ="form_muro" class="">
   <textarea name="" id="coment_muro" cols="20" rows="10"></textarea>
   <button id="btn_muro">Publicar</button>
   </form><div id="muro">
+  <fieldset class= ''>
   <div id="public_muro"></div>
   <br>
   <br>
-  <br>
-  <br>
-  <br>
+  </div> 
+  </fieldset>
   </div>  
-      
-       `;
+         `;
   divMuro.innerHTML = ViewMuro;
   const publicar = divMuro.querySelector(('#btn_muro'));
   publicar.addEventListener('click', () => {

@@ -23,6 +23,7 @@ body {
  #coment_muro{
     border-radius: 5%;
     border-color: red;
+   
  }
  
 
@@ -40,7 +41,7 @@ ul {
     position: relative;
 }
 
-a{
+a {
     color: white;
     letter-spacing: 1px;
     text-decoration: none;
@@ -83,7 +84,7 @@ a{
     margin-left: 20%;
 }
 .home_style{
-    position: absolute;
+    position: relative;
     top: 250px;
 
 }
@@ -188,5 +189,13 @@ a{
     background:  #5FA9B6;
     border: 1px solid  #5FA9B6;
     box-sizing: border-box;
+}
+
+.muro {
+    position: fixed;
+    margin-top: 300px;
+    border: 5px;
+    background-image: url(../img/fondo_2.png);
+    background-size: cover;
 }
 }
