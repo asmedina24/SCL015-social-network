@@ -1,22 +1,20 @@
-/* eslint-disable no-alert */
 import { login } from '../index.js';
 
 export const home = () => {
   const divHome = document.createElement('div');
   const viewHome = ` <div class = "home_style">
-
-  <img class='img_centerpet' src="/img/Fondo.jpg">
+  <img class = "img_centerpet" src="./img/Fondo.jpg">
 <h1 class = "contenc_home"></h1> 
 <div class= "caja_login">
-<img class='img_circulo' src="/img/Ellipse_2.png">
-<fieldset class= 'login'>
-   <form action="" id= 'form_login'>
-   <img class='img_mail' src="/img/image_3.png">
+<img class="img_circulo" src="./img/Ellipse_2.png">
+<fieldset class= "login">
+   <form action="" id= "form_login">
+   <img class="img_mail" src="./img/image_3.png">
     <label class="label_form">Mail</label>
-    <input type="mail" class="input_login" id = 'mail_login' alt="" value="" name="" required>
-    <img class='img_pass' src="/img/image_4.png">
+    <input type="mail" class="input_login" id = "mail_login" alt="" value="" name="" required>
+    <img class="img_pass" src="./img/image_4.png">
     <label class="label_form">Contraseña</label>
-    <input type="password" class="input_login" id = 'pass_login' alt="" value="" name="" required>
+    <input type="password" class="input_login" id = "pass_login" alt="" value="" name="" required>
     <br>
     <br>
     <button id="login">Ingresar</button>
@@ -29,7 +27,7 @@ export const home = () => {
     <br>
     <br>
     <hr>
-    <img src="./img/LogoGoogle.png" class="img_google"alt="">
+    <img src="./img/LogoGoogle.png" class="./img_google" alt="">
     <button id="loginGoogle">Ingresar con Google</button>
     </div>
     </fieldset>  
