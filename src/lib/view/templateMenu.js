@@ -3,7 +3,7 @@ export const menu = () => {
   <img class="img_infopet" src="./img/group_2.png">
   <div id='nav'>   
     <ul> 
-      <a href="#/">Home</a>
+      <a href="#/home">Home</a>
       <a href="#/register">Registro</a>
       </ul> 
       </div>  </nav>

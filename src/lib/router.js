@@ -10,7 +10,7 @@ const showtemplate = (hash) => {
   containerRoot.innerHTML = menu();
 
   switch (hash) {
-    case '#/':
+    case '#/home':
       containerRoot2.appendChild(home());
       break;
     case '#/register':
@@ -28,7 +28,7 @@ const showtemplate = (hash) => {
 };
 
 export const changeroute = (hash) => {
-  if (hash === '#/') {
+  if (hash === '#/home') {
     return showtemplate(hash);
   } if (hash === '#/register') {
     return showtemplate(hash);
