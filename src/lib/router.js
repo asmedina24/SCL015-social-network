@@ -6,23 +6,24 @@ import { muro } from './view/templateMuro.js';
 
 const showtemplate = (hash) => {
   const containerRoot = document.getElementById('root');
+  const containerRoot2= document.getElementById('root1');
   containerRoot.innerHTML = menu();
 
   switch (hash) {
     case '#/':
-      containerRoot.appendChild(home());
+      containerRoot2.appendChild(home());
       break;
     case '#/register':
-      containerRoot.appendChild(register());
+      containerRoot2.appendChild(register());
       break;
     // case '#/login':
     //   containerRoot.appendChild(login());
     //   break;
     case '#/muro':
-      containerRoot.appendChild(muro());
+      containerRoot2.appendChild(muro());
       break;
     default:
-      containerRoot.innerHTML = '<h2>La pagina que busca no existe</h2>';
+      containerRoot2.innerHTML = '<h2>La pagina que busca no existe</h2>';
   }
 };
 

@@ -1,28 +1,27 @@
 export const register = () => {
   const divRegister = document.createElement('div');
-  const viewRegister = `
-  <fieldset>
+  const viewRegister = `<div class= "caja_register">
+  <fieldset class="contenedor_register">
   
       <form action="" id='form_register'>
-      <label for="">Nombre</label>
-      <input type="text" id='name_register' alt="" value="" name="">
+      <h2 class="title_register">Register</h2>
+      <br>
+      <input type="text" id='name_register' placeholder="Nombre" alt="" value="" name="">
       <br>
       <br>
-      <label for="">Apellido</label>
-      <input type="text" id='ape_register' alt="" value="" name="">
+      <input type="text" id='ape_register' placeholder="Apellido"alt="" value="" name="">
       <br>
       <br>
-      <label for="">Correo</label>
-      <input type="mail" id='mail_register' alt="" value="" name="">
+      <input type="mail" id='mail_register' placeholder="E-mail" alt="" value="" name="">
       <br>
       <br>
-      <label for="">Contraseña</label>
-      <input type="password" id='pass_register' alt="" value="" name="">
+      <input type="password" id='pass_register' placeholder="Password" alt="" value="" name="">
       <br>
       <br>
-      </form>
       <button id="registrar">Registrar</button>
+      </form>
       </fieldset> 
+      </div>
     `;
 
   divRegister.innerHTML = viewRegister;

@@ -11,10 +11,13 @@ body {
     background-color: #ECA12C;
     width: 100%;
     position: fixed;
+    display: flex;
+    flex-direction: column;
  }
 
  #root {
-     position: absolute;
+    position: absolute;
+    z-index: 2000;
  }
 
  #coment_muro{
@@ -29,30 +32,30 @@ ul {
     margin-left: -150px;
     font-weight: 900;
     /* margin-top: -10%; */
-    width: 100%;
+    /* width: 100%; */
     /* padding: 0px; */
     /* position: relative; */
     /* background-color: #ECA12C; */
-      justify-content: flex-end;
-      position: relative;
+    justify-content: flex-end;
+    position: relative;
 }
 
 a{
     color: white;
     letter-spacing: 1px;
     text-decoration: none;
-    margin: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .login {
     margin: 10px;
     margin-top: -95%;
     text-align: center;
-    position: relative;
-    margin-right: 40px;
-    margin-left: 10%;
     width: 70%;
-    background-color: whitesmoke;
+    background-color: white;
+    border: none;
+    position: relative;
     
 }
 
@@ -64,8 +67,11 @@ a{
 .img_infopet {
     display: flex;
     width: 100%;
-    height: 100%;
-    margin-top: 0px;
+    max-width: fit-content;
+    /* height: 100%; */
+    /* margin-top: 0px; */
+    position: absolute;
+    margin: 10px;
 }
 
 .contenc_home {
@@ -76,11 +82,15 @@ a{
     color: black;
     margin-left: 20%;
 }
+.home_style{
+    position: absolute;
+    top: 250px;
+
+}
 
 .img_centerpet {
-    margin-top: 15%;
     width: 100%;
-    opacity: 90%;
+
 }
 
 .caja {
@@ -92,15 +102,6 @@ a{
 .caja_login {
     margin-top: -20%;
     text-align: -webkit-center;
-}
-
-fieldset{
-    margin: 10%;
-    margin-top: 10%;
-    text-align: center;
-    border-color: white;
-    position: relative;
-   
 }
 
 #public_muro {
@@ -118,7 +119,67 @@ fieldset{
 .img_circulo {
     margin-top: -1%;
     width: 100%;
-    opacity: 90%;
-}
 
+}
+.img_mail{
+    position: relative;
+    top: 50px;
+    left: -50px;
+}
+.img_pass{
+    position: relative;
+    top: 43px;
+    left: -45px;
+}
+#form_login{
+    display: inline-grid;
+}
+#login{
+    position: relative;
+    width: 109px;
+    height: 34px;
+    left: 35px;
+    color: white;
+    background: #ECA12C;
+    border: 1px solid #ECA12C;
+    box-sizing: border-box;
+}
+.input_login{
+    border: 0;
+    border-bottom: 1px solid;
+}
+.img_google{
+    width: 40px;
+    position: relative;
+    top: 10px;
+    left: -10px;
+}
+#loginGoogle{
+    margin-right: 40px;
+    position: relative; 
+}
+.caja_register{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    top: 250px;
+    background-image: url(../img/fondo_2.png);
+    background-size: cover;
+
+}
+.contenedor_register{
+    display: flex;
+    text-align: center;
+    background-color: white;
+    display: flex;
+    text-align: center;
+    height: 300px;
+    margin-top: 150px;
+    margin-bottom: 320px;
+    z-index: 1000;
+}
+#root1{
+    position: relative;
+    top: -200px;
+}
 }
