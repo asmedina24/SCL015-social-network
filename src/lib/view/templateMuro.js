@@ -1,16 +1,18 @@
 export const muro = () => {
   const divMuro = document.createElement('div');
-  const ViewMuro = `  <h3>¿Qué estas pensando?</h3>
-  <form id ="form_muro">
+  const ViewMuro = `<div id="muro"> 
+  <form id ="form_muro"><h3 class="titulo_muro">¿Qué estas pensando?</h3>
   <textarea name="" id="coment_muro" cols="20" rows="10"></textarea>
   <button id="btn_muro">Publicar</button>
-  </form><div id="muro">
+  </form>
+  <fieldset class="contenido_muro"> 
   <div id="public_muro"></div>
   <br>
   <br>
   <br>
   <br>
   <br>
+  </fieldset> 
   </div>  
       
        `;

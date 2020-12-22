@@ -1,6 +1,6 @@
 export const menu = () => {
   const ViewMenu = ` <nav class="navegacion">
-  <img class="img_infopet" src="/img/Group 2.png">
+  <img class="img_infopet" src="/img/Group_2.png">
   <div id='nav'>   
     <ul> 
       <a href="#/">Home</a>

@@ -21,6 +21,8 @@ export const register = () => {
       <button id="registrar">Registrar</button>
       </form>
       </fieldset> 
+      <img class="circulo_registro" src="/img/Ellipse 2.png">
+      <img src="./img/image_7.png" class="perritos_registro" alt="">
       </div>
     `;
 
