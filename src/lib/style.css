@@ -86,6 +86,7 @@ a {
 .btn_register {
     background-color: #5FA9B6;
     font-size: larger;
+    margin-top: -10px;
 }
 
 .img_infopet {
@@ -167,6 +168,7 @@ a {
     background: #ECA12C;
     border: 1px solid #ECA12C;
     box-sizing: border-box;
+    margin-top: -20px;
 }
 .input_login{
     border: 0;
