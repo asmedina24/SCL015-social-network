@@ -2,7 +2,6 @@
 @media (min-width : 375px) {
 
 body {
-    
     display: block;
     margin: 0px;
 }
@@ -67,7 +66,7 @@ a {
     padding-left: 8px;
     padding-right: 4px;
 }
-}
+
 
 .login {
     margin: 10px;
@@ -77,7 +76,6 @@ a {
     background-color: white;
     border: none;
     position: relative;
-    
 }
 
 .btn_register {
@@ -106,7 +104,6 @@ a {
 .home_style{
     position: relative;
     top: 250px;
-
 }
 
 .img_centerpet {
@@ -138,7 +135,7 @@ a {
 }  
 
 .img_circulo {
-    margin-top: -1%;
+    margin-top: -7%;
     width: 100%;
 
 }
@@ -154,6 +151,7 @@ a {
 }
 #form_login{
     display: inline-grid;
+    margin-top: -100px;
 }
 #login{
     position: relative;
