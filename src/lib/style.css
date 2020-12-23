@@ -1,11 +1,16 @@
 /* Pantalla Movil */
-@media (min-width : 375px) {
+@media (min-width : 375px) and (max-width: 768px) {
 
 body {
     display: block;
     margin: 0px;
+    overflow: hidden;
 }
 
+.linea_fieldset {
+    border: 0;
+    border-top: 1px solid;
+}
 .navegacion{
     background-color: #ECA12C;
     width: 100%;
@@ -70,7 +75,7 @@ a {
 
 .login {
     margin: 10px;
-    margin-top: -95%;
+    margin-top: -102%;
     text-align: center;
     width: 70%;
     background-color: white;
@@ -168,14 +173,19 @@ a {
     border-bottom: 1px solid;
 }
 .img_google{
-    width: 40px;
+    width: 25px;
     position: relative;
-    top: 10px;
-    left: -10px;
+    top: 5px;
+    left: -3px;
 }
 #loginGoogle{
-    margin-right: 40px;
-    position: relative; 
+    position: relative;
+    /* background: url(./src/img/LogoGoogle.png); */
+    background-repeat: no-repeat;
+    background-size: 37px;
+    text-align: center;
+    line-height: 25px;
+
 }
 .caja_register{
     display: flex;
@@ -191,9 +201,10 @@ a {
     text-align: center;
     background-color: white;
     height: 300px;
-    margin-top: 150px;
+    margin-top: 50px;
     margin-bottom: 320px;
     z-index: 1000;
+    
 }
 #root1{
     position: relative;
@@ -217,14 +228,245 @@ a {
 }
 .perritos_registro{
     width: 60%;
-    top: 600px;
+    top: 450px;
     position: absolute;
 }
 .circulo_registro{
     position: absolute;
     /* z-index: 500; */
-    top: 500px;
+    top: 400px;
     /* opacity: 80%; */
     height: 60%;
 }
 }
+
+@media (min-width : 769px) and (max-width: 1640px) {
+
+    body {
+        display: block;
+        margin: 0px;
+        /* overflow: hidden; */
+    }
+    
+    .navegacion{
+        background-color: #ECA12C;
+        width: 100%;
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+     }
+    
+     #root {
+        position: absolute;
+        z-index: 2000;
+        top: 0px;
+     }
+    
+     #coment_muro{
+        border-radius: 5%;
+        width: 60%;
+        border-color: red;
+       
+     }
+    #muro{
+        position: relative;
+        top: 300px;
+        /* left: 20px; */
+        display: flex;
+        position: relative;
+        justify-content: center;
+        /* top: 250px; */
+        background-image: url(../img/fondo_2.png);
+        background-size: cover;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+    } 
+    #form_muro{
+        position: relative;
+        text-align: -webkit-center;
+    }
+    
+    ul {
+        font-size: x-large;
+        display: flex;
+        margin-left: -150px;
+        font-weight: 900;
+        /* margin-top: -10%; */
+        /* width: 100%; */
+        /* padding: 0px; */
+        /* position: relative; */
+        /* background-color: #ECA12C; */
+        justify-content: flex-end;
+        position: relative;
+    }
+    
+    a {
+        color: white;
+        letter-spacing: 1px;
+        text-decoration: none;
+        padding-left: 8px;
+        padding-right: 4px;
+    }
+    
+    
+    .login {
+        margin: 10px;
+        margin-top: -95%;
+        text-align: center;
+        width: 70%;
+        background-color: white;
+        border: none;
+        position: relative;
+    }
+    
+    .btn_register {
+        background-color: #5FA9B6;
+        font-size: larger;
+    }
+    
+    .img_infopet {
+        display: flex;
+        width: 100%;
+        max-width: fit-content;
+        /* height: 100%; */
+        /* margin-top: 0px; */
+        position: absolute;
+        margin: 10px;
+    }
+    
+    .contenc_home {
+        display: flex;
+        text-align: center;
+        margin-top: -40%;
+        position: absolute;
+        color: black;
+        margin-left: 20%;
+    }
+    .home_style{
+        position: relative;
+        top: 250px;
+    }
+    
+    .img_centerpet {
+        width: 100%;
+    
+    }
+    
+    .caja {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+    }
+    
+    .caja_login {
+        margin-top: -20%;
+        text-align: -webkit-center;
+    }
+    
+    #public_muro {
+        display: flex;
+        flex-direction: column;
+        list-style-type: disc;
+        /* margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px; */
+        padding-inline-start: 40px;
+        text-decoration: none;
+    }  
+    
+    .img_circulo {
+        margin-top: -7%;
+        width: 100%;
+    
+    }
+    .img_mail{
+        position: relative;
+        top: 50px;
+        left: -50px;
+    }
+    .img_pass{
+        position: relative;
+        top: 43px;
+        left: -45px;
+    }
+    #form_login{
+        display: inline-grid;
+        margin-top: -100px;
+    }
+    #login{
+        position: relative;
+        width: 109px;
+        height: 34px;
+        left: 35px;
+        color: white;
+        background: #ECA12C;
+        border: 1px solid #ECA12C;
+        box-sizing: border-box;
+    }
+    .input_login{
+        border: 0;
+        border-bottom: 1px solid;
+    }
+    .img_google{
+        width: 40px;
+        position: relative;
+        top: 10px;
+        left: -10px;
+    }
+    #loginGoogle{
+        margin-right: 40px;
+        position: relative; 
+    }
+    .caja_register{
+        display: flex;
+        position: relative;
+        justify-content: center;
+        top: 250px;
+        background-image: url(../img/fondo_2.png);
+        background-size: cover;
+    
+    }
+    .contenedor_register{
+        display: flex;
+        text-align: center;
+        background-color: white;
+        height: 300px;
+        margin-top: 150px;
+        margin-bottom: 320px;
+        z-index: 1000;
+    }
+    #root1{
+        position: relative;
+        top: -200px;
+    }
+    #registrar{
+        position: relative;
+        width: 109px;
+        height: 34px;
+        color: white;
+        background:  #5FA9B6;
+        border: 1px solid  #5FA9B6;
+        box-sizing: border-box;
+    }
+    .titulo_muro{
+        background-color: navajowhite;
+    }
+    .contenido_muro{
+        background-color: white;
+        margin: 50px;
+    }
+    .perritos_registro{
+        width: 60%;
+        top: 600px;
+        position: absolute;
+    }
+    .circulo_registro{
+        position: absolute;
+        /* z-index: 500; */
+        top: 500px;
+        /* opacity: 80%; */
+        height: 60%;
+    }
+    }

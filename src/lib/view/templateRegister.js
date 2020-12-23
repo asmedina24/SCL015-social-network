@@ -6,19 +6,20 @@ export const register = () => {
       <form action="" id='form_register'>
       <h2 class="title_register">Register</h2>
       <br>
-      <input type="text" id='name_register' placeholder="Nombre" alt="" value="" name="">
+      <input type="text" id='name_register' placeholder="Nombre" pattern="[a-zA-Z ]{3,30}" title= "Debe contener minimo 3 letras" required >
       <br>
       <br>
-      <input type="text" id='ape_register' placeholder="Apellido"alt="" value="" name="">
+      <input type="text" id='ape_register' placeholder="Apellido"  pattern="[a-zA-Z ]{3,30}" title= "Debe contener minimo 3 letras" required>
       <br>
       <br>
-      <input type="mail" id='mail_register' placeholder="E-mail" alt="" value="" name="">
+      <input type="email" id='mail_register' placeholder="E-mail" required  title="correo invalido, ingrese @">
       <br>
       <br>
-      <input type="password" id='pass_register' placeholder="Password" alt="" value="" name="">
+      <input type="password" id='pass_register' placeholder="Password" minlength="6" maxlength="8"
+      title="Debe contener mas de 6 caracteres" required>
       <br>
       <br>
-      <button id="registrar">Registrar</button>
+      <button type="submit" id="registrar">Registrar</button>
       </form>
       </fieldset> 
       <img class="circulo_registro" src="./img/Ellipse_2.png">
@@ -27,8 +28,8 @@ export const register = () => {
     `;
 
   divRegister.innerHTML = viewRegister;
-  const enviar = divRegister.querySelector('#registrar');
-  enviar.addEventListener('click', () => {
+  const enviar = divRegister.querySelector('#form_register');
+  enviar.addEventListener('submit', () => {
     const mail = document.getElementById('mail_register').value;
     const pass = document.getElementById('pass_register').value;
     const name = document.getElementById('name_register').value;
