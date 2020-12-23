@@ -21,14 +21,16 @@ export const home = () => {
     </form>
     <br>
     <br>
-
-    <h2>¿Todavía no eres miembro?</h2>
+    <h2>¿Aún no eres miembro?</h2>
+    
     <button class = "btn_register"><a href="#/register" class="btn">Únete ahora</a></button>
     <br>
     <br>
-    <hr>
-    <img src="./img/LogoGoogle.png" class="./img_google" alt="">
-    <button id="loginGoogle">Ingresar con Google</button>
+    <fieldset class= "linea_fieldset">
+    <legend>ó</legend>
+    </fieldset>
+    
+    <button id="loginGoogle"><img src="./img/LogoGoogle.png" class="img_google">Ingresar con Google</button>
     </div>
     </fieldset>  
   </div>
