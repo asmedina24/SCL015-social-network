@@ -31,8 +31,7 @@ export const home = () => {
     <button id="loginGoogle">Ingresar con Google</button>
     </div>
     </fieldset>  
-
-    </div>
+  </div>
     
   
 `;

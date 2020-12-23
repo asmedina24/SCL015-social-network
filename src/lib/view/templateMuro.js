@@ -14,8 +14,7 @@ export const muro = () => {
   <br>
   </fieldset> 
   </div>  
-      
-       `;
+         `;
   divMuro.innerHTML = ViewMuro;
   const publicar = divMuro.querySelector(('#btn_muro'));
   publicar.addEventListener('click', () => {

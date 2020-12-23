@@ -1,8 +1,7 @@
 /* Pantalla Movil */
-@media (min-width : 425px) {
+@media (min-width : 375px) {
 
 body {
-    
     display: block;
     margin: 0px;
 }
@@ -25,6 +24,7 @@ body {
     border-radius: 5%;
     width: 60%;
     border-color: red;
+   
  }
 #muro{
     position: relative;
@@ -59,12 +59,14 @@ ul {
     position: relative;
 }
 
-a{
+a {
     color: white;
+    letter-spacing: 1px;
     text-decoration: none;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 8px;
+    padding-right: 4px;
 }
+
 
 .login {
     margin: 10px;
@@ -74,7 +76,6 @@ a{
     background-color: white;
     border: none;
     position: relative;
-    
 }
 
 .btn_register {
@@ -103,7 +104,6 @@ a{
 .home_style{
     position: relative;
     top: 250px;
-
 }
 
 .img_centerpet {
@@ -135,7 +135,7 @@ a{
 }  
 
 .img_circulo {
-    margin-top: -1%;
+    margin-top: -7%;
     width: 100%;
 
 }
@@ -151,6 +151,7 @@ a{
 }
 #form_login{
     display: inline-grid;
+    margin-top: -100px;
 }
 #login{
     position: relative;
