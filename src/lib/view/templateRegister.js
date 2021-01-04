@@ -46,7 +46,7 @@ export const register = () => {
             correo: mail,
             contraseña: pass,
           }).then(() => {
-            window.location = ('#/');
+            window.location = ('#/home');
             // console.log('muy bien');
           });
         });
