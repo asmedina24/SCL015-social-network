@@ -47,21 +47,16 @@ export const home = () => {
   loginNew.addEventListener('click', () => {
     const mailLogin = document.getElementById('mail_login').value;
     const passLogin = document.getElementById('pass_login').value;
-
-    // eslint-disable-next-line no-console
-    console.log(mailLogin);
-    // eslint-disable-next-line no-console
-    console.log(passLogin);
     firebase.auth().signInWithEmailAndPassword(mailLogin, passLogin)
       .then(() => {
         firebase.auth().onAuthStateChanged((user) => {
           if (user) {
+            const uid = user.uid;
             const emailVerified = user.emailVerified;
-            if (emailVerified === false) {
-              // eslint-disable-next-line no-alert
-              alert('verifica tu correo');
-            } else {
+            if (emailVerified === true) {
               window.location = ('#/muro');
+            } else {
+              alert('verifica tu correo');
             }
           }
         });

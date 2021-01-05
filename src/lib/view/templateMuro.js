@@ -1,53 +1,84 @@
 export const muro = () => {
-  firebase.firestore().collection('profile').where('email', '==', 'alejandramedina1215@gmail.com').get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const userName = doc.data().userName;
-        const email = doc.data().email;
-        const divMuro = document.createElement('div');
-        const ViewMuro = `<div id="muro"> 
-            <form id ="form_muro"><h3 class="titulo_muro">¿Qué estas pensando?</h3>
-            <textarea name="" id="coment_muro" cols="20" rows="10"></textarea>
-            <button id="btn_muro">Publicar</button>
-            </form>
-            <div id="public_muro"></div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            </div>  
+  const divMuro = document.createElement('div');
+  const ViewMuro = `<div id="muro"> 
+  <form id ="form_muro"><h3 class="titulo_muro">¿Qué estas pensando?</h3>
+  <textarea name="" id="coment_muro" cols="20" rows="10"></textarea>
+  <button id="btn_muro">Publicar</button>
+  </form>
+   <div id="public_muro"></div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  </div>  
          `;
-        divMuro.innerHTML = ViewMuro;
-        const publicar = divMuro.querySelector('#btn_muro'); // boton para publicar
-        publicar.addEventListener('click', () => {
-          const comentario = document.getElementById('coment_muro').value; // trae lo q esta en texarea
-          const lista = document.getElementById('public_muro'); // trae lo q esta en id q se  va a publicar
-          const listaComentario = document.createElement('div'); // crea un div
-          // listaComentario.appendChild(document.createTextNode(comentario));
-          lista.appendChild(listaComentario); // id public muro se crea un div
-          const formMuro = document.getElementById('form_muro');
-          formMuro.reset();
-          const firestore = firebase.firestore();
-          const docRef2 = firestore.doc('samples/registro');
-          docRef2.collection('coment').add({
-            comentarios: comentario,
-          });
-          firestore.collection('coment').onSnapshot(() => {
-            // vaciando div para que no se repitan los post
-            lista.innerHTML = '';
-            querySnapshot.forEach(() => {
-              lista.innerHTML += `<div> <p> o</p>
-              <textarea class=""> ${doc.data().comentarios}</textarea>
-              <button class="">Comentarios</button>
-              <button class="">Borrar</button>
-              </div>
-              <div class="commentDiv">
-                </div>`;
-            });
-          });
-        });
-        return divMuro;
+  divMuro.innerHTML = ViewMuro;
+  const publicar = divMuro.querySelector(('#btn_muro'));
+  publicar.addEventListener('click', () => {
+    const comentario = document.getElementById('coment_muro').value;
+    const formMuro = document.getElementById('form_muro');
+    formMuro.reset();
+    const firestore = firebase.firestore();
+    firestore.collection('coment').add({
+      comentarios: comentario,
+      date: new Date(),
+    }).then((docRef) => {
+      console.log('Document written with ID: ', docRef.id);
+    })
+      .catch((error) => {
+        console.error('Error adding document: ', error);
       });
+    // firestore.collection('coment').get().then((querySnapshot) => {
+    //   querySnapshot.forEach((doc) => {
+    //     // eslint-disable-next-line no-consolesssssssss
+    //     const lista = document.getElementById('public_muro');
+    //     // const listaComentario = document.createElement('div');
+    //     // listaComentario.appendChild(document.createTextNode(`${doc.data().comentarios}`));
+    //     // lista.appendChild(listaComentario);
+    //     lista.innerHTML = '';
+    //     lista.innerHTML += `<div>
+    //           <textarea class=""> ${doc.data().comentarios}</textarea>
+    //           <button class="">Comentarios</button>
+    //           <button class="">Borrar</button>
+    //           </div>
+    //           <div class="commentDiv">
+    //             </div>`;
+    //   });
+    // });
+  });
+  const firestore = firebase.firestore();
+  firestore.collection('coment', 'users').onSnapshot((querySnapshot) => {
+    const lista = document.getElementById('public_muro');
+    lista.innerHTML = '';
+    querySnapshot.forEach((doc) => {
+      // console.log('Document data:', doc.data());
+      // const lista = document.getElementById('public_muro');
+      // const formMuro = document.getElementById('form_muro');
+      // formMuro.reset();
+      // lista.innerHTML = '';
+      lista.innerHTML += `<div id="postDiv-${doc.id}">
+        <div class="text-area"> 
+                <p>Publicado por ${doc.data().nombre}</p>
+                <p class=""> ${doc.data().comentarios}</p>
+                <p class=""> ${doc.data().date}</p>
+                 </div>
+                <button class="" id="delete-${doc.id} ">Editar</button>
+                <button class="" id="delete">Borrar</button>
+                <button class="">Me gusta</button>
+                </div>
+                <div class="commentDiv">
+                  </div>`;
     });
+    // const borrar = divMuro.querySelector('#delete');
+    // borrar.addEventListener('click', () => {
+    //   firestore.collection('coment').doc('coment').delete().then(() => {
+    //     console.log('Document successfully deleted!');
+    //   })
+    //     .catch((error) => {
+    //       console.error('Error removing document: ', error);
+    //     });
+    // });
+  });
+  return divMuro;
 };
