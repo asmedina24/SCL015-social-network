@@ -1,4 +1,8 @@
 export const muro = () => {
+  const currentUserData = firebase.auth().currentUser;
+  console.log(currentUserData);
+  const displayNameData = currentUserData.displayName;
+  console.log(displayNameData);
   const divMuro = document.createElement('div');
   const ViewMuro = `<div id="muro"> 
   <form id ="form_muro"><h3 class="titulo_muro">¿Qué estas pensando?</h3>
@@ -59,7 +63,7 @@ export const muro = () => {
       // lista.innerHTML = '';
       lista.innerHTML += `<div id="postDiv-${doc.id}">
         <div class="text-area"> 
-                <p>Publicado por ${doc.data().likes}</p>
+                <p>Hola ${displayNameData}</p>
                 <p class=""> ${doc.data().comentarios}</p>
                 <p class=""> ${doc.data().date}</p>
                  </div>
