@@ -33,11 +33,11 @@ export const muro = () => {
           docRef2.collection('coment').add({
             comentarios: comentario,
           });
-          firestore.collection('coment').onSnapshot((querySnapshot) => {
+          firestore.collection('coment').onSnapshot(() => {
             // vaciando div para que no se repitan los post
-            listaComentario.innerHTML = '';
-            querySnapshot.forEach((doc) => {
-              listaComentario.innerHTML += `<div> <p> o</p>
+            lista.innerHTML = '';
+            querySnapshot.forEach(() => {
+              lista.innerHTML += `<div> <p> o</p>
               <textarea class=""> ${doc.data().comentarios}</textarea>
               <button class="">Comentarios</button>
               <button class="">Borrar</button>
@@ -47,7 +47,7 @@ export const muro = () => {
             });
           });
         });
+        return divMuro;
       });
     });
-  return muro;
 };
