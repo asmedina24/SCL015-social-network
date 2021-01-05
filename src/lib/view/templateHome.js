@@ -47,11 +47,6 @@ export const home = () => {
   loginNew.addEventListener('click', () => {
     const mailLogin = document.getElementById('mail_login').value;
     const passLogin = document.getElementById('pass_login').value;
-
-    // eslint-disable-next-line no-console
-    console.log(mailLogin);
-    // eslint-disable-next-line no-console
-    console.log(passLogin);
     firebase.auth().signInWithEmailAndPassword(mailLogin, passLogin)
       .then(() => {
         firebase.auth().onAuthStateChanged((user) => {
