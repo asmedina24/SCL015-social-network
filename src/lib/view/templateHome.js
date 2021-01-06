@@ -51,7 +51,6 @@ export const home = () => {
       .then(() => {
         firebase.auth().onAuthStateChanged((user) => {
           if (user) {
-            const uid = user.uid;
             const emailVerified = user.emailVerified;
             if (emailVerified === true) {
               window.location = ('#/muro');

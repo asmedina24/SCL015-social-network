@@ -13,6 +13,7 @@ export const login = () => {
     // The signed-in user info.
     // eslint-disable-next-line no-unused-vars
     const user = result.user;
+    const uid = user.uid;
     window.location = ('#/muro');
   // ...
   }).catch((error) => {
