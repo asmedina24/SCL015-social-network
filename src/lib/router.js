@@ -10,6 +10,9 @@ const showtemplate = (hash) => {
   containerRoot.innerHTML = menu();
 
   switch (hash) {
+    case '':
+      containerRoot2.appendChild(home());
+      break;
     case '#/home':
       containerRoot2.appendChild(home());
       break;

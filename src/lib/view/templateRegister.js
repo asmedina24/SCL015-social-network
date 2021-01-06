@@ -36,17 +36,25 @@ export const register = () => {
     const lastName = document.getElementById('ape_register').value;
     firebase.auth().createUserWithEmailAndPassword(mail, pass)
       .then(() => {
-        const user2 = firebase.auth().currentUser;
-        user2.sendEmailVerification().then(() => {
+        const user = firebase.auth().currentUser;
+        user.sendEmailVerification().then(() => {
           const firestore = firebase.firestore();
-          firestore.collection('user').add({ 
-            nombre: name,
-            apellido: lastName,
+          // const docRef = firestore.doc('samples/registro');
+          firestore.collection('user').add({
+            displayName: name,
+            lastName,
             correo: mail,
             contraseña: pass,
-          }).then(() => {
-            window.location = ('#/home');
-          });
+          })
+            .then(() => {
+              window.location = ('#/home');
+            });
+        });
+      })
+      .then(() => {
+        const user = firebase.auth().currentUser;
+        return user.updateProfile({
+          displayName: name + lastName,
         });
       })
       .catch((error) => {
