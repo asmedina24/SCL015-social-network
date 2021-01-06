@@ -1,8 +1,6 @@
 export const muro = () => {
   const currentUserData = firebase.auth().currentUser;
   console.log(currentUserData);
-  const displayNameData = currentUserData.displayName;
-  console.log(displayNameData);
   const divMuro = document.createElement('div');
   const ViewMuro = `<div id="muro"> 
   <form id ="form_muro"><h3 class="titulo_muro">¿Qué estas pensando?</h3>
@@ -33,23 +31,6 @@ export const muro = () => {
       .catch((error) => {
         console.error('Error adding document: ', error);
       });
-    // firestore.collection('coment').get().then((querySnapshot) => {
-    //   querySnapshot.forEach((doc) => {
-    //     // eslint-disable-next-line no-consolesssssssss
-    //     const lista = document.getElementById('public_muro');
-    //     // const listaComentario = document.createElement('div');
-    //     // listaComentario.appendChild(document.createTextNode(`${doc.data().comentarios}`));
-    //     // lista.appendChild(listaComentario);
-    //     lista.innerHTML = '';
-    //     lista.innerHTML += `<div>
-    //           <textarea class=""> ${doc.data().comentarios}</textarea>
-    //           <button class="">Comentarios</button>
-    //           <button class="">Borrar</button>
-    //           </div>
-    //           <div class="commentDiv">
-    //             </div>`;
-    //   });
-    // });
   });
   const firestore = firebase.firestore();
   firestore.collection('coment').onSnapshot((querySnapshot) => {
@@ -63,9 +44,9 @@ export const muro = () => {
       // lista.innerHTML = '';
       lista.innerHTML += `<div id="postDiv-${doc.id}">
         <div class="text-area"> 
-                <p>Hola ${displayNameData}</p>
                 <p class=""> ${doc.data().comentarios}</p>
                 <p class=""> ${doc.data().date}</p>
+               
                  </div>
                 <button class="" id="delete-${doc.id} ">Editar</button>
                 <button class="" id="delete">Borrar</button>
@@ -74,15 +55,6 @@ export const muro = () => {
                 <div class="commentDiv">
                   </div>`;
     });
-    // const borrar = divMuro.querySelector('#delete');
-    // borrar.addEventListener('click', () => {
-    //   firestore.collection('coment').doc('coment').delete().then(() => {
-    //     console.log('Document successfully deleted!');
-    //   })
-    //     .catch((error) => {
-    //       console.error('Error removing document: ', error);
-    //     });
-    // });
   });
   return divMuro;
 };

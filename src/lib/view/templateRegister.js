@@ -39,8 +39,7 @@ export const register = () => {
         const user2 = firebase.auth().currentUser;
         user2.sendEmailVerification().then(() => {
           const firestore = firebase.firestore();
-          // const docRef = firestore.doc('samples/registro');
-          firestore.collection('user').add({
+          firestore.collection('user').add({ 
             nombre: name,
             apellido: lastName,
             correo: mail,
