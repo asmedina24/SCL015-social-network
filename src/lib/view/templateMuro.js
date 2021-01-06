@@ -3,7 +3,6 @@ export const muro = () => {
   const uid = currentUserData.uid;
   console.log(currentUserData);
   const displayNameData = currentUserData.displayName;
-  console.log(displayNameData);
   const divMuro = document.createElement('div');
   const ViewMuro = `<div id="muro"> 
   <form id ="form_muro"><h3 class="titulo_muro">¿Qué estas pensando?</h3>
@@ -50,13 +49,32 @@ export const muro = () => {
                 <p>${doc.data().nombre}</p>
                 <p class=""> ${doc.data().comentarios}</p>
                 <p class=""> ${doc.data().date}</p>
+               
                  </div>
-                <button class="" id="delete-${doc.id} ">Editar</button>
-                <button class="" id="delete">Borrar</button>
+                <button id="delete" value="${doc.id}">Borrar</button>
                 <button class="">Me gusta</button>
                 </div>
                 <div class="commentDiv">
                   </div>`;
+
+      // console.log(e.target.id);
+    });
+    const borrar = divMuro.querySelectorAll('#delete');
+    borrar.forEach((deletebutton) => {
+      deletebutton.addEventListener('click', (e) => {
+        console.log(e.target.value);
+        // console.log(doc.data().userid);
+        // console.log(uid);
+        firestore.collection('coment').doc(e.target.value).delete()
+          .then(() => {
+            if (uid === e.target.value) {
+              console.log('imprimir');
+            }
+          })
+          .catch((error) => {
+            console.error('Error removing document: ', error);
+          });
+      });
     });
   });
   return divMuro;

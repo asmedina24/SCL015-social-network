@@ -55,6 +55,7 @@ export const home = () => {
             if (emailVerified === true) {
               window.location = ('#/muro');
             } else {
+              // eslint-disable-next-line no-alert
               alert('verifica tu correo');
             }
           }
@@ -65,6 +66,7 @@ export const home = () => {
         const errorCode = error.code;
         // eslint-disable-next-line no-unused-vars
         const errorMessage = error.message;
+        // eslint-disable-next-line no-alert
         alert('no esta registrado');
         window.location = ('#/register');
       });
