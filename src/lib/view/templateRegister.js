@@ -54,7 +54,7 @@ export const register = () => {
       .then(() => {
         const user = firebase.auth().currentUser;
         return user.updateProfile({
-          displayName: name, lastName,
+          displayName: name + lastName,
         });
       })
       .catch((error) => {

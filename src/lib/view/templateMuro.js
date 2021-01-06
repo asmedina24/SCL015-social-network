@@ -25,8 +25,10 @@ export const muro = () => {
     const formMuro = document.getElementById('form_muro');
     formMuro.reset();
     const firestore = firebase.firestore();
+    // const myDate = firebase.firestore.Timestamp.fromDate(new Date()).toDate();
     firestore.collection('coment').add({
       comentarios: comentario,
+      // date: myDate,
       date: new Date(firebase.firestore.Timestamp.now().seconds * 1000).toLocaleDateString(),
       userid: uid,
       nombre: displayNameData,
