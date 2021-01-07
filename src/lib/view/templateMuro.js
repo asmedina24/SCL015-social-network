@@ -32,15 +32,15 @@ export const muro = () => {
       userid: uid,
       nombre: displayNameData,
 
-    }).then((docRef) => {
-      console.log('Document written with ID: ', docRef.id);
+    }).then(() => {
+      // console.log('Document written with ID: ', docRef.id);
     })
       .catch((error) => {
         console.error('Error adding document: ', error);
       });
   });
   const firestore = firebase.firestore();
-  firestore.collection('coment', 'user').onSnapshot((querySnapshot) => {
+  firestore.collection('coment').onSnapshot((querySnapshot) => {
     const lista = document.getElementById('public_muro');
     lista.innerHTML = '';
     querySnapshot.forEach((doc) => {
@@ -51,7 +51,7 @@ export const muro = () => {
                 <p class=""> ${doc.data().date}</p>
                
                  </div>
-                <button id="delete" value="${doc.id}">Borrar</button>
+                <button id="delete_" value="${doc.id}">Borrar</button>
                 <button class="">Me gusta</button>
                 </div>
                 <div class="commentDiv">
@@ -59,23 +59,51 @@ export const muro = () => {
 
       // console.log(e.target.id);
     });
-    const borrar = divMuro.querySelectorAll('#delete');
+    const borrar = lista.querySelectorAll('#delete_');
+    console.log(borrar);
     borrar.forEach((deletebutton) => {
       deletebutton.addEventListener('click', (e) => {
         console.log(e.target.value);
-        // console.log(doc.data().userid);
-        // console.log(uid);
-        firestore.collection('coment').doc(e.target.value).delete()
-          .then(() => {
-            if (uid === e.target.value) {
-              console.log('imprimir');
+        console.log('??????');
+        const postRef = firestore.collection('coment').doc(e.target.value);
+        postRef.get().then((doc) => {
+          if (doc.exists) {
+            console.log('Document data:', doc.data());
+            if (doc.data().userid !== uid) {
+              alert('no es tu comentario');
+            // console.log(doc.data().userid);
+            // console.log(uid);
+            } else {
+              firestore.collection('coment').doc(e.target.value).delete()
+                .then((evento) => {
+                  console.log(evento);
+                  console.log('si funciono');
+                })
+                .catch((error) => {
+                  console.error('Error removing document: ', error);
+                });
+              alert('comentario eliminado');
             }
-          })
-          .catch((error) => {
-            console.error('Error removing document: ', error);
-          });
+            console.log('este es id del login', uid);
+            console.log('este es el id del comentario', doc.data().userid);
+          } else {
+          // doc.data() will be undefined in this case
+            console.log('No such document!');
+          }
+        }).catch((error) => {
+          console.log('Error getting document:', error);
+        });
       });
     });
   });
+
+  // firestore.collection('coment').doc((querySnapshot) => {
+  //   const borrar = divMuro.querySelectorAll(`#delete_${uid}`);
+  //   querySnapshot.forEach((doc) => {
+  //     borrar.forEach((deletebutton) => {
+
+  //     });
+  //   });
+  // });
   return divMuro;
 };
