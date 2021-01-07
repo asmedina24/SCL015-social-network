@@ -20,11 +20,12 @@ export const muro = () => {
   const publicar = divMuro.querySelector(('#btn_muro'));
   publicar.addEventListener('click', () => {
     const formMuro = document.getElementById('form_muro');
-    formMuro.reset();
     contentMuro.guardar();
+    formMuro.reset();
   });
   contentMuro.publicar();
   contentMuro.borrar();
+
   // contentMuro.editar();
   return divMuro;
 };
