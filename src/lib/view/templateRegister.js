@@ -39,12 +39,15 @@ export const register = () => {
         const user = firebase.auth().currentUser;
         user.sendEmailVerification().then(() => {
           const firestore = firebase.firestore();
+          const currentUserData = firebase.auth().currentUser;
+          const uid = currentUserData.uid;
           // const docRef = firestore.doc('samples/registro');
           firestore.collection('user').add({
             displayName: name,
             lastName,
             correo: mail,
             contraseña: pass,
+            userid: uid,
           })
             .then(() => {
               window.location = ('#/home');
