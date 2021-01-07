@@ -43,8 +43,8 @@ export const register = () => {
           const uid = currentUserData.uid;
           // const docRef = firestore.doc('samples/registro');
           firestore.collection('user').add({
-            displayName: name,
-            lastName,
+            nombre: name,
+            apellido: lastName,
             correo: mail,
             contraseña: pass,
             userid: uid,
@@ -56,8 +56,12 @@ export const register = () => {
       })
       .then(() => {
         const user = firebase.auth().currentUser;
+        const uid = user.uid;
         return user.updateProfile({
           displayName: name + lastName,
+          userid: uid,
+          email: mail,
+          password: pass,
         });
       })
       .catch((error) => {

@@ -25,14 +25,16 @@ export const muro = () => {
     const formMuro = document.getElementById('form_muro');
     formMuro.reset();
     const firestore = firebase.firestore();
+    // const myDate = firebase.firestore.Timestamp.fromDate(new Date()).toDate();
     firestore.collection('coment').add({
       comentarios: comentario,
+      // date: myDate,
       date: new Date(firebase.firestore.Timestamp.now().seconds * 1000).toLocaleDateString(),
       userid: uid,
       nombre: displayNameData,
 
-    }).then((docRef) => {
-      console.log('Document written with ID: ', docRef.id);
+    }).then(() => {
+      // console.log('Document written with ID: ', docRef.id);
     })
       .catch((error) => {
         console.error('Error adding document: ', error);
@@ -40,7 +42,7 @@ export const muro = () => {
   });
 
   const firestore = firebase.firestore();
-  firestore.collection('coment', 'user').onSnapshot((querySnapshot) => {
+  firestore.collection('coment').onSnapshot((querySnapshot) => {
     const lista = document.getElementById('public_muro');
     lista.innerHTML = '';
     querySnapshot.forEach((doc) => {
@@ -51,8 +53,8 @@ export const muro = () => {
                 <p class=""> ${doc.data().date}</p>
                
                  </div>
-                <button id="delete" value="${doc.id}">Borrar</button>
-                <button class="" onlick="editar('${doc.id}')">Editar</button>
+                <button id="delete_" value="${doc.id}">Borrar</button>
+                <button class="">Me gusta</button>
                 </div>
                 <div class="commentDiv">
                   </div>`;
@@ -69,28 +71,52 @@ export const muro = () => {
       //     });
       //     console.log(usuario);
       //   });
-
-      const borrar = divMuro.querySelectorAll('#delete');
-      borrar.forEach((deletebutton) => {
-        deletebutton.addEventListener('click', (e) => {
-          console.log(e.target.value);
-          console.log(uid);
-          console.log(doc.data().userid);
-          if (uid === doc.data().userid) {
-            alert('seguro deseas eliminar');
-            firestore.collection('coment').doc(e.target.value).delete()
-              .then()
-              .catch((error) => {
-                console.error('Error removing document: ', error);
-              });
-            console.log('borrado satisfactoriamente :)');
+    });
+    const borrar = lista.querySelectorAll('#delete_');
+    console.log(borrar);
+    borrar.forEach((deletebutton) => {
+      deletebutton.addEventListener('click', (e) => {
+        console.log(e.target.value);
+        console.log('??????');
+        const postRef = firestore.collection('coment').doc(e.target.value);
+        postRef.get().then((doc) => {
+          if (doc.exists) {
+            console.log('Document data:', doc.data());
+            if (doc.data().userid !== uid) {
+              alert('no es tu comentario');
+            // console.log(doc.data().userid);
+            // console.log(uid);
+            } else {
+              firestore.collection('coment').doc(e.target.value).delete()
+                .then((evento) => {
+                  console.log(evento);
+                  console.log('si funciono');
+                })
+                .catch((error) => {
+                  console.error('Error removing document: ', error);
+                });
+              alert('comentario eliminado');
+            }
+            console.log('este es id del login', uid);
+            console.log('este es el id del comentario', doc.data().userid);
           } else {
-            alert('No puedes elimiar un mensaje que no es tuyo');
-            console.log('son diferente id');
+          // doc.data() will be undefined in this case
+            console.log('No such document!');
           }
+        }).catch((error) => {
+          console.log('Error getting document:', error);
         });
       });
     });
   });
+
+  // firestore.collection('coment').doc((querySnapshot) => {
+  //   const borrar = divMuro.querySelectorAll(`#delete_${uid}`);
+  //   querySnapshot.forEach((doc) => {
+  //     borrar.forEach((deletebutton) => {
+
+  //     });
+  //   });
+  // });
   return divMuro;
 };

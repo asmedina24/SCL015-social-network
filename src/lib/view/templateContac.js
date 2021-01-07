@@ -1,2 +1,0 @@
-.collection("coment")
-.orderBy("", "asc")
