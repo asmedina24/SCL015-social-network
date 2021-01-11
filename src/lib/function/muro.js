@@ -28,7 +28,7 @@ const contentMuro = {
       const lista = document.querySelector('#public_muro');
       lista.innerHTML = '';
       querySnapshot.forEach((doc) => {
-        lista.innerHTML += `<div id="postDiv-${doc.id}">
+        lista.innerHTML += `<div id="postDiv-">
           <div class="text-area"> 
                   <p>${doc.data().nombre}</p>
                   <p class=""> ${doc.data().comentarios}</p>
@@ -38,8 +38,9 @@ const contentMuro = {
                   <button id="delete_" value="${doc.id}">Borrar</button>
                   <button id="edit_" value="${doc.id}">Editar</button>
                   <button class="">Me gusta</button>
+                  <div id="modal_muro"></div>
                   </div>
-                  <div id="modal_muro"></div>`;
+                  `;
       });
       contentMuro.editar();
     });
@@ -89,40 +90,61 @@ const contentMuro = {
   },
   publicarEditar: () => {
     const firestore = firebase.firestore();
+    const currentUserData = firebase.auth().currentUser;
+    const uid = currentUserData.uid;
     firestore.collection('coment').onSnapshot((querySnapshot) => {
-      const lista = document.querySelector('#public_muro');
+      const lista = document.querySelector('#postDiv-');
       const modal = lista.querySelector('#modal_muro');
       modal.innerHTML = '';
       querySnapshot.forEach((doc) => {
-        modal.innerHTML += (`<div id="modal_${doc.id}" class="modal">
+        modal.innerHTML = (`<div id="modal_${doc.id}" class="modal">
                 <div class="contenedor_modal">
                 <div class="header_modal">
-                <button type="button" class="close">X</button>
+                <button type="button" id="btn_cerrar_${doc.id}" class="close">X</button>
                 </div>
                 <div class="cuerpo_modal">
                 <form id ="form_modal">
                 <textarea name="" id="coment_modal${doc.id}" cols="20" rows="10">${doc.data().comentarios}</textarea>
-                <button id="btn_modal" value="${doc.id}">Publicar</button>
+                <button id="btn_modal_${doc.id}" value="${doc.id}">Publicar</button>
                 </form>
                 </div>
                 </div>
                 </div>`);
         // const firestore = firebase.firestore();
-        const comentarioModal = document.getElementById(`coment_modal${doc.id}`).value;
+
         // const modal = document.querySelector('#modal_muro');
-        const btnEditar = modal.querySelectorAll('#btn_modal');
-        btnEditar.forEach((editbutton) => {
-          editbutton.addEventListener('click', (e) => {
-            const postRef = firestore.collection('coment').doc(e.target.value, doc.id);
-            return postRef.update({
-              comentarios: comentarioModal,
-            })
-              .catch((error) => {
-                // The document probably doesn't exist.
-                console.error('Error updating document: ', error);
-              });
-          });
+        const modalId = modal.querySelector(`#modal_${doc.id}`);
+        const btnEditar = modalId.querySelector(`#btn_modal_${doc.id}`);
+        btnEditar.addEventListener('click', (e) => {
+          const comentarioModal = document.getElementById(`coment_modal${doc.id}`).value;
+          console.log('hola');
+          if (doc.exists) {
+            console.log('este es', 'Document data:', doc.data());
+            if (doc.data().userid !== uid) {
+              alert('no es tu comentario');
+              // const modal = lista.querySelector('#modal_muro');
+              // modal.style.display = 'flex';
+            } else {
+              console.log('else');
+              console.log(doc.id);
+              console.log(comentarioModal);
+              const postRef = firestore.collection('coment').doc(doc.id);
+              console.log(postRef);
+              postRef.update({
+                comentarios: comentarioModal,
+              })
+                .catch((error) => {
+                  // The document probably doesn't exist.
+                  console.error('Error updating document: ', error);
+                });
+              modal.closest('.modal').style.display = 'none';
+            }
+          }
         });
+        // const btnCerrar = modal.getElementsByClassName('close');
+        // btnCerrar.addEventListener('click', () => {
+        //   btnCerrar.closest('.modal').style.display = 'none';
+        // });
       });
     });
   },
@@ -154,8 +176,8 @@ const contentMuro = {
       });
     });
   },
-  // modal: () => {
-  //   const firestore = firebase.firestore();
+  //   const f
+  // modal: () irestore = firebase.firestore();
   //   const lista = document.querySelector('#public_muro');
   //   const modal = lista.querySelector('#modal_muro');
   //   firestore.collection('coment').onSnapshot((querySnapshot) => {
