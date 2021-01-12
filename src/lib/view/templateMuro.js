@@ -8,6 +8,7 @@ export const muro = () => {
   <button id="btn_muro">Publicar</button>
   </form>
    <div id="public_muro"></div>
+ 
   <br>
   <br>
   <br>
@@ -25,7 +26,7 @@ export const muro = () => {
 
   contentMuro.publicar();
   contentMuro.borrar();
-  contentMuro.editar1();
-  // contentMuro.likes();
+  contentMuro.likes();
+  // contentMuro.editar();
   return divMuro;
 };
