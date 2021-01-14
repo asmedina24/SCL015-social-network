@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-named-as-default
 import contentMuro from '../function/muro.js';
 
 export const muro = () => {
@@ -24,9 +25,9 @@ export const muro = () => {
     contentMuro.guardar();
     formMuro.reset();
   });
+
   contentMuro.publicar();
   contentMuro.borrar();
-
   // contentMuro.editar();
   return divMuro;
 };

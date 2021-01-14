@@ -14,6 +14,7 @@ const contentMuro = {
       date: fecha,
       userid: uid,
       nombre: displayNameData,
+      meGusta: 0,
 
     }).then(() => {
 
