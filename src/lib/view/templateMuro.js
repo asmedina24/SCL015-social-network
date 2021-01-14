@@ -17,6 +17,7 @@ export const muro = () => {
   </div>  
          `;
   divMuro.innerHTML = ViewMuro;
+  console.log();
   const publicar = divMuro.querySelector(('#btn_muro'));
   publicar.addEventListener('click', () => {
     const formMuro = document.getElementById('form_muro');
@@ -25,6 +26,7 @@ export const muro = () => {
   });
   contentMuro.publicar();
   contentMuro.borrar();
+
   // contentMuro.editar();
   return divMuro;
 };

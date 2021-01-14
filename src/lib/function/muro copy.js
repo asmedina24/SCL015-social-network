@@ -22,56 +22,42 @@ const contentMuro = {
         console.error('Error adding document: ', error);
       });
   },
-  getDetailLike: (documento, usuario) => {
-    firestore.collection('likes').where('docuid', '==', documento).where('userid', '==', usuario)
-      .get()
-      .then((objeto) => {
-        document.getElementById(`contenedor_botnes_like_${documento}`).innerHTML = `
-        <div id="div_like_${documento}" style="display:${(objeto.size > 0 ? 'none' : 'block')};">
-          <button id="like_${documento}" class ="btn_like" value="${documento}">Like</button>
-        </div>
-        <div id="div_dislike_${documento}" style="display:${(objeto.size > 0 ? 'block' : 'none')};">
-          <button id="deslike_${documento}" class="btn_dislike" value="${documento}">Dislike</button>
-        </div>`;
-        contentMuro.likes(documento, usuario);
-        contentMuro.dislike();
-      });
-  },
-  getCantidadLikes: (documento) => {
-    firestore.collection('likes').where('docuid', '==', documento)
-      .get()
-      .then((objeto) => {
-        document.getElementById(`contenedor_cantidad_likes_${documento}`).innerHTML = `
-        <div id="div_like_${documento}" style="display:${(objeto.size > 0 ? 'none' : 'block')};">
-          <button id="like_${documento}" class ="btn_like" value="${documento}">Like</button>
-        </div>
-        <p>Total Likes = ${objeto.size}</p></div>`;
-      });
-  },
   publicar: () => {
-    const currentUserData = firebase.auth().currentUser;
-    const uid = currentUserData.uid;
+    // const currentUserData = firebase.auth().currentUser;
+    // const uid = currentUserData.uid;
     // const displayNameData = currentUserData.displayName;
     firestore.collection('coment').onSnapshot((querySnapshot) => {
       const lista = document.querySelector('#public_muro');
       lista.innerHTML = '';
       querySnapshot.forEach((doc) => {
-        // parte 1
-        lista.innerHTML += `<div id="postDiv-${doc.id}" class="postdiv">
+        lista.innerHTML += `<div id="postDiv-">
           <div class="text-area"> 
-          <p>${doc.data().nombre}</p>
-          <p class=""> ${doc.data().comentarios}</p>
-          <p class=""> ${doc.data().date}</p>
-          <br>
-          <br>
-          <br>
-          <div id="contenedor_cantidad_likes_${doc.id}"></div>
-          <button id="delete_" value="${doc.id}">Borrar</button> 
-          <button id="edit_" value="${doc.id}">Editar</button>
-          <div id="contenedor_botnes_like_${doc.id}">
-        <div id="modal_muro-"></div></div>`;
-        contentMuro.getDetailLike(doc.id, uid);
-        contentMuro.getCantidadLikes(doc.id);
+                  <p>${doc.data().nombre}</p>
+                  <p class=""> ${doc.data().comentarios}</p>
+                  <p class=""> ${doc.data().date}</p>
+                 
+                   </div>
+                  <button id="delete_" value="${doc.id}">Borrar</button>
+                  <button id="edit_" value="${doc.id}">Editar</button>
+                  <button id="like_" class="mostrarlike" value="${doc.id}">Like = ${doc.data().meGusta}</button>
+                  <div id="modal_muro-"></div>
+                  </div>
+                  `;
+        // contentMuro.guardarlike();
+        // console.log(firestore.collection('coment').doc(doc.id));
+        // firestore.collection('likes').add({
+        //   docuid: firestore.collection('coment').doc(doc.id),
+        //   // date: myDate,
+        //   userid: uid,
+        //   meGusta: firestore.collection('coment').doc(doc.meGusta),
+        //   nombre: displayNameData,
+
+        // }).then(() => {
+        //   // console.log('Document written with ID: ', docRef.id);
+        // })
+        //   .catch((error) => {
+        //     console.error('Error adding document: ', error);
+        //   });
       });
       contentMuro.editar();
     });
@@ -122,7 +108,7 @@ const contentMuro = {
     const lista = document.querySelector('#public_muro');
     const editar = lista.querySelectorAll('#edit_');
     // const modales = document.getElementsByClassName('close');
-
+    const firestore = firebase.firestore();
     const currentUserData = firebase.auth().currentUser;
     const uid = currentUserData.uid;
 
@@ -146,6 +132,7 @@ const contentMuro = {
     });
   },
   publicarEditar: () => {
+    const firestore = firebase.firestore();
     const currentUserData = firebase.auth().currentUser;
     const uid = currentUserData.uid;
     firestore.collection('coment').onSnapshot((querySnapshot) => {
@@ -206,83 +193,87 @@ const contentMuro = {
       });
     });
   },
-  likes: (documento, usuario) => {
-    const contenedorLike = `div_like_${documento}`;
-    const contenedorDislike = `div_dislike_${documento}`;
-    const btnLike = document.getElementById(`like_${documento}`);
-    btnLike.addEventListener('click', (e) => {
-      const postRef = firestore.collection('coment').doc(e.target.value);
-      postRef.get().then((doc) => {
-        if (doc.exists && doc.id === e.target.value) {
-          firestore.collection('likes').add({
-            docuid: doc.id,
-            meGusta: 1,
-            userid: usuario,
-          }).then(() => {
-            document.getElementById(contenedorLike).style.display = 'none';
-            document.getElementById(contenedorDislike).style.display = 'block';
-          })
-            .catch(() => {
-              console.error('error al actualizar likes');
-            });
-        } else {
-          console.log('probando no deberias salir');
-        }
-      }).catch((error) => {
-        console.log('Error getting document:', error);
-      });
-    });
-  },
-  dislike: () => {
+
+  likes: () => {
     const currentUserData = firebase.auth().currentUser;
     const uid = currentUserData.uid;
+    const displayNameData = currentUserData.displayName;
     // console.log(currentUserData)
 
     firestore.collection('coment').onSnapshot(() => {
       // console.log(firestore.collection('coment').where("userid","==",currentUserData.uid));
       const lista = document.querySelector('#public_muro');
-      const deslike = lista.querySelectorAll('.btn_disllike');
-      deslike.forEach((deslikebutton) => {
-        const contenedorLike = `div_like_${deslikebutton.value}`;
-        const contenedorDislike = `div_dislike_${deslikebutton.value}`;
-        deslikebutton.addEventListener('click', (e) => {
+      const like = lista.querySelectorAll('#like_');
+      like.forEach((likebutton) => {
+        likebutton.addEventListener('click', (e) => {
           // contentMuro.guardarlike();
-
-          const decrement = firebase.firestore.FieldValue.increment(-1);
+          const increment = firebase.firestore.FieldValue.increment(1);
+          // const decrement = firebase.firestore.FieldValue.increment(-1);
           // console.log(e.target.value);
-          const postRef = firestore.collection('likes').doc(e.target.value);
+
+          const postRef = firestore.collection('coment').doc(e.target.value);
 
           postRef.get().then((doc) => {
             console.log(doc.id);
             // const likedocrefid = firestore.collection('likes').doc(doc.docuid);
-            if (doc.exists && uid === doc.userid) {
-              firestore.collection('likes').doc(doc.id).delete()
-                .then(() => {
-                  console.log('removio like');
-                  firestore.collection('coment').doc(e.target.value).update({
-                    meGusta: decrement,
-                  })
-                    .then(() => {
-                      document.getElementById(contenedorLike).style.display = 'none';
+            if (doc.exists && doc.id === e.target.value) {
+              firestore.collection('likes').get().then((querySnapshot) => {
+                querySnapshot.forEach((gusta) => {
+                  if (uid !== gusta.data().userid) {
+                    // && uid !== doc.userid
+                    firestore.collection('likes').add({
+                      docuid: doc.id,
+                      // date: myDate,
+                      meGusta: 1,
+                      userid: uid,
 
-                      document.getElementById(contenedorDislike).style.display = 'block';
-                      console.log('resto like');
-                      // console.log(contador);
+                      nombre: displayNameData,
+
+                    }).then(() => {
+                      // console.log('Document written with ID: ', docRef.id);
+                      firestore.collection('coment').doc(e.target.value).update({
+                        meGusta: increment,
+                      })
+                        .then(() => {
+                          console.log('sumo like');
+                          // console.log(contador);
+                        })
+                        .catch((error) => {
+                          console.error('Error removing document: ', error);
+                        });
                     })
-                    .catch(() => {
-                      console.log('no resto like');
-                    });
-                })
-                .catch(() => {
-                  console.error('no removio like');
-                });
-              document.querySelectorAll('#div_dislike').style.display = 'none';
+                      .catch((error) => {
+                        console.error('Error adding document: ', error);
+                      });
+                    console.log('Document data:', doc.data());
+                  } else {
+                    console.log('probando no deberias salir');
+                  }
+                  // else {
+                  //   firestore.collection('likes').doc(doc.docuid).delete()
+                  //     .then(() => {
+                  //       // console.log(evento);
+                  //       firestore.collection('coment').doc(e.target.value).update({
+                  //         meGusta: decrement,
+                  //       })
+                  //         .then(() => {
+                  //           console.log('resto like');
+                  //           // console.log(contador);
+                  //         })
+                  //         .catch((error) => {
+                  //           console.error('Error removing document: ', error);
+                  //         });
+                  //     })
+                  //     .catch((error) => {
+                  //       console.error('Error removing document: ', error);
+                  //     });
 
-              document.querySelectorAll('#div_like').style.display = 'block';
-              // doc.data() will be undefined in this case
-            } else {
-              console.log('probando no deberias salir');
-            }
+                  //   // doc.data() will be undefined in this case
+                  //   console.log('No such document!');
+                  // }
+                });
+              });
+            } // console.log(doc.data().meGusta);
           }).catch((error) => {
             console.log('Error getting document:', error);
           });
@@ -290,5 +281,6 @@ const contentMuro = {
       });
     });
   },
+
 };
 export default contentMuro;
