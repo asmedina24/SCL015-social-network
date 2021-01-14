@@ -27,6 +27,6 @@ export const muro = () => {
   contentMuro.publicar();
   contentMuro.borrar();
   contentMuro.likes();
-  // contentMuro.editar();
+
   return divMuro;
 };
