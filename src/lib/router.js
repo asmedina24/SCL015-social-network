@@ -4,6 +4,7 @@ import { register } from './view/templateRegister.js';
 // import { login } from './view/templateLogin.js';
 import { muro } from './view/templateMuro.js';
 
+
 const showtemplate = (hash) => {
   const containerRoot = document.getElementById('root');
   const containerRoot2 = document.getElementById('root1');
@@ -24,6 +25,7 @@ const showtemplate = (hash) => {
     //   break;
     case '#/muro':
       containerRoot2.appendChild(muro());
+
       break;
     default:
       containerRoot2.innerHTML = '<h2>La pagina que busca no existe</h2>';
