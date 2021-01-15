@@ -1,10 +1,16 @@
-/* Pantalla Movil */
+
 @media (min-width : 350px) and (max-width: 768px) {
 
 body {
     display: block;
     margin: 0px;
     /* overflow: hidden; */
+}
+.img_like{
+    position: relative;
+    top: 50px;
+    left: 11px;
+    background-color: #eca12c;
 }
 
 .text-area{
@@ -245,6 +251,7 @@ a {
     /* opacity: 80%; */
     height: 60%;
 }
+
 }
 
 @media (min-width : 769px) and (max-width: 1640px) {

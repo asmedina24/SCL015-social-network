@@ -5,9 +5,8 @@ export const menu = () => {
     <ul> 
       <a href="#/home">Home</a>
       <a href="#/register">Registro</a>
-      <a href="#/muro">muro</a>
- 
       </ul> 
+     
       </div>  </nav>
     
      `;

@@ -1,7 +1,6 @@
 import { menu } from './view/templateMenu.js';
 import { home } from './view/templateHome.js';
 import { register } from './view/templateRegister.js';
-// import { login } from './view/templateLogin.js';
 import { muro } from './view/templateMuro.js';
 
 const showtemplate = (hash) => {
@@ -19,9 +18,6 @@ const showtemplate = (hash) => {
     case '#/register':
       containerRoot2.appendChild(register());
       break;
-    // case '#/login':
-    //   containerRoot.appendChild(login());
-    //   break;
     case '#/muro':
       containerRoot2.appendChild(muro());
       break;
