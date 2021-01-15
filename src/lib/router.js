@@ -20,6 +20,7 @@ const showtemplate = (hash) => {
       break;
     case '#/muro':
       containerRoot2.appendChild(muro());
+
       break;
     default:
       containerRoot2.innerHTML = '<h2>La pagina que busca no existe</h2>';
@@ -36,7 +37,3 @@ export const changeroute = (hash) => {
   }
   return showtemplate(hash);
 };
-
-// if (hash === '#/login') {
-//   //   return showtemplate(hash);
-//   }

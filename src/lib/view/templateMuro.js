@@ -1,10 +1,16 @@
 import contentMuro from '../function/muro.js';
+import contentLogin from '../function/login.js';
 
 export const muro = () => {
+  const currentUserData = firebase.auth().currentUser;
+  const displayName = currentUserData.displayName;
   const divMuro = document.createElement('div');
-  const ViewMuro = `<div id="muro"> 
-  <div><button id="singOut" class="titulo_muro">Cerrar Sesion</button></div>
-   <form id ="form_muro"><h3 class="titulo_muro">¿Qué estas pensando?</h3>
+  const ViewMuro = `<div id="muro">
+  <div>
+  <p class="saludo">Hola ${displayName} </p>
+  <button id="singOut" class="titulo_muro">Cerrar Sesion</button>
+  </div>
+  <form id ="form_muro"><h3 class="titulo_muro">¿Qué estas pensando?</h3>
   <textarea name="" id="coment_muro" cols="20" rows="10"></textarea>
   <button id="btn_muro">Publicar</button>
   </form>
@@ -28,11 +34,11 @@ export const muro = () => {
   });
   const cerrar = divMuro.querySelector(('#singOut'));
   cerrar.addEventListener('click', () => {
-    contentMuro.cerrarsesion();
+    contentLogin.cerrarsesion();
   });
-
   contentMuro.publicar();
   contentMuro.borrar();
 
+  // contentMuro.editar();
   return divMuro;
 };

@@ -43,7 +43,7 @@ const contentMuro = {
       .get()
       .then((objeto) => {
         document.getElementById(`contenedor_cantidad_likes_${documento}`).innerHTML = `
-        <p> ${objeto.size}</p>`;
+        <p>Total Likes = ${objeto.size}</p></div>`;
       });
   },
   publicar: () => {
@@ -64,10 +64,12 @@ const contentMuro = {
           <br>
           <br>
           <div id="contenedor_cantidad_likes_${doc.id}"></div>
+          </div>
           <button id="delete_" value="${doc.id}">Borrar</button> 
           <button id="edit_" value="${doc.id}">Editar</button>
-          <div id="contenedor_botnes_like_${doc.id}">
-        <div id="modal_muro-"></div></div>`;
+          <div id="contenedor_botnes_like_${doc.id}"></div>
+        <div id="modal_muro_${doc.id}"></div>
+        </div>`;
         contentMuro.getDetailLike(doc.id, uid);
         contentMuro.getCantidadLikes(doc.id);
       });
@@ -129,11 +131,10 @@ const contentMuro = {
         editbutton.addEventListener('click', (e) => {
           const postRef = firestore.collection('coment').doc(e.target.value);
           postRef.get().then((doc) => {
+            console.log(doc.id);
             if (doc.exists) {
-              if (doc.data().userid === uid) {
-                // const modal = lista.querySelector('#modal_muro');
-                // modal.style.display = 'flex';
-                contentMuro.publicarEditar();
+              if (doc.data().userid === uid && doc.id === e.target.value) {
+                contentMuro.modalEditar(doc.id);
               } else {
                 alert('no es tu comentario');
               }
@@ -143,12 +144,31 @@ const contentMuro = {
       });
     });
   },
+  modalEditar: (documento) => {
+    // const divModal = document.createElement('div');
+    // const padre = document.querySelector((`postDiv-${documento}`));
+    const modalEdit = document.querySelector((`modal_muro_${documento}`));
+
+    modalEdit.innerHTML = `<div id="modal_${documento}" class="modal">
+        <div class="contenedor_modal_${documento}">
+        <div class="header_modal_${documento}">
+        <button type="button" id="btn_cerrar_${documento}" class="close">X</button>
+        </div>
+        <div class="cuerpo_modal_${documento}">
+        <form id ="form_modal">
+        <textarea name="" id="coment_modal${documento}" cols="20" rows="10">${documento.comentarios}</textarea>
+        </form>
+        <button id="btn_modal_${documento}" value="${documento}">Publicar</button>
+        </div>
+        </div>
+        </div>`;
+  },
   publicarEditar: () => {
     const currentUserData = firebase.auth().currentUser;
     const uid = currentUserData.uid;
     firestore.collection('coment').onSnapshot((querySnapshot) => {
-      const lista = document.querySelector('#postDiv-');
-      const modal = lista.querySelector('#modal_muro-');
+      const lista = document.querySelector(('#public_muro-'));
+      const modal = lista.querySelector(('#modal_muro-'));
       modal.innerHTML = '';
       querySnapshot.forEach((doc) => {
         const prueba = firestore.collection('coment').doc(doc.id);
@@ -161,8 +181,8 @@ const contentMuro = {
         <div class="cuerpo_modal">
         <form id ="form_modal">
         <textarea name="" id="coment_modal${doc.id}" cols="20" rows="10">${doc.data(doc.id).comentarios}</textarea>
-        <button id="btn_modal_${doc.id}" value="${doc.id}">Publicar</button>
         </form>
+        <button id="btn_modal_${doc.id}" value="${doc.id}">Publicar</button>
         </div>
         </div>
         </div>`);
@@ -191,11 +211,6 @@ const contentMuro = {
             // modal.style.display = 'none';
           }
         });
-
-        // const btnCerrar = modal.getElementsByClassName('close');
-        // btnCerrar.addEventListener('click', () => {
-        //   btnCerrar.closest('.modal').style.display = 'none';
-        // });
       });
     });
   },
@@ -258,4 +273,5 @@ const contentMuro = {
       });
   },
 };
+
 export default contentMuro;

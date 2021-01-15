@@ -1,4 +1,4 @@
-import contentLogin from '../function/login.js';
+import { login } from '../index.js';
 
 export const home = () => {
   const divHome = document.createElement('div');
@@ -31,7 +31,6 @@ export const home = () => {
     </fieldset>
     
     <button id="loginGoogle"><img src="./img/LogoGoogle.png" class="img_google">Ingresar con Google</button>
-    <button id="loginFace"><img src="./img/logoFace.png" class="img_face">Ingresar con Facebook</button>
     </div>
     </fieldset>  
   </div>
@@ -39,21 +38,38 @@ export const home = () => {
   
 `;
   divHome.innerHTML = viewHome;
-
-  const btnGooogle = divHome.querySelector('#loginGoogle');
-  btnGooogle.addEventListener('click', () => {
-    contentLogin.loginGoogle();
-  });
-  const btnFace = divHome.querySelector('#loginFace');
-  btnFace.addEventListener('click', () => {
-    contentLogin.loginFace();
+  const btn = divHome.querySelector('#loginGoogle');
+  btn.addEventListener('click', () => {
+    login();
   });
   const loginNew = divHome.querySelector('#login');
 
   loginNew.addEventListener('click', () => {
     const mailLogin = document.getElementById('mail_login').value;
     const passLogin = document.getElementById('pass_login').value;
-    contentLogin.login(mailLogin, passLogin);
+    firebase.auth().signInWithEmailAndPassword(mailLogin, passLogin)
+      .then(() => {
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            const emailVerified = user.emailVerified;
+            if (emailVerified === true) {
+              window.location = ('#/muro');
+            } else {
+              // eslint-disable-next-line no-alert
+              alert('verifica tu correo');
+            }
+          }
+        });
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-unused-vars
+        const errorCode = error.code;
+        // eslint-disable-next-line no-unused-vars
+        const errorMessage = error.message;
+        // eslint-disable-next-line no-alert
+        alert('no esta registrado');
+        window.location = ('#/register');
+      });
   });
   return divHome;
 };

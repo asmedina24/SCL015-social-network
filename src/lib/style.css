@@ -56,6 +56,9 @@ body {
     width: 100%;
     height: 100%;
 } 
+.saludo{
+    background-color: white;
+}
 #form_muro{
     position: relative;
     text-align: -webkit-center;
@@ -194,6 +197,20 @@ a {
 #loginGoogle{
     position: relative;
     /* background: url(./src/img/LogoGoogle.png); */
+    background-repeat: no-repeat;
+    background-size: 37px;
+    text-align: center;
+    line-height: 25px;
+
+}
+.img_face{
+    width: 25px;
+    position: relative;
+    top: 5px;
+    left: -3px;
+}
+#loginFace{
+    position: relative;
     background-repeat: no-repeat;
     background-size: 37px;
     text-align: center;
@@ -444,6 +461,20 @@ a {
         line-height: 25px;
     
     }
+    .img_face{
+        width: 25px;
+        position: relative;
+        top: 5px;
+        left: -3px;
+    }
+    #loginFace{
+        position: relative;
+        background-repeat: no-repeat;
+        background-size: 37px;
+        text-align: center;
+        line-height: 25px;
+    
+    }
     .caja_register{
         display: flex;
         position: relative;
@@ -680,6 +711,20 @@ a {
         #loginGoogle{
             position: relative;
             /* background: url(./src/img/LogoGoogle.png); */
+            background-repeat: no-repeat;
+            background-size: 37px;
+            text-align: center;
+            line-height: 25px;
+        
+        }
+        .img_face{
+            width: 25px;
+            position: relative;
+            top: 5px;
+            left: -3px;
+        }
+        #loginFace{
+            position: relative;
             background-repeat: no-repeat;
             background-size: 37px;
             text-align: center;
