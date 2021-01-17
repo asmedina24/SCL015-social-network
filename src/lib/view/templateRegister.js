@@ -41,7 +41,6 @@ export const register = () => {
           const firestore = firebase.firestore();
           const currentUserData = firebase.auth().currentUser;
           const uid = currentUserData.uid;
-          // const docRef = firestore.doc('samples/registro');
           firestore.collection('user').add({
             nombre: `${name}    `,
             apellido: lastName,

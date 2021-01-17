@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-named-as-default
 import contentMuro from '../function/muro.js';
 import contentLogin from '../function/login.js';
 
@@ -24,8 +23,9 @@ export const muro = () => {
   <br>
   </div>  
          `;
+
   divMuro.innerHTML = ViewMuro;
-  console.log();
+
   const publicar = divMuro.querySelector(('#btn_muro'));
   publicar.addEventListener('click', () => {
     const formMuro = document.getElementById('form_muro');

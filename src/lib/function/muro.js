@@ -29,10 +29,10 @@ const contentMuro = {
       .then((objeto) => {
         document.getElementById(`contenedor_botnes_like_${documento}`).innerHTML = `
         <div id="div_like_${documento}" style="display:${(objeto.size > 0 ? 'none' : 'block')};">
-          <button id="like_${documento}" class ="btn_like" value="${documento}">Like</button>
+         <button id="like_${documento}" class ="btn_like" value="${documento}"><img src="../img/like.png">Like</button>
         </div>
         <div id="div_dislike_${documento}" style="display:${(objeto.size > 0 ? 'block' : 'none')};">
-          <button id="deslike_${documento}" class="btn_dislike" value="${documento}">Dislike</button>
+          <button id="deslike_${documento}" class="btn_dislike" value="${documento}"><img src="../img/like.png">Dislike</button>
         </div>`;
         contentMuro.likes(documento, usuario);
         contentMuro.dislike(documento, usuario);
