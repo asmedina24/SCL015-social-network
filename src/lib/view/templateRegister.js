@@ -43,7 +43,7 @@ export const register = () => {
           const uid = currentUserData.uid;
           // const docRef = firestore.doc('samples/registro');
           firestore.collection('user').add({
-            nombre: name,
+            nombre: `${name}    `,
             apellido: lastName,
             correo: mail,
             contraseña: pass,

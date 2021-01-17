@@ -15,7 +15,7 @@ const contentMuro = {
       userid: uid,
       nombre: displayNameData,
       meGusta: 0,
-
+      dateEditado: '',
     }).then(() => {
 
     })
@@ -43,40 +43,42 @@ const contentMuro = {
       .get()
       .then((objeto) => {
         document.getElementById(`contenedor_cantidad_likes_${documento}`).innerHTML = `
-        <p>Total Likes = ${objeto.size}</p></div>`;
+        <p><img class="total_huella" src="../img/like.png">  ${objeto.size}</p></div>`;
       });
   },
-  publicar: () => {
+  contenidoMuro: () => {
     const currentUserData = firebase.auth().currentUser;
     const uid = currentUserData.uid;
+    const name = currentUserData.displayName;
     // const displayNameData = currentUserData.displayName;
     firestore.collection('coment').onSnapshot((querySnapshot) => {
       const lista = document.querySelector('#public_muro');
       lista.innerHTML = '';
-      querySnapshot.forEach((doc) => {
+      querySnapshot.forEach((response) => {
         // parte 1
-        lista.innerHTML += `<div id="postDiv-${doc.id}" class="postdiv">
+        lista.innerHTML += `
+        <div id="postDiv-${response.id}" class="postdiv">
+        <p class="user">Usuario: ${response.data().nombre}</p>
           <div class="text-area"> 
-          <p>${doc.data().nombre}</p>
-          <p class=""> ${doc.data().comentarios}</p>
-          <p class=""> ${doc.data().date}</p>
-          <br>
-          <br>
-          <br>
-          <div id="contenedor_cantidad_likes_${doc.id}"></div>
+          <p class="date"> ${response.data().date}</p>  
+          <p class=""> ${response.data().comentarios}</p>
+            <br>
+            <p class="date_edit"> ${response.data().dateEditado}</p>
           </div>
-          <button id="delete_" value="${doc.id}">Borrar</button> 
-          <button id="edit_" value="${doc.id}">Editar</button>
-          <div id="contenedor_botnes_like_${doc.id}"></div>
-        <div id="modal_muro_${doc.id}"></div>
-        </div>`;
-        contentMuro.getDetailLike(doc.id, uid);
-        contentMuro.getCantidadLikes(doc.id);
+          <div id="contenedor_cantidad_likes_${response.id}"></div>
+          <button id="delete_" value="${response.id}">Borrar</button> 
+          <button id="btn_edit_${response.id}" value="${response.id}">Editar</button>
+          <div id="contenedor_botnes_like_${response.id}"></div>
+        </div>
+        <br>`;
+        contentMuro.getDetailLike(response.id, uid);
+        contentMuro.getCantidadLikes(response.id);
+        contentMuro.modal(response, uid, name);
+        contentMuro.btnEditar(response, uid);
       });
-      contentMuro.editar();
     });
   },
-  borrar: () => {
+  btnBorrar: () => {
     firestore.collection('coment').onSnapshot(() => {
       const currentUserData = firebase.auth().currentUser;
       const uid = currentUserData.uid;
@@ -95,15 +97,7 @@ const contentMuro = {
                 // console.log(doc.data().userid);
                 // console.log(uid);
               } else {
-                firestore.collection('coment').doc(e.target.value).delete()
-                  .then((evento) => {
-                    console.log(evento);
-                    console.log('si funciono');
-                  })
-                  .catch((error) => {
-                    console.error('Error removing document: ', error);
-                  });
-                alert('comentario eliminado');
+                contentMuro.borrar(e.target.value);
               }
               console.log('este es id del login', uid);
               console.log('este es el id del comentario', doc.data().userid);
@@ -118,102 +112,134 @@ const contentMuro = {
       });
     });
   },
-  editar: () => {
-    const lista = document.querySelector('#public_muro');
-    const editar = lista.querySelectorAll('#edit_');
-    // const modales = document.getElementsByClassName('close');
-
-    const currentUserData = firebase.auth().currentUser;
-    const uid = currentUserData.uid;
-
+  borrar: (value) => {
+    firestore.collection('coment').doc(value).delete()
+      .then((evento) => {
+        console.log(evento);
+        console.log('si funciono');
+        alert('comentario eliminado correctamente');
+      })
+      .catch((error) => {
+        console.error('Error removing document: ', error);
+      });
+  },
+  modal: (documento, usuario) => {
+    const modalEdit = document.getElementById('seccion_modal');
+    modalEdit.innerHTML += `
+    <div id="modal_${documento.id}" class="modal">
+      <div class="contenedor_modal_">
+        <div class="header_modal_">
+          <button type="button" id="btn_cerrar_${documento.id}" value="${documento.id}" class="close">X</button>
+        </div>
+        <div class="cuerpo_modal_">
+          <form id ="form_modal">
+            <textarea class="modal_coment" id="coment_modal_${documento.id}" cols="20" rows="10">${documento.data().comentarios}</textarea>
+          </form>
+          <button id="btn_modal_${documento.id}" value="${documento.id}">Publicar</button>
+        </div>
+      </div>
+    </div>`;
+    contentMuro.guardarCambios(documento);
+    contentMuro.cerrarModal(documento, usuario);
+  },
+  btnEditar: (documento, usuario) => {
     firestore.collection('coment').onSnapshot(() => {
-      editar.forEach((editbutton) => {
-        editbutton.addEventListener('click', (e) => {
-          const postRef = firestore.collection('coment').doc(e.target.value);
-          postRef.get().then((doc) => {
-            console.log(doc.id);
-            if (doc.exists) {
-              if (doc.data().userid === uid && doc.id === e.target.value) {
-                contentMuro.modalEditar(doc.id);
-              } else {
-                alert('no es tu comentario');
-              }
+      const lista = document.querySelector('#public_muro');
+
+      const btnEdit = `#btn_edit_${documento.id}`;
+
+      const edit = lista.querySelectorAll(btnEdit);
+
+      edit.forEach((editbutton) => {
+        editbutton.addEventListener('click', () => {
+          if (documento.exists) {
+            if (documento.data().userid !== usuario) {
+              alert('no es tu comentario');
+              // console.log(doc.data().userid);
+              // console.log(uid);
+            } else {
+              console.log('paso hacia el modal');
+              const nomobreModal = `modal_${documento.id}`;
+              const modal = document.getElementById(nomobreModal);
+              modal.style.display = 'flex';
             }
-          });
+          } else {
+            // doc.data() will be undefined in this case
+            console.log('No such document!');
+          }
+        });
+      });
+    });
+    // console.log(typeof (btnEditar));
+    // console.log('sadasd');
+    // btnEditar.addEventListener('click', (e) => {
+    //   console.log('sadsadasdasdasd');
+    //   console.log(e.target.value);
+    //   modal.style.display = 'flex';
+    // const postRef = firestore.collection('coment').doc(e.target.value);
+    // postRef.get().then((doc) => {
+    //   console.log(doc.id);
+    //   if (doc.exists) {
+    //     if (doc.data().userid !== usuario) {
+    //       alert('no es tu comentario');
+    //     } else {
+    //       modal.style.display = 'flex';
+    //     }
+    //   } else {
+    //     console.log('error no se puede editar');
+    //   }
+    // });
+  },
+  cerrarModal: (documento, usuario) => {
+    firestore.collection('coment').onSnapshot(() => {
+      const btnCerrar = `#btn_cerrar_${documento.id}`;
+      const cerrar = document.querySelectorAll(btnCerrar);
+      cerrar.forEach((closebutton) => {
+        closebutton.addEventListener('click', () => {
+          if (documento.exists) {
+            if (documento.data().userid !== usuario) {
+              alert('no es tu comentario');
+              // console.log(doc.data().userid);
+              // console.log(uid);
+            } else {
+              console.log('paso hacia el modal');
+              const nomobreModal = `modal_${documento.id}`;
+              const modal = document.getElementById(nomobreModal);
+              modal.style.display = 'none';
+            }
+            console.log('este es id del login', usuario);
+            console.log('este es el id del comentario', documento.data().userid);
+          } else {
+            // doc.data() will be undefined in this case
+            console.log('No such document!');
+          }
         });
       });
     });
   },
-  modalEditar: (documento) => {
-    // const divModal = document.createElement('div');
-    // const padre = document.querySelector((`postDiv-${documento}`));
-    const modalEdit = document.querySelector((`modal_muro_${documento}`));
+  guardarCambios: (documento) => {
+    const comentModal = `#coment_modal_${documento.id}`;
 
-    modalEdit.innerHTML = `<div id="modal_${documento}" class="modal">
-        <div class="contenedor_modal_${documento}">
-        <div class="header_modal_${documento}">
-        <button type="button" id="btn_cerrar_${documento}" class="close">X</button>
-        </div>
-        <div class="cuerpo_modal_${documento}">
-        <form id ="form_modal">
-        <textarea name="" id="coment_modal${documento}" cols="20" rows="10">${documento.comentarios}</textarea>
-        </form>
-        <button id="btn_modal_${documento}" value="${documento}">Publicar</button>
-        </div>
-        </div>
-        </div>`;
-  },
-  publicarEditar: () => {
-    const currentUserData = firebase.auth().currentUser;
-    const uid = currentUserData.uid;
-    firestore.collection('coment').onSnapshot((querySnapshot) => {
-      const lista = document.querySelector(('#public_muro-'));
-      const modal = lista.querySelector(('#modal_muro-'));
-      modal.innerHTML = '';
-      querySnapshot.forEach((doc) => {
-        const prueba = firestore.collection('coment').doc(doc.id);
-        console.log(prueba.id, doc.exists, doc.id);
-        modal.innerHTML += (`<div id="modal_${doc.id}" class="modal">
-        <div class="contenedor_modal">
-        <div class="header_modal">
-        <button type="button" id="btn_cerrar_${doc.id}" class="close">X</button>
-        </div>
-        <div class="cuerpo_modal">
-        <form id ="form_modal">
-        <textarea name="" id="coment_modal${doc.id}" cols="20" rows="10">${doc.data(doc.id).comentarios}</textarea>
-        </form>
-        <button id="btn_modal_${doc.id}" value="${doc.id}">Publicar</button>
-        </div>
-        </div>
-        </div>`);
-        // const firestore = firebase.firestore();
-
-        const modaldoc = document.querySelector(`#modal_${doc.id}`);
-        const btnEditar = modaldoc.querySelector(`#btn_modal_${doc.id}`);
-        btnEditar.addEventListener('click', () => {
-          const comentarioModal = document.getElementById(`coment_modal${doc.id}`).value;
-          console.log('hola');
-          if (doc.exists) {
-            console.log('este es', 'Document data:', doc.data());
-            if (doc.data().userid !== uid) {
-              alert('no es tu comentario');
-              // const modal = lista.querySelector('#modal_muro');
-              // modal.style.display = 'flex';
-            } else {
-              console.log('else');
-              console.log(doc.id);
-              console.log(comentarioModal);
-              const postRef = firestore.collection('coment').doc(doc.id);
-              console.log(postRef);
-              postRef.update({
-                comentarios: comentarioModal,
-              })
-                .catch((error) => {
-                  // The document probably doesn't exist.
-                  console.error('Error updating document: ', error);
-                });
-              modal.closest('.modal').style.display = 'none';
-            }
+    firestore.collection('coment').onSnapshot(() => {
+      const btnPublicar = `#btn_modal_${documento.id}`;
+      const publicar = document.querySelectorAll(btnPublicar);
+      publicar.forEach((publicarButton) => {
+        publicarButton.addEventListener('click', () => {
+          if (documento.exists) {
+            const comentario = document.querySelector(comentModal).value;
+            const newDate = new Date(firebase.firestore.Timestamp.now().seconds * 1000);
+            const fecha = newDate.toLocaleDateString();
+            firestore.collection('coment').doc(documento.id).update({
+              comentarios: comentario,
+              dateEditado: `${fecha}(editado)`,
+            });
+            const nomobreModal = `modal_${documento.id}`;
+            const modal = document.getElementById(nomobreModal);
+            modal.style.display = 'none';
+            console.log('editado, publicado');
+          } else {
+            // doc.data() will be undefined in this case
+            console.log('no publico editado');
           }
         });
       });

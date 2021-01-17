@@ -36,8 +36,8 @@ export const muro = () => {
   cerrar.addEventListener('click', () => {
     contentLogin.cerrarsesion();
   });
-  contentMuro.publicar();
-  contentMuro.borrar();
+  contentMuro.contenidoMuro();
+  contentMuro.btnBorrar();
 
   // contentMuro.editar();
   return divMuro;
