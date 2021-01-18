@@ -1,10 +1,10 @@
-/* eslint-disable no-else-return */
+/* eslint-disable arrow-body-style */
 const contentLogin = {
   login: (mail, pass) => {
     firebase.auth().signInWithEmailAndPassword(mail, pass)
-      // eslint-disable-next-line no-unused-vars
       .then(() => {
-        contentLogin.emailOk();
+        contentLogin.emailOk(mail, pass);
+        contentLogin.estadoLogin();
       })
       .catch(() => {
         alert('correo o contraseña invalidos');
@@ -14,7 +14,6 @@ const contentLogin = {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         const emailVerified = user.emailVerified;
-        console.log(user);
         if (emailVerified === true) {
           window.location = ('#/muro');
         } else {
