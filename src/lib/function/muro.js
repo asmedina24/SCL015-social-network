@@ -1,3 +1,5 @@
+import contentLogin from './login.js';
+
 const firestore = firebase.firestore();
 
 const contentMuro = {
@@ -6,8 +8,13 @@ const contentMuro = {
     const currentUserData = firebase.auth().currentUser;
     const uid = currentUserData.uid;
     const displayNameData = currentUserData.displayName;
-    const fecha = new Date(firebase.firestore.Timestamp.now().seconds * 1000).toLocaleDateString();
-
+    const date = new Date();
+    const fecha = `${
+      (`00${date.getDate()}`).slice(-2)}/${(`00${date.getMonth() + 1}`).slice(-2)}/${
+      date.getFullYear()} ${
+      (`00${date.getHours()}`).slice(-2)}:${
+      (`00${date.getMinutes()}`).slice(-2)}:${
+      (`00${date.getSeconds()}`).slice(-2)}`;
     firestore.collection('coment').add({
       comentarios: comentario,
 
@@ -47,15 +54,14 @@ const contentMuro = {
       });
   },
   contenidoMuro: () => {
+    contentLogin.estadoLogin();
     const currentUserData = firebase.auth().currentUser;
     const uid = currentUserData.uid;
     const name = currentUserData.displayName;
-    // const displayNameData = currentUserData.displayName;
-    firestore.collection('coment').onSnapshot((querySnapshot) => {
+    firestore.collection('coment').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
       const lista = document.querySelector('#public_muro');
       lista.innerHTML = '';
       querySnapshot.forEach((response) => {
-        // parte 1
         lista.innerHTML += `
         <div id="postDiv-${response.id}" class="postdiv">
         <p class="user">Usuario: ${response.data().nombre}</p>
@@ -94,15 +100,12 @@ const contentMuro = {
               console.log('Document data:', doc.data());
               if (doc.data().userid !== uid) {
                 alert('no es tu comentario');
-                // console.log(doc.data().userid);
-                // console.log(uid);
               } else {
                 contentMuro.borrar(e.target.value);
               }
               console.log('este es id del login', uid);
               console.log('este es el id del comentario', doc.data().userid);
             } else {
-              // doc.data() will be undefined in this case
               console.log('No such document!');
             }
           }).catch((error) => {
@@ -155,8 +158,6 @@ const contentMuro = {
           if (documento.exists) {
             if (documento.data().userid !== usuario) {
               alert('no es tu comentario');
-              // console.log(doc.data().userid);
-              // console.log(uid);
             } else {
               console.log('paso hacia el modal');
               const nomobreModal = `modal_${documento.id}`;
@@ -164,31 +165,11 @@ const contentMuro = {
               modal.style.display = 'flex';
             }
           } else {
-            // doc.data() will be undefined in this case
             console.log('No such document!');
           }
         });
       });
     });
-    // console.log(typeof (btnEditar));
-    // console.log('sadasd');
-    // btnEditar.addEventListener('click', (e) => {
-    //   console.log('sadsadasdasdasd');
-    //   console.log(e.target.value);
-    //   modal.style.display = 'flex';
-    // const postRef = firestore.collection('coment').doc(e.target.value);
-    // postRef.get().then((doc) => {
-    //   console.log(doc.id);
-    //   if (doc.exists) {
-    //     if (doc.data().userid !== usuario) {
-    //       alert('no es tu comentario');
-    //     } else {
-    //       modal.style.display = 'flex';
-    //     }
-    //   } else {
-    //     console.log('error no se puede editar');
-    //   }
-    // });
   },
   cerrarModal: (documento, usuario) => {
     firestore.collection('coment').onSnapshot(() => {
@@ -199,8 +180,6 @@ const contentMuro = {
           if (documento.exists) {
             if (documento.data().userid !== usuario) {
               alert('no es tu comentario');
-              // console.log(doc.data().userid);
-              // console.log(uid);
             } else {
               console.log('paso hacia el modal');
               const nomobreModal = `modal_${documento.id}`;
@@ -210,7 +189,6 @@ const contentMuro = {
             console.log('este es id del login', usuario);
             console.log('este es el id del comentario', documento.data().userid);
           } else {
-            // doc.data() will be undefined in this case
             console.log('No such document!');
           }
         });
@@ -238,7 +216,6 @@ const contentMuro = {
             modal.style.display = 'none';
             console.log('editado, publicado');
           } else {
-            // doc.data() will be undefined in this case
             console.log('no publico editado');
           }
         });

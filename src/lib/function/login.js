@@ -1,8 +1,10 @@
+/* eslint-disable arrow-body-style */
 const contentLogin = {
   login: (mail, pass) => {
     firebase.auth().signInWithEmailAndPassword(mail, pass)
       .then((user) => {
-        contentLogin.emailOk();
+        contentLogin.emailOk(mail, pass);
+        contentLogin.estadoLogin();
         // Signed in
         // ...
       })
@@ -13,7 +15,6 @@ const contentLogin = {
   emailOk: () => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        const uid = user.uid;
         const emailVerified = user.emailVerified;
         if (emailVerified === true) {
           window.location = ('#/muro');
@@ -27,12 +28,33 @@ const contentLogin = {
   estadoLogin: () => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        // User is signed in.
-      } else {
-        // No user is signed in.
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        const name = user.displayName;
+        const email = user.email;
+        // ...
       }
+      // User is signed out
+      // ...
     });
   },
+  // persisteLogin: (email, password) => {
+  //   firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+  //     .then(() => {
+  //     // Existing and future Auth states are now persisted in the current
+  //     // session only. Closing the window would clear any existing state even
+  //     // if a user forgets to sign out.
+  //     // ...
+  //     // New sign-in will be persisted with session persistence.
+  //       return firebase.auth().signInWithEmailAndPassword(email, password);
+  //     })
+  //     .catch((error) => {
+  //     // Handle Errors here.
+  //       const errorCode = error.code;
+  //       const errorMessage = error.message;
+  //     });
+  // },
   loginGoogle: () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then((result) => {
