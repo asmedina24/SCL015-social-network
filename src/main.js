@@ -13,4 +13,5 @@ const init = () => {
     changeroute(window.location.hash);
   });
 };
+
 window.addEventListener('load', init());

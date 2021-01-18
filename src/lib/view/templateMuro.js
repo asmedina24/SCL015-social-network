@@ -2,12 +2,12 @@ import contentMuro from '../function/muro.js';
 import contentLogin from '../function/login.js';
 
 export const muro = () => {
-  const currentUserData = firebase.auth().currentUser;
-  const displayName = currentUserData.displayName;
+  // const currentUserData = firebase.auth().currentUser;
+  // const displayName = currentUserData.displayName;
   const divMuro = document.createElement('div');
   const ViewMuro = `<div id="muro">
   <div>
-  <p class="saludo">Hola ${displayName} </p>
+  <p class="saludo">Hola </p>
   <button id="singOut" class="titulo_muro">Cerrar Sesion</button>
   </div>
   <form id ="form_muro"><h3 class="titulo_muro">¿Qué estas pensando?</h3>
