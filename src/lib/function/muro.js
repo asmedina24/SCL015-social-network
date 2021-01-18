@@ -201,8 +201,13 @@ const contentMuro = {
         publicarButton.addEventListener('click', () => {
           if (documento.exists) {
             const comentario = document.querySelector(comentModal).value;
-            const newDate = new Date(firebase.firestore.Timestamp.now().seconds * 1000);
-            const fecha = newDate.toLocaleDateString();
+            const date = new Date();
+            const fecha = `${
+              (`00${date.getDate()}`).slice(-2)}/${(`00${date.getMonth() + 1}`).slice(-2)}/${
+              date.getFullYear()} ${
+              (`00${date.getHours()}`).slice(-2)}:${
+              (`00${date.getMinutes()}`).slice(-2)}:${
+              (`00${date.getSeconds()}`).slice(-2)}`;
             firestore.collection('coment').doc(documento.id).update({
               comentarios: comentario,
               dateEditado: `${fecha}(editado)`,
