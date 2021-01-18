@@ -1,6 +1,5 @@
 /* Pantalla Movil */
 @media (min-width : 350px) and (max-width: 768px) {
-
 body {
     display: block;
     margin: 0px;
@@ -39,7 +38,7 @@ body {
  }
 
  #coment_muro{
-    border-radius: 5%;
+    border-radius: 5px;
     width: 60%;
     border-color: red;
    
@@ -47,20 +46,16 @@ body {
 #muro{
     position: relative;
     top: 300px;
-    /* left: 20px; */
     display: flex;
     position: relative;
     justify-content: center;
-    /* top: 250px; */
-    background-image: url(../img/fondo_2.png);
+    /* background-image: url(../img/fondo_2.png); */
     background-size: cover;
     flex-direction: column;
     width: 100%;
     height: 100%;
 } 
-.saludo{
-    background-color: white;
-}
+
 #form_muro{
     position: relative;
     text-align: -webkit-center;
@@ -71,11 +66,6 @@ ul {
     display: flex;
     margin-left: -150px;
     font-weight: 900;
-    /* margin-top: -10%; */
-    /* width: 100%; */
-    /* padding: 0px; */
-    /* position: relative; */
-    /* background-color: #ECA12C; */
     justify-content: flex-end;
     position: relative;
 }
@@ -84,11 +74,9 @@ a {
     color: white;
     letter-spacing: 1px;
     text-decoration: none;
-    padding-left: 8px;
-    padding-right: 4px;
+    padding-left: 0px;
+    padding-right: 15px;
 }
-
-
 .login {
     margin: 10px;
     margin-top: -102%;
@@ -110,7 +98,8 @@ a {
     width: 100%;
     max-width: fit-content;
     position: absolute;
-    margin: 10px;
+    margin: 8px;
+    margin-left: -20px;
 }
 
 .contenc_home {
@@ -324,7 +313,6 @@ button.close {
     color: gray;
     text-align: end;
 }
-
 }
 
 /* Pantalla PC */
@@ -335,6 +323,19 @@ button.close {
         display: block;
         margin: 0px;
         /* overflow: hidden; */
+    }
+    .postdiv{
+        background-color: white;
+        border-color: gray;
+        border-width: 1px;
+        border-style: dotted;
+    }
+    .text-area{
+        background-color: white;
+        border: groove;
+        width: 350px;
+        height: 100px;
+        border-radius: 20px;
     }
     
     .linea_fieldset {
@@ -375,6 +376,9 @@ button.close {
         width: 100%;
         height: 100%;
     } 
+    .saludo{
+        background-color: white;
+    }
     #form_muro{
         position: relative;
         text-align: -webkit-center;
@@ -423,8 +427,6 @@ button.close {
         display: flex;
         width: 100%;
         max-width: fit-content;
-        /* height: 100%; */
-        /* margin-top: 0px; */
         position: absolute;
         margin: 10px;
     }
@@ -444,7 +446,6 @@ button.close {
     
     .img_centerpet {
         width: 100%;
-    
     }
     
     .caja {
@@ -462,10 +463,6 @@ button.close {
         display: flex;
         flex-direction: column;
         list-style-type: disc;
-        /* margin-block-start: 1em;
-        margin-block-end: 1em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px; */
         padding-inline-start: 40px;
         text-decoration: none;
     }  
@@ -512,12 +509,10 @@ button.close {
     }
     #loginGoogle{
         position: relative;
-        /* background: url(./src/img/LogoGoogle.png); */
         background-repeat: no-repeat;
         background-size: 37px;
         text-align: center;
         line-height: 25px;
-    
     }
     .img_face{
         width: 25px;
@@ -531,7 +526,6 @@ button.close {
         background-size: 37px;
         text-align: center;
         line-height: 25px;
-    
     }
     .caja_register{
         display: flex;
@@ -540,7 +534,6 @@ button.close {
         top: 250px;
         background-image: url(../img/fondo_2.png);
         background-size: cover;
-    
     }
     .contenedor_register{
         display: flex;
@@ -550,7 +543,6 @@ button.close {
         margin-top: 50px;
         margin-bottom: 320px;
         z-index: 1000;
-        
     }
     #root1{
         position: relative;
@@ -579,18 +571,98 @@ button.close {
     }
     .circulo_registro{
         position: absolute;
-        /* z-index: 500; */
         top: 400px;
-        /* opacity: 80%; */
         height: 60%;
     }
+    .modal{
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: none;
+        background-color: rgb(230 223 223 / 96%) !important;
+        justify-content: center;
+        align-items: center;
     }
-    @media (min-width : 1641px) and (max-width: 2900px) {
+    .close{
+        float: right;
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1;
+        cursor: pointer;
+        color: red;
+        width: 40px;
+        z-index: 4000;
+        
+        font-family: 'pokemon-solid';
+        text-shadow: 3px 3px 3px white;
+    }
+    button.close {
+        padding: 0;
+        background-color: transparent;
+        border: 0;
+        -webkit-appearance: none;
+    }
+    .contenedor_modal_{
+        width: 100%;
+        margin-left: 30%;
+        margin-top: 10%;
+        margin-right: 30%;
+        margin-bottom: 20%;
+        background: rgb(212 249 5 / 49%);
+        border: 3px solid #F5ED02;
+        box-sizing: border-box;
+        border-radius: 20px;
+        padding: 10px;
+        color: white ;
+        font-family: monospace;
+        text-align: center;
+    }
+    .cuerpo_modal_{
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        width: 300px;
+        height: 100px;
+    }
+    .modal_coment{
+        width: 290px;
+        height: 50px;
+    }
+    .user{
+        background-color: white;
+    }
+    .date{
+        font-size: 12px;
+    }
+    .date_edit{
+        font-size: 12px;
+        color: gray;
+        text-align: end;
+    }
+    }
+    /* Pantalla Grande */
+ @media (min-width : 1641px) and (max-width: 2900px) {
 
         body {
             display: block;
             margin: 0px;
             /* overflow: hidden; */
+        }
+        .postdiv{
+            background-color: white;
+            border-color: gray;
+            border-width: 1px;
+            border-style: dotted;
+        }
+        .text-area{
+            background-color: white;
+            border: groove;
+            width: 350px;
+            height: 100px;
+            border-radius: 20px;
         }
         
         .linea_fieldset {
@@ -631,6 +703,9 @@ button.close {
             width: 100%;
             height: 100%;
         } 
+        .saludo{
+            background-color: white;
+        }
         #form_muro{
             position: relative;
             text-align: -webkit-center;
@@ -679,8 +754,6 @@ button.close {
             display: flex;
             width: 100%;
             max-width: fit-content;
-            /* height: 100%; */
-            /* margin-top: 0px; */
             position: absolute;
             margin: 10px;
         }
@@ -700,7 +773,6 @@ button.close {
         
         .img_centerpet {
             width: 100%;
-        
         }
         
         .caja {
@@ -718,10 +790,6 @@ button.close {
             display: flex;
             flex-direction: column;
             list-style-type: disc;
-            /* margin-block-start: 1em;
-            margin-block-end: 1em;
-            margin-inline-start: 0px;
-            margin-inline-end: 0px; */
             padding-inline-start: 40px;
             text-decoration: none;
         }  
@@ -768,12 +836,10 @@ button.close {
         }
         #loginGoogle{
             position: relative;
-            /* background: url(./src/img/LogoGoogle.png); */
             background-repeat: no-repeat;
             background-size: 37px;
             text-align: center;
             line-height: 25px;
-        
         }
         .img_face{
             width: 25px;
@@ -787,7 +853,6 @@ button.close {
             background-size: 37px;
             text-align: center;
             line-height: 25px;
-        
         }
         .caja_register{
             display: flex;
@@ -796,7 +861,6 @@ button.close {
             top: 250px;
             background-image: url(../img/fondo_2.png);
             background-size: cover;
-        
         }
         .contenedor_register{
             display: flex;
@@ -806,7 +870,6 @@ button.close {
             margin-top: 50px;
             margin-bottom: 320px;
             z-index: 1000;
-            
         }
         #root1{
             position: relative;
@@ -835,9 +898,75 @@ button.close {
         }
         .circulo_registro{
             position: absolute;
-            /* z-index: 500; */
             top: 400px;
-            /* opacity: 80%; */
             height: 60%;
+        }
+        .modal{
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            display: none;
+            background-color: rgb(230 223 223 / 96%) !important;
+            justify-content: center;
+            align-items: center;
+        }
+        .close{
+            float: right;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1;
+            cursor: pointer;
+            color: red;
+            width: 40px;
+            z-index: 4000;
+            
+            font-family: 'pokemon-solid';
+            text-shadow: 3px 3px 3px white;
+        }
+        button.close {
+            padding: 0;
+            background-color: transparent;
+            border: 0;
+            -webkit-appearance: none;
+        }
+        .contenedor_modal_{
+            width: 100%;
+            margin-left: 30%;
+            margin-top: 10%;
+            margin-right: 30%;
+            margin-bottom: 20%;
+            background: rgb(212 249 5 / 49%);
+            border: 3px solid #F5ED02;
+            box-sizing: border-box;
+            border-radius: 20px;
+            padding: 10px;
+            color: white ;
+            font-family: monospace;
+            text-align: center;
+        }
+        .cuerpo_modal_{
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            width: 300px;
+            height: 100px;
+        }
+        .modal_coment{
+            width: 290px;
+            height: 50px;
+        }
+        .user{
+            background-color: white;
+        }
+        .date{
+            font-size: 12px;
+        }
+        .date_edit{
+            font-size: 12px;
+            color: gray;
+            text-align: end;
         }
         }

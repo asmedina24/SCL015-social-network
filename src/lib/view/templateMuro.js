@@ -7,8 +7,8 @@ export const muro = () => {
   const divMuro = document.createElement('div');
   const ViewMuro = `<div id="muro">
   <div>
+  <button id="singOut" class="btnSingOut">Cerrar Sesion</button>
   <p class="saludo">Hola ${displayName} </p>
-  <button id="singOut" class="titulo_muro">Cerrar Sesion</button>
   </div>
   <form id ="form_muro"><h3 class="titulo_muro">¿Qué estas pensando?</h3>
   <textarea name="" id="coment_muro" cols="20" rows="10"></textarea>

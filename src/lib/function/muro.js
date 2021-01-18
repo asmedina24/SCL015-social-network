@@ -1,5 +1,3 @@
-import contentLogin from './login.js';
-
 const firestore = firebase.firestore();
 const contentMuro = {
   guardar: () => {
@@ -52,7 +50,6 @@ const contentMuro = {
       });
   },
   contenidoMuro: () => {
-    contentLogin.estadoLogin();
     const currentUserData = firebase.auth().currentUser;
     const uid = currentUserData.uid;
     const name = currentUserData.displayName;
@@ -62,7 +59,7 @@ const contentMuro = {
       querySnapshot.forEach((response) => {
         lista.innerHTML += `
         <div id="postDiv-${response.id}" class="postdiv">
-        <p class="user">Usuario: ${response.data().nombre}</p>
+        <p class="user">${response.data().nombre}</p>
           <div class="text-area"> 
           <p class="date"> ${response.data().date}</p>  
           <p class=""> ${response.data().comentarios}</p>
