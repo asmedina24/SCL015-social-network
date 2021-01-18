@@ -42,7 +42,7 @@ export const register = () => {
           const currentUserData = firebase.auth().currentUser;
           const uid = currentUserData.uid;
           firestore.collection('user').add({
-            nombre: name,
+            nombre: `${name}    `,
             apellido: lastName,
             correo: mail,
             contraseña: pass,

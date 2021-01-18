@@ -1,4 +1,4 @@
-
+/* Pantalla Movil */
 @media (min-width : 350px) and (max-width: 768px) {
 
 body {
@@ -6,16 +6,18 @@ body {
     margin: 0px;
     /* overflow: hidden; */
 }
-.img_like{
-    position: relative;
-    top: 50px;
-    left: 11px;
-    background-color: #eca12c;
+.postdiv{
+    background-color: white;
+    border-color: gray;
+    border-width: 1px;
+    border-style: dotted;
 }
-
 .text-area{
     background-color: white;
     border: groove;
+    width: 350px;
+    height: 100px;
+    border-radius: 20px;
 }
 
 .linea_fieldset {
@@ -107,8 +109,6 @@ a {
     display: flex;
     width: 100%;
     max-width: fit-content;
-    /* height: 100%; */
-    /* margin-top: 0px; */
     position: absolute;
     margin: 10px;
 }
@@ -128,7 +128,6 @@ a {
 
 .img_centerpet {
     width: 100%;
-
 }
 
 .caja {
@@ -146,10 +145,6 @@ a {
     display: flex;
     flex-direction: column;
     list-style-type: disc;
-    /* margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px; */
     padding-inline-start: 40px;
     text-decoration: none;
 }  
@@ -196,12 +191,10 @@ a {
 }
 #loginGoogle{
     position: relative;
-    /* background: url(./src/img/LogoGoogle.png); */
     background-repeat: no-repeat;
     background-size: 37px;
     text-align: center;
     line-height: 25px;
-
 }
 .img_face{
     width: 25px;
@@ -215,7 +208,6 @@ a {
     background-size: 37px;
     text-align: center;
     line-height: 25px;
-
 }
 .caja_register{
     display: flex;
@@ -224,7 +216,6 @@ a {
     top: 250px;
     background-image: url(../img/fondo_2.png);
     background-size: cover;
-
 }
 .contenedor_register{
     display: flex;
@@ -234,7 +225,6 @@ a {
     margin-top: 50px;
     margin-bottom: 320px;
     z-index: 1000;
-    
 }
 #root1{
     position: relative;
@@ -263,13 +253,81 @@ a {
 }
 .circulo_registro{
     position: absolute;
-    /* z-index: 500; */
     top: 400px;
-    /* opacity: 80%; */
     height: 60%;
+}
+.modal{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    background-color: rgb(230 223 223 / 96%) !important;
+    justify-content: center;
+    align-items: center;
+}
+.close{
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    color: red;
+    width: 40px;
+    z-index: 4000;
+    
+    font-family: 'pokemon-solid';
+    text-shadow: 3px 3px 3px white;
+}
+button.close {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+}
+.contenedor_modal_{
+    width: 100%;
+    margin-left: 30%;
+    margin-top: 10%;
+    margin-right: 30%;
+    margin-bottom: 20%;
+    background: rgb(212 249 5 / 49%);
+    border: 3px solid #F5ED02;
+    box-sizing: border-box;
+    border-radius: 20px;
+    padding: 10px;
+    color: white ;
+    font-family: monospace;
+    text-align: center;
+}
+.cuerpo_modal_{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 300px;
+    height: 100px;
+}
+.modal_coment{
+    width: 290px;
+    height: 50px;
+}
+.user{
+    background-color: white;
+}
+.date{
+    font-size: 12px;
+}
+.date_edit{
+    font-size: 12px;
+    color: gray;
+    text-align: end;
 }
 
 }
+
+/* Pantalla PC */
 
 @media (min-width : 769px) and (max-width: 1640px) {
 

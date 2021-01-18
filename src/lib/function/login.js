@@ -1,12 +1,10 @@
+/* eslint-disable no-else-return */
 const contentLogin = {
   login: (mail, pass) => {
     firebase.auth().signInWithEmailAndPassword(mail, pass)
       // eslint-disable-next-line no-unused-vars
-      .then((user) => {
-        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
-          .then(() => {
-            contentLogin.emailOk();
-          });
+      .then(() => {
+        contentLogin.emailOk();
       })
       .catch(() => {
         alert('correo o contraseña invalidos');
@@ -16,48 +14,15 @@ const contentLogin = {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         const emailVerified = user.emailVerified;
+        console.log(user);
         if (emailVerified === true) {
           window.location = ('#/muro');
-          console.log('mantener sesion activa');
-        } alert('verifica tu correo');
+        } else {
+          alert('verifica tu correo');
+        }
       }
     });
   },
-  estadoLogin: () => {
-    firebase.auth().onAuthStateChanged((user) => {
-      const emailVerified = user.emailVerified;
-      if (emailVerified === true) {
-        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
-      } console.log('njda');
-
-      // .then(() => {
-      // // window.location = ('#/muro');
-      //   console.log('mantener sesion activa');
-      // }).catch((error) => {
-      //   console.log('no puede cerrar sesion', error);
-      // });
-    });
-  },
-
-  //   firebase.auth().setPersistence()
-  //     .then(() => {
-  //       console.log('sesion mantenida');
-  //       // Existing and future Auth states are now persisted in the current
-  //       // session only. Closing the window would clear any existing state even
-  //       // if a user forgets to sign out.
-  //       // ...
-  //       // New sign-in will be persisted with session persistence.
-  //       return firebase.auth().onAuthStateChanged(user);
-  //     })
-  //     .catch((error) => {
-  //       window.location = ('#/muro');
-  //       // Handle Errors here.
-  //       // eslint-disable-next-line no-unused-vars
-  //       const errorCode = error.code;
-  //       // eslint-disable-next-line no-unused-vars
-  //       const errorMessage = error.message;
-  //     });
-
   loginGoogle: () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then((result) => {
