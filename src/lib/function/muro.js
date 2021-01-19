@@ -30,13 +30,13 @@ const contentMuro = {
     firestore.collection('likes').where('docuid', '==', documento).where('userid', '==', usuario)
       .get()
       .then((objeto) => {
-        document.getElementById(`contenedor_botnes_like_${documento}`).innerHTML = `
+        document.getElementById(`contenedor_botnes_like_${documento}`).innerHTML = `<div class= "btnlike" >
         <div id="div_like_${documento}" style="display:${(objeto.size > 0 ? 'none' : 'block')};">
-         <button id="like_${documento}" class ="btn_like" value="${documento}"><img src="../img/like.png">Like</button>
-        </div>
+         <button id="like_${documento}" class ="btn_like" value="${documento}">Like</button>
+        </div >
         <div id="div_dislike_${documento}" style="display:${(objeto.size > 0 ? 'block' : 'none')};">
-          <button id="deslike_${documento}" class="btn_dislike" value="${documento}"><img src="../img/like.png">Dislike</button>
-        </div>`;
+          <button id="deslike_${documento}" class="btn_dislike" value="${documento}">Dislike</button>
+        </div> </div>`;
         contentMuro.likes(documento, usuario);
         contentMuro.dislike(documento, usuario);
       });
@@ -65,7 +65,7 @@ const contentMuro = {
           <p class=""> ${response.data().comentarios}</p>
             <br>
             <p class="date_edit"> ${response.data().dateEditado}</p>
-          </div>
+          </div class= "btnContenMuro">
           <div id="contenedor_cantidad_likes_${response.id}"></div>
           <button id="delete_" value="${response.id}">Borrar</button> 
           <button id="btn_edit_${response.id}" value="${response.id}">Editar</button>

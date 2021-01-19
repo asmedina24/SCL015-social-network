@@ -6,12 +6,12 @@ export const muro = () => {
   const displayName = currentUserData.displayName;
   const divMuro = document.createElement('div');
   const ViewMuro = `<div id="muro">
-  <div>
+  <div class= "saludoCierre">
   <button id="singOut" class="btnSingOut">Cerrar Sesion</button>
   <p class="saludo">Hola ${displayName} </p>
   </div>
   <form id ="form_muro"><h3 class="titulo_muro">¿Qué estas pensando?</h3>
-  <textarea name="" id="coment_muro" cols="20" rows="10"></textarea>
+  <input type= "text" class= "inputPublicar" id="coment_muro">
   <button id="btn_muro">Publicar</button>
   </form>
    <div id="public_muro"></div>
