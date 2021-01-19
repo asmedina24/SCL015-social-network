@@ -18,15 +18,16 @@ Infopet es la red social, donde podrás encontrar y compartir información sobre
 
 ## 2. Planificación del Proyecto, diseño y prototipo.
 
-* Prototipo papel ([Boceto](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/prototipo-papel.JPG))
+![Prototipo papel](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/prototipo-papel.JPG?raw=true)
 
-* Planificacion con Trello ([Trello](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/trello-red-social.JPG))
+
+![Planificacion con Trello](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/trello-red-social.JPG?raw=true)
 
 
 * Este prototipo se presento a distintas personas recibiendo feeback realizar las modificaciones e  implementarlas el codigo.
-- Figma ([Figma](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/pantalla-cel.JPG))
-- Figma ([Figma](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/pantalla-registro.JPG))
-- Figma ([Figma](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/pantalla-muro.JPG))
+![Figma](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/pantalla-cel.JPG?raw=true)
+![Figma](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/pantalla-registro.JPG?raw=true)
+![Figma](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/pantalla-muro.JPG?raw=true)
 
 
 ## 3. Historia de Usuario
@@ -118,8 +119,8 @@ Definición de Terminado
 
 ## 4. Diseño Final
 ### Mobile
-- Mobil ![Mobile](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/proyecto-final-mobil)
-- Mobil ![Mobile](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/proyecto-final-mobil-muro)
+ ![Mobile](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/proyecto-final-mobil.JPG?raw=true)
+ ![Mobile](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/proyecto-final-mobil-muro.JPG?raw=true)
 
 ### Lapto
 
