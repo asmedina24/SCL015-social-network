@@ -2,16 +2,21 @@ import contentMuro from '../function/muro.js';
 import contentLogin from '../function/login.js';
 
 export const muro = () => {
-  contentLogin.estadoLogin();
   const divMuro = document.createElement('div');
   const ViewMuro = `<div id="muro">
   <div id="nameUser" >
   </div>
   <form id ="form_muro"><h3 class="titulo_muro">¿Qué estas pensando?</h3>
   <textarea name="" id="coment_muro" cols="20" rows="10"></textarea>
+  <div id="muro fotos">
+  <label class="customFile">
+  <input type="file" id="img_muro" class="img_muro">
+  </label>
+  </div>
   <button id="btn_muro">Publicar</button>
   </form>
    <div id="public_muro"></div>
+
  
   <br>
   <br>
@@ -38,21 +43,17 @@ export const muro = () => {
     cerrar.addEventListener('click', () => {
       contentLogin.cerrarsesion();
     });
+    const publicar = divMuro.querySelector(('#btn_muro'));
+    publicar.addEventListener('click', () => {
+      const formMuro = document.getElementById('form_muro');
+      contentMuro.imagen();
+      contentMuro.guardar();
+      formMuro.reset();
+    });
+    contentMuro.contenidoMuro(user.uid, user.displayName);
+
   });
 
-  const publicar = divMuro.querySelector(('#btn_muro'));
-  publicar.addEventListener('click', () => {
-    const formMuro = document.getElementById('form_muro');
-    contentMuro.guardar();
-    formMuro.reset();
-  });
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      contentMuro.contenidoMuro(user.uid, user.displayName);
-    }
-  });
-
-  contentMuro.btnBorrar();
 
   // contentMuro.editar();
   return divMuro;

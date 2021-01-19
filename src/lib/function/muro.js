@@ -1,8 +1,26 @@
-import contentLogin from './login.js';
+// import storage from '../../confiFB.js';
 
 const firestore = firebase.firestore();
 
 const contentMuro = {
+  imagen: () => {
+    const imgMuro = document.querySelector('#img_muro').files[0];
+    console.log(imgMuro);
+    const storage = firebase.storage();
+    if (!imgMuro) {
+      console.log('no subio foto');
+    } else {
+      const storageRef = storage.ref(`user/${imgMuro.name}`);
+      const uploadTask = storageRef.put(imgMuro);
+      uploadTask.on('state_changed', (snapshot) => {
+
+      }, (error) => {
+        console.log(error);
+      }, () => {
+        console.log('imagen subida a firebase');
+      });
+    }
+  },
   guardar: () => {
     const comentario = document.querySelector('#coment_muro').value;
     const currentUserData = firebase.auth().currentUser;
@@ -71,7 +89,7 @@ const contentMuro = {
             <p class="date_edit"> ${response.data().dateEditado}</p>
           </div>
           <div id="contenedor_cantidad_likes_${response.id}"></div>
-          <button id="delete_" value="${response.id}">Borrar</button> 
+          <button id="delete_${response.id}" value="${response.id}">Borrar</button> 
           <button id="btn_edit_${response.id}" value="${response.id}">Editar</button>
           <div id="contenedor_botnes_like_${response.id}"></div>
         </div>
@@ -79,31 +97,34 @@ const contentMuro = {
         contentMuro.getDetailLike(response.id, uid);
         contentMuro.getCantidadLikes(response.id);
         contentMuro.modal(response, uid, name);
+        contentMuro.modalBorrar(response, uid);
         contentMuro.btnEditar(response, uid);
+        contentMuro.btnBorrar(response, uid);
       });
     });
   },
-  btnBorrar: () => {
+  btnBorrar: (documento, usuario) => {
     firestore.collection('coment').onSnapshot(() => {
-      const currentUserData = firebase.auth().currentUser;
-      const uid = currentUserData.uid;
+      // const currentUserData = firebase.auth().currentUser;
+      // const uid = currentUserData.uid;
+      const btnBorrar = `#delete_${documento.id}`;
       const lista = document.querySelector('#public_muro');
-      const borrar = lista.querySelectorAll('#delete_');
+      const borrar = lista.querySelectorAll(btnBorrar);
+
       borrar.forEach((deletebutton) => {
         deletebutton.addEventListener('click', (e) => {
-          console.log(e.target.value);
-          console.log('??????');
           const postRef = firestore.collection('coment').doc(e.target.value);
           postRef.get().then((doc) => {
             if (doc.exists) {
               console.log('Document data:', doc.data());
-              if (doc.data().userid !== uid) {
+              if (doc.data().userid !== usuario) {
                 alert('no es tu comentario');
               } else {
-                contentMuro.borrar(e.target.value);
+                console.log('paso hacia el modal de borrar');
+                const nombreModal = `modal_borrar_${documento.id}`;
+                const modal = document.getElementById(nombreModal);
+                modal.style.display = 'flex';
               }
-              console.log('este es id del login', uid);
-              console.log('este es el id del comentario', doc.data().userid);
             } else {
               console.log('No such document!');
             }
@@ -116,14 +137,71 @@ const contentMuro = {
   },
   borrar: (value) => {
     firestore.collection('coment').doc(value).delete()
-      .then((evento) => {
-        console.log(evento);
+      .then(() => {
         console.log('si funciono');
-        alert('comentario eliminado correctamente');
       })
       .catch((error) => {
         console.error('Error removing document: ', error);
       });
+  },
+  modalBorrar: (documento, usuario) => {
+    const modalEdit = document.getElementById('seccion_borrar');
+    modalEdit.innerHTML += `
+    <div id="modal_borrar_${documento.id}" class="modalBorrar">
+      <div class="contenedor_modal_">
+        <div class="header_modal_">
+        </div>
+        <div class="cuerpo_modal_">
+        <p>¿Estas seguro que quieres eliminar este comentario?</p>
+        <button id="acept_borrar_${documento.id}" value="${documento.id}">Aceptar</button>
+        <button type="button" id="cance_borrar_${documento.id}" value="${documento.id}">Cancelar</button>
+        </div>
+      </div>
+    </div>`;
+    contentMuro.btnBorrar(usuario);
+    contentMuro.aceptarBorrar(documento, usuario);
+    contentMuro.cerrarBorrar(documento, usuario);
+  },
+  aceptarBorrar: (documento) => {
+    firestore.collection('coment').onSnapshot(() => {
+      const btnAceptar = `#acept_borrar_${documento.id}`;
+      const aceptar = document.querySelectorAll(btnAceptar);
+      aceptar.forEach((aceptarButton) => {
+        aceptarButton.addEventListener('click', (e) => {
+          if (documento.exists) {
+            const nombreModal = `modal_borrar_${documento.id}`;
+            const modal = document.getElementById(nombreModal);
+            modal.style.display = 'none';
+            console.log('borrado correctamente');
+            contentMuro.borrar(e.target.value);
+          } else {
+            console.log('no borro comentario');
+          }
+        });
+      });
+    });
+  },
+  cerrarBorrar: (documento, usuario) => {
+    firestore.collection('coment').onSnapshot(() => {
+      const btnCancelar = `#cance_borrar_${documento.id}`;
+      const cancelar = document.querySelectorAll(btnCancelar);
+      cancelar.forEach((cancelbutton) => {
+        cancelbutton.addEventListener('click', () => {
+          if (documento.exists) {
+            if (documento.data().userid !== usuario) {
+              alert('no es tu comentario');
+            } else {
+              console.log('cerro correctamente');
+              const nombreModal = `modal_borrar_${documento.id}`;
+              const modal = document.getElementById(nombreModal);
+              modal.style.display = 'none';
+            }
+          } else {
+            console.log('No such document!');
+          }
+        });
+      });
+    });
   },
   modal: (documento, usuario) => {
     const modalEdit = document.getElementById('seccion_modal');
@@ -159,8 +237,8 @@ const contentMuro = {
               alert('no es tu comentario');
             } else {
               console.log('paso hacia el modal');
-              const nomobreModal = `modal_${documento.id}`;
-              const modal = document.getElementById(nomobreModal);
+              const nombreModal = `modal_${documento.id}`;
+              const modal = document.getElementById(nombreModal);
               modal.style.display = 'flex';
             }
           } else {
@@ -275,6 +353,7 @@ const contentMuro = {
         });
     });
   },
+
 };
 
 export default contentMuro;

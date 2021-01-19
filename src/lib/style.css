@@ -282,6 +282,18 @@ a {
     justify-content: center;
     align-items: center;
 }
+.modalBorrar{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    background-color: rgb(230 223 223 / 96%) !important;
+    justify-content: center;
+    align-items: center;
+}
 .close{
     float: right;
     font-size: 1.5rem;
