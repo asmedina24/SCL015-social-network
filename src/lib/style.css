@@ -28,11 +28,13 @@ body {
  width: 100%;
 };
 
-.btnSingOut{
+#singOut {
     border: none;
     background-color: #ECA12C;
     color: white;
     opacity: 73%;
+    margin-right: 13px;
+    margin-left: 5px;
 }
 #btn_muro {
     position: relative;
@@ -52,6 +54,8 @@ body {
     width: 94%;
     top: 27%;
     border: ridge;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    line-height: 17px;
 }
 .text-area{
     background-color: white;
@@ -65,6 +69,7 @@ body {
     padding: 3%;
     border-color: orange;
     background: whitesmoke;
+    line-height: 17px;
 }
  .user {
     font-family: 'Circular-Loom';
@@ -95,6 +100,7 @@ body {
     border-color: red;
     max-width: 500px;
     max-height: 300px;
+    box-shadow: 0 10px 20px rgba(250,6,6,0.19), 0 6px 6px rgba(0,0,0,0.23);
  }
 #muro {
     position: absolute;
@@ -129,7 +135,7 @@ a {
     letter-spacing: 1px;
     text-decoration: none;
     padding-left: 0px;
-    padding-right: 15px;
+    padding-right: 9px;
 }
 .login {
     margin: 10px;
@@ -153,7 +159,7 @@ a {
     max-width: fit-content;
     position: absolute;
     margin: 8px;
-    margin-left: -20px;
+    margin-left: -24px;
 }
 
 .contenc_home {
@@ -371,6 +377,9 @@ button.close {
     color: gray;
     text-align: end;
 }
+#nav {
+    margin-right: 17px;
+}
 }
 
 /* Pantalla PC */
@@ -381,6 +390,10 @@ button.close {
         display: block;
         margin: 0px;
         /* overflow: hidden; */
+    }
+
+    #nav {
+        margin-right: 31px;
     }
     .total_huella {
         width: 20px;
@@ -429,6 +442,8 @@ button.close {
         width: 94%;
         top: 27%;
         border: ridge;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        line-height: 17px;
     }
     .text-area{
         background-color: white;
@@ -442,6 +457,7 @@ button.close {
         padding: 3%;
         border-color: orange;
         background: whitesmoke;
+        line-height: 17px;
     }
      .user {
         font-family: 'Circular-Loom';
@@ -472,6 +488,7 @@ button.close {
         border-color: red;
         max-width: 500px;
         max-height: 300px;
+        box-shadow: 0 10px 20px rgba(250,6,6,0.19), 0 6px 6px rgba(0,0,0,0.23);
      }
     #muro {
         position: absolute;
@@ -769,12 +786,13 @@ button.close {
      width: 100%;
     };
     
-    .btnSingOut{
+    .btnSingOut {
         border: none;
         background-color: #ECA12C;
         color: white;
         opacity: 73%;
-    }
+     }
+     
     
     .postdiv{
         background-color: white;
@@ -785,6 +803,8 @@ button.close {
         justify-items: center;
         width: 94%;
         border: ridge;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        line-height: 17px;
     }
     .text-area{
         background-color: white;
@@ -798,11 +818,9 @@ button.close {
         padding: 3%;
         border-color: orange;
         background: whitesmoke;
+        line-height: 17px;
     }
-    .inputPublicar{
-    
-    }
-    
+       
     .user{
         font-family: 'Circular-Loom';
         font-weight: 500;
@@ -832,6 +850,7 @@ button.close {
         border-color: red;
         max-width: 500px;
         max-height: 300px;
+        box-shadow: 0 10px 20px rgba(250,6,6,0.19), 0 6px 6px rgba(0,0,0,0.23);
     
        
      }
