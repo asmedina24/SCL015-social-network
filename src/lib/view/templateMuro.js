@@ -10,8 +10,9 @@ export const muro = () => {
   <textarea name="" id="coment_muro" cols="20" rows="10"></textarea>
   <div id="muro fotos">
   <label class="customFile">
-  <input type="file" id="img_muro" class="img_muro">
+  <input type="file" id="img_muro" class="img_muro"> <button id="btn_subir">Subir</button>
   </label>
+  <br>
   </div>
   <button id="btn_muro">Publicar</button>
   </form>
@@ -43,17 +44,20 @@ export const muro = () => {
     cerrar.addEventListener('click', () => {
       contentLogin.cerrarsesion();
     });
+    const subir = divMuro.querySelector(('#btn_subir'));
+    subir.addEventListener('click', () => {
+      contentMuro.imagen();
+    });
     const publicar = divMuro.querySelector(('#btn_muro'));
     publicar.addEventListener('click', () => {
       const formMuro = document.getElementById('form_muro');
-      contentMuro.imagen();
-      contentMuro.guardar();
+      // contentMuro.imagen(user.uid);
+      contentMuro.urlImg(user.uid, user.displayName);
+
       formMuro.reset();
     });
     contentMuro.contenidoMuro(user.uid, user.displayName);
-
   });
-
 
   // contentMuro.editar();
   return divMuro;

@@ -1,11 +1,9 @@
 // import storage from '../../confiFB.js';
 
 const firestore = firebase.firestore();
-
 const contentMuro = {
   imagen: () => {
     const imgMuro = document.querySelector('#img_muro').files[0];
-    console.log(imgMuro);
     const storage = firebase.storage();
     if (!imgMuro) {
       console.log('no subio foto');
@@ -13,19 +11,64 @@ const contentMuro = {
       const storageRef = storage.ref(`user/${imgMuro.name}`);
       const uploadTask = storageRef.put(imgMuro);
       uploadTask.on('state_changed', (snapshot) => {
-
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log(progress);
       }, (error) => {
         console.log(error);
       }, () => {
-        console.log('imagen subida a firebase');
+        console.log('se subio a storage');
+        alert('se subio imagen con exito');
       });
     }
   },
-  guardar: () => {
+  urlImg: (usuario, nombremio) => {
+    const imgMuro = document.querySelector('#img_muro').files[0];
+
+    if (!imgMuro) {
+      contentMuro.guardar(usuario, nombremio);
+    } else {
+      const comentario = document.querySelector('#coment_muro').value;
+      const date = new Date();
+      const fecha = `${
+        (`00${date.getDate()}`).slice(-2)}/${(`00${date.getMonth() + 1}`).slice(-2)}/${
+        date.getFullYear()} ${
+        (`00${date.getHours()}`).slice(-2)}:${
+        (`00${date.getMinutes()}`).slice(-2)}:${
+        (`00${date.getSeconds()}`).slice(-2)}`;
+      const storage = firebase.storage();
+      const storageimg = storage.ref(`user/${imgMuro.name}`);
+      storageimg.getDownloadURL().then((url) => {
+        console.log(url);
+        firestore.collection('coment').add({
+          comentarios: comentario,
+
+          date: fecha,
+          photoUrl: url,
+          userid: usuario,
+          nombre: nombremio,
+          meGusta: 0,
+          dateEditado: '',
+        }).then(() => {
+          console.log('se agrega comentario con foto');
+        })
+          .catch((error) => {
+            console.error('Error adding document: ', error);
+          });
+      })
+        .catch((error) => {
+          console.log(error);
+          // Handle any errors
+        });
+    }
+
+    // storageimg.putString('data_url').then((snapshot) => {
+    //   const miurl = snapshot.downloadURL;
+    //   console.log(`Uploaded a data_url string!${miurl}`);
+    //   // add it to firestore
+    // });
+  },
+  guardar: (usuario, name) => {
     const comentario = document.querySelector('#coment_muro').value;
-    const currentUserData = firebase.auth().currentUser;
-    const uid = currentUserData.uid;
-    const displayNameData = currentUserData.displayName;
     const date = new Date();
     const fecha = `${
       (`00${date.getDate()}`).slice(-2)}/${(`00${date.getMonth() + 1}`).slice(-2)}/${
@@ -37,12 +80,13 @@ const contentMuro = {
       comentarios: comentario,
 
       date: fecha,
-      userid: uid,
-      nombre: displayNameData,
+      photoUrl: '',
+      userid: usuario,
+      nombre: name,
       meGusta: 0,
       dateEditado: '',
     }).then(() => {
-
+      console.log('se agrega comentario con foto');
     })
       .catch((error) => {
         console.error('Error adding document: ', error);
@@ -82,9 +126,10 @@ const contentMuro = {
         lista.innerHTML += `
         <div id="postDiv-${response.id}" class="postdiv">
         <p class="user">Usuario: ${response.data().nombre}</p>
-          <div class="text-area"> 
-          <p class="date"> ${response.data().date}</p>  
-          <p class=""> ${response.data().comentarios}</p>
+          <p class="date"> ${response.data().date}</p>
+          <div class="text-area">
+          <img class="img_coment" src="${response.data().photoUrl}" alt="">
+          <p class="coment"> ${response.data().comentarios}</p>
             <br>
             <p class="date_edit"> ${response.data().dateEditado}</p>
           </div>
