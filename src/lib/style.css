@@ -74,6 +74,12 @@ body {
  .user {
     font-family: 'Circular-Loom';
     font-weight: 500;
+    background-color: white;
+    border: groove;
+    width: 350px;
+    height: 100px;
+    border-radius: 20px;
+    display: -webkit-box;
 }
 .linea_fieldset {
     border: 0;
@@ -309,6 +315,21 @@ a {
     height: 60%;
 }
 .modal{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    background-color: rgb(230 223 223 / 96%) !important;
+    justify-content: center;
+    align-items: center;
+}
+.img_coment{
+    width: 100px;
+}
+.modalBorrar{
     position: fixed;
     top: 0;
     right: 0;

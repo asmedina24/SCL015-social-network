@@ -2,19 +2,22 @@ import contentMuro from '../function/muro.js';
 import contentLogin from '../function/login.js';
 
 export const muro = () => {
-  const currentUserData = firebase.auth().currentUser;
-  const displayName = currentUserData.displayName;
   const divMuro = document.createElement('div');
   const ViewMuro = `<div id="muro">
-  <div class= "saludoCierre">
-  <button id="singOut" class="btnSingOut">Cerrar Sesion</button>
-  <p class="saludo">Hola ${displayName} </p>
+  <div id="nameUser" >
   </div>
   <form id ="form_muro"><h3 class="titulo_muro">¿Qué estas pensando?</h3>
-  <input type= "text" class= "inputPublicar" id="coment_muro">
+  <textarea name="" id="coment_muro" cols="20" rows="10"></textarea>
+  <div id="muro fotos">
+  <label class="customFile">
+  <input type="file" id="img_muro" class="img_muro"> <button id="btn_subir">Subir</button>
+  </label>
+  <br>
+  </div>
   <button id="btn_muro">Publicar</button>
   </form>
    <div id="public_muro"></div>
+
  
   <br>
   <br>
@@ -25,19 +28,36 @@ export const muro = () => {
          `;
 
   divMuro.innerHTML = ViewMuro;
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user !== null) {
+      const nombre = document.querySelector('#nameUser');
+      nombre.innerHTML = `
+      <p class="saludo">Hola ${user.displayName}</p>
+      <button id="singOut" class="titulo_muro">Cerrar Sesion</button>
+      `;
+      // User is signed in.
+    } else {
+      // User is signed out.
 
-  const publicar = divMuro.querySelector(('#btn_muro'));
-  publicar.addEventListener('click', () => {
-    const formMuro = document.getElementById('form_muro');
-    contentMuro.guardar();
-    formMuro.reset();
+    }
+    const cerrar = divMuro.querySelector(('#singOut'));
+    cerrar.addEventListener('click', () => {
+      contentLogin.cerrarsesion();
+    });
+    const subir = divMuro.querySelector(('#btn_subir'));
+    subir.addEventListener('click', () => {
+      contentMuro.imagen();
+    });
+    const publicar = divMuro.querySelector(('#btn_muro'));
+    publicar.addEventListener('click', () => {
+      const formMuro = document.getElementById('form_muro');
+      // contentMuro.imagen(user.uid);
+      contentMuro.urlImg(user.uid, user.displayName);
+
+      formMuro.reset();
+    });
+    contentMuro.contenidoMuro(user.uid, user.displayName);
   });
-  const cerrar = divMuro.querySelector(('#singOut'));
-  cerrar.addEventListener('click', () => {
-    contentLogin.cerrarsesion();
-  });
-  contentMuro.contenidoMuro();
-  contentMuro.btnBorrar();
 
   return divMuro;
 };

@@ -1,14 +1,15 @@
-/* eslint-disable arrow-body-style */
 const contentLogin = {
   login: (mail, pass) => {
     firebase.auth().signInWithEmailAndPassword(mail, pass)
       .then(() => {
         contentLogin.emailOk(mail, pass);
-        contentLogin.estadoLogin();
-      })
-      .catch(() => {
-        alert('correo o contraseña invalidos');
+        // contentLogin.estadoLogin();
+        const usuario = firebase.auth().currentUser.uid;
+        const nombre = firebase.auth().currentUser.displayName;
+        const correo = firebase.auth().currentUser.email;
+        window.cookie = `usuario=${usuario};nombre=${nombre};correo=${correo}`;
       });
+    return window.cookie;
   },
   emailOk: () => {
     firebase.auth().onAuthStateChanged((user) => {

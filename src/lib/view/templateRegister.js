@@ -42,8 +42,7 @@ export const register = () => {
           const currentUserData = firebase.auth().currentUser;
           const uid = currentUserData.uid;
           firestore.collection('user').add({
-            nombre: `${name}    `,
-            apellido: lastName,
+            nombre: `${name}   ${lastName}`,
             correo: mail,
             contraseña: pass,
             userid: uid,
@@ -69,10 +68,10 @@ export const register = () => {
         // eslint-disable-next-line no-unused-vars
         const errorMensagge = error.message;
       });
-    firebase.auth().signOut().then(() => {
-      // eslint-disable-next-line no-alert
-      alert('verifica tu correo');
-    });
+    // firebase.auth().signOut().then(() => {
+    //   // eslint-disable-next-line no-alert
+    //   alert('verifica tu correo');
+    // });
   });
   return divRegister;
 };
