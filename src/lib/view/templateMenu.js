@@ -10,6 +10,5 @@ export const menu = () => {
       </div>  </nav>
     
      `;
-
   return ViewMenu;
 };

@@ -1,16 +1,15 @@
-/* eslint-disable arrow-body-style */
 const contentLogin = {
   login: (mail, pass) => {
     firebase.auth().signInWithEmailAndPassword(mail, pass)
       .then((user) => {
         contentLogin.emailOk(mail, pass);
-        contentLogin.estadoLogin();
-        // Signed in
-        // ...
-      })
-      .catch(() => {
-        alert('correo o contraseña invalidos');
+        // contentLogin.estadoLogin();
+        const usuario = firebase.auth().currentUser.uid;
+        const nombre = firebase.auth().currentUser.displayName;
+        const correo = firebase.auth().currentUser.email;
+        window.cookie = `usuario=${usuario};nombre=${nombre};correo=${correo}`;
       });
+    return window.cookie;
   },
   emailOk: () => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -26,18 +25,15 @@ const contentLogin = {
     });
   },
   estadoLogin: () => {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
-        const name = user.displayName;
-        const email = user.email;
-        // ...
-      }
-      // User is signed out
-      // ...
-    });
+    
+    // firebase.auth().onAuthStateChanged(() => {
+    //   const user = firebase.auth().currentUser;
+    //   if (user) {
+    //     // el usuario ha iniciado sesión , muestra los datos del usuario
+    //   } else {
+    //     // el usuario ha cerrado sesión, muestra el formulario de inicio de sesión
+    //   }
+    // });
   },
   // persisteLogin: (email, password) => {
   //   firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)

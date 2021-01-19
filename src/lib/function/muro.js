@@ -53,11 +53,10 @@ const contentMuro = {
         <p><img class="total_huella" src="../img/like.png">  ${objeto.size}</p></div>`;
       });
   },
-  contenidoMuro: () => {
-    contentLogin.estadoLogin();
-    const currentUserData = firebase.auth().currentUser;
-    const uid = currentUserData.uid;
-    const name = currentUserData.displayName;
+  contenidoMuro: (uid, name) => {
+    // const currentUserData = firebase.auth().currentUser;
+    // const name = currentUserData.displayName;
+    // const uid = currentUserData.uid;
     firestore.collection('coment').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
       const lista = document.querySelector('#public_muro');
       lista.innerHTML = '';
