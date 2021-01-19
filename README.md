@@ -18,8 +18,7 @@ Infopet es la red social, donde podrás encontrar y compartir información sobre
 
 ## 2. Planificación del Proyecto, diseño y prototipo.
 
-* Prototipo papel ([Bocetos](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/prototipo-papel.JPG))
-![Prototipo papel](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/prototipo-papel.JPG?raw=true)
+* Prototipo papel ([Boceto](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/prototipo-papel.JPG))
 
 * Planificacion con Trello ([Trello](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/trello-red-social.JPG))
 
