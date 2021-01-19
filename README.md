@@ -17,17 +17,18 @@ Hoy día las redes sociales estan invadiendo nuestras vidas, la mejor forma y sa
 Infopet es la red social, donde podrás encontrar y compartir información sobre el mundo de nuestras mascotas, tips de alimentación, ejercicios, recomendaciones, ayudar a otros animales, ver y compartir imagenes con todos los de la red.
 
 ## 2. Planificación del Proyecto, diseño y prototipo.
-### Prototipo papel
-([Bocetos](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/prototipo-papel.JPG?raw=true))
 
-### Trello
-([Trello](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/trello-red-social.JPG?raw=true))
+* Prototipo papel ([Bocetos](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/prototipo-papel.JPG))
+![Prototipo papel](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/prototipo-papel.JPG?raw=true)
 
-### Prototipo de Alta Fidelidad
-Este prototipo se presento a distintas personas recibiendo feeback realizar las modificaciones e  implementarlas el codigo.
-([Figma](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/pantalla-cel.JPG?raw=true))
-([Figma](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/pantalla-registro.JPG?raw=true))
-([Figma](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/pantalla-muro.JPG?raw=true))
+* Planificacion con Trello ([Trello](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/trello-red-social.JPG))
+
+
+* Este prototipo se presento a distintas personas recibiendo feeback realizar las modificaciones e  implementarlas el codigo.
+- Figma ([Figma](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/pantalla-cel.JPG))
+- Figma ([Figma](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/pantalla-registro.JPG))
+- Figma ([Figma](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/pantalla-muro.JPG))
+
 
 ## 3. Historia de Usuario
 
@@ -118,8 +119,8 @@ Definición de Terminado
 
 ## 4. Diseño Final
 ### Mobile
-([Mobile](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/proyecto-final-mobil.JPG?raw=true))
-([Mobile](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/proyecto-final-mobil-muro.JPG?raw=true))
+- Mobil ![Mobile](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/proyecto-final-mobil)
+- Mobil ![Mobile](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/proyecto-final-mobil-muro)
 
 ### Lapto
 
