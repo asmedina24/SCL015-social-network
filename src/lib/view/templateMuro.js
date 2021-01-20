@@ -1,5 +1,4 @@
 import contentMuro from '../function/muro.js';
-import contentLogin from '../function/login.js';
 
 export const muro = () => {
   const divMuro = document.createElement('div');
@@ -28,17 +27,14 @@ export const muro = () => {
       const nombre = document.querySelector('#nameUser');
       nombre.innerHTML = `
       <p class="saludo">Hola ${user.displayName}</p>
-      <button id="singOut">Cerrar Sesion</button>
+
       `;
       // User is signed in.
     } else {
       // User is signed out.
 
     }
-    const cerrar = divMuro.querySelector(('#singOut'));
-    cerrar.addEventListener('click', () => {
-      contentLogin.cerrarsesion();
-    });
+
     const subir = divMuro.querySelector(('#btn_subir'));
     subir.addEventListener('click', () => {
       contentMuro.imagen();

@@ -1,0 +1,19 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "coment",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "userid",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "doc.id",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

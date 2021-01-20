@@ -1,7 +1,9 @@
 const contentLogin = {
   login: (mail, pass) => {
+    console.log('llego al login');
     firebase.auth().signInWithEmailAndPassword(mail, pass)
       .then(() => {
+        console.log('entro');
         contentLogin.emailOk(mail, pass);
         // contentLogin.estadoLogin();
       });
@@ -9,10 +11,11 @@ const contentLogin = {
   emailOk: () => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
+        console.log('si esta el usuario');
         const emailVerified = user.emailVerified;
         if (emailVerified === true) {
-          window.location = ('#/muro');
-          console.log(`este es el user  ${user}`);
+          console.log('si esta ingresando');
+          window.location.href = '#/muro';
         } else {
           alert('verifica tu correo');
         }

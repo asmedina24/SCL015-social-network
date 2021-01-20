@@ -7,9 +7,9 @@ const showtemplate = (hash) => {
   const containerRoot = document.getElementById('root');
   const containerRoot2 = document.getElementById('root1');
   containerRoot.innerHTML = menu();
-
   switch (hash) {
     case '':
+      console.log('case vacio');
       containerRoot2.appendChild(home());
       break;
     case '#/home':
@@ -28,6 +28,11 @@ const showtemplate = (hash) => {
 };
 
 export const changeroute = (hash) => {
+  console.log(hash);
+  if (hash === '') {
+    console.log('hash es vacio');
+    return showtemplate(hash);
+  }
   if (hash === '#/home') {
     return showtemplate(hash);
   } if (hash === '#/register') {
