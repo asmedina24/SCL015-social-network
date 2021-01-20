@@ -12,7 +12,7 @@ body {
     width: 20px;
 }
 .btnContenMuro {
-    background-color: coral;
+   
 }
 .saludo {
     margin-left: 107px;
@@ -72,6 +72,18 @@ body {
     border-color: orange;
     background: whitesmoke;
     line-height: 17px;
+}
+.text-area-respuesta{
+    border: inset;
+    height: 71px;
+    border-radius: 20px;
+    text-align: center;
+    margin: 1%;
+    width: 50%;
+    padding: 3%;
+    border-color: rgb(33, 45, 209);
+    background: floralwhite;
+    line-height: 13px;
 }
 
 .linea_fieldset {

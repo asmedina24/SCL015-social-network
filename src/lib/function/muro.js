@@ -1,15 +1,12 @@
 const firestore = firebase.firestore();
 const contentMuro = {
-  ocultarbtn: (documento, usuario) => {
-    firestore.collection('coment').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const elemento = `contenedorBotones${documento}`;
-        const evento = document.getElementById(elemento);
-        if (doc.data().userid === usuario) {
-
+  ocultarbtn: (usuario) => {
+    firestore.collection('coment').onSnapshot((querySnapshot) => {
+      querySnapshot.forEach((response) => {
+        if (response.data().userid === usuario) {
+          const elemento = `contenedorBotones${response.id}`;
+          const evento = document.getElementById(elemento);
           evento.style.display = 'block';
-        } else {
-          evento.style.display = 'none';
         }
       });
     });
@@ -24,12 +21,12 @@ const contentMuro = {
           <div id="postRes_${response.id}">
           <p class="user">Usuario: ${response.data().nombre}</p>
             <p class="date"> ${response.data().date}</p>
-            <div class="text-area">
+            <div class="text-area-respuesta">
             <p class="coment"> ${response.data().comentarios}</p>
             </div>
             </div>`;
         } else {
-          console.log('pudrete');
+          console.log('-----');
         }
       });
     });
@@ -299,7 +296,7 @@ const contentMuro = {
         contentMuro.modalRespuesta(response, uid, name);
         contentMuro.obtnerRespuest(response.id);
         contentMuro.btnComentario(response.id);
-        contentMuro.ocultarbtn(response.id, uid);
+        contentMuro.ocultarbtn(uid);
       });
     });
   },
