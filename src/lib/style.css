@@ -5,22 +5,37 @@ body {
     margin: 0px;
     /* overflow: hidden; */
 }
+#postRes_{
+    background: #5FA9B6;
+}
+.btn-modal-borrar {
+    margin-bottom: 6px;
+}
 .ocultar{
     display: none;
+    margin-bottom: 12px;
 }
 .total_huella {
     width: 20px;
 }
-.btnContenMuro {
-   
+.user-res{
+    font-size: smaller;
+    margin-left: 146px;
+    line-height: 4px;
 }
+.date-resp{
+font-size: 12px;
+margin-left: 180px;
+margin-top: -6px;
+}
+
 .saludo {
     margin-left: 107px;
 } 
 .btnlike{
     position: absolute;
-    margin-left: 114px;
-    margin-top: -22px;
+    margin-left: 223px;
+    margin-top: 0px;
 }
 
 #nameUser{
@@ -56,6 +71,7 @@ body {
     justify-items: center;
     width: 94%;
     top: 27%;
+    margin-bottom: 15px;
     border: ridge;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     line-height: 17px;
@@ -75,15 +91,16 @@ body {
 }
 .text-area-respuesta{
     border: inset;
-    height: 71px;
+    height: 45px;
     border-radius: 20px;
     text-align: center;
     margin: 1%;
+    margin-left: 122px;
     width: 50%;
     padding: 3%;
     border-color: rgb(33, 45, 209);
     background: floralwhite;
-    line-height: 13px;
+    line-height: 7px;
 }
 
 .linea_fieldset {
@@ -329,6 +346,9 @@ a {
     justify-content: center;
     align-items: center;
 }
+#acept_borrar_{
+margin: 3px;
+}
 .img_coment{
     width: 100px;
 }
@@ -369,14 +389,19 @@ button.close {
     margin-top: 10%;
     margin-right: 30%;
     margin-bottom: 20%;
-    background: rgb(212 249 5 / 49%);
+    background: rgb(249 162 5 / 49%);
     border: 3px solid #F5ED02;
     box-sizing: border-box;
     border-radius: 20px;
     padding: 10px;
-    color: white ;
+    color: hsla(0,0%,13%,1);
     font-family: monospace;
     text-align: center;
+    font-weight: bold;
+}
+
+#btn_responder_{
+    margin-top: 10px;
 }
 .cuerpo_modal_{
     display: flex;

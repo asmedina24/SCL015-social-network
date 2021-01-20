@@ -19,14 +19,12 @@ const contentMuro = {
         if (response.data().idComent === documento) {
           lista.innerHTML += `
           <div id="postRes_${response.id}">
-          <p class="user">Usuario: ${response.data().nombre}</p>
-            <p class="date"> ${response.data().date}</p>
+          <p class="user-res">Usuario: ${response.data().nombre}</p>
+            <p class="date-resp"> ${response.data().date}</p>
             <div class="text-area-respuesta">
             <p class="coment"> ${response.data().comentarios}</p>
             </div>
             </div>`;
-        } else {
-          console.log('-----');
         }
       });
     });
@@ -187,7 +185,6 @@ const contentMuro = {
         console.log(url);
         firestore.collection('coment').add({
           comentarios: comentario,
-
           date: fecha,
           photoUrl: url,
           userid: usuario,
@@ -276,7 +273,7 @@ const contentMuro = {
           </div>
           <div class= "btnContenMuro">
           <div id="contenedor_cantidad_likes_${response.id}"></div>
-         <div id="contenedorBotones${response.id}">
+         <div id="contenedorBotones${response.id}" class="ocultar">
           <button id="delete_${response.id}" value="${response.id}">Borrar</button> 
           <button id="btn_edit_${response.id}" value="${response.id}">Editar</button>
           </div>
@@ -288,7 +285,6 @@ const contentMuro = {
          <br>`;
         contentMuro.getDetailLike(response.id, uid);
         contentMuro.getCantidadLikes(response.id);
-        contentMuro.modal(response, uid, name);
         contentMuro.modalBorrar(response, uid);
         contentMuro.btnEditar(response, uid);
         contentMuro.btnBorrar(response, uid);
@@ -297,6 +293,7 @@ const contentMuro = {
         contentMuro.obtnerRespuest(response.id);
         contentMuro.btnComentario(response.id);
         contentMuro.ocultarbtn(uid);
+        contentMuro.modal(response, uid, name);
       });
     });
   },
@@ -350,7 +347,7 @@ const contentMuro = {
         </div>
         <div class="cuerpo_modal_">
         <p>¿Estas seguro que quieres eliminar este comentario?</p>
-        <button id="acept_borrar_${documento.id}" value="${documento.id}">Aceptar</button>
+        <button id="acept_borrar_${documento.id}" class="btn-modal-borrar" value="${documento.id}">Aceptar</button>
         <button type="button" id="cance_borrar_${documento.id}" value="${documento.id}">Cancelar</button>
         </div>
       </div>
@@ -493,6 +490,7 @@ const contentMuro = {
             const nomobreModal = `modal_${documento.id}`;
             const modal = document.getElementById(nomobreModal);
             modal.style.display = 'none';
+            document.getElementById('seccion_modal').innerHTML = '';
             console.log('editado, publicado');
           } else {
             console.log('no publico editado');
@@ -508,6 +506,7 @@ const contentMuro = {
     btnLike.addEventListener('click', (e) => {
       const postRef = firestore.collection('coment').doc(e.target.value);
       postRef.get().then((doc) => {
+        console.log(doc.data());
         if (doc.exists && doc.id === e.target.value) {
           firestore.collection('likes').add({
             docuid: doc.id,
@@ -519,7 +518,7 @@ const contentMuro = {
             contentMuro.getCantidadLikes(doc.id);
           })
             .catch(() => {
-              console.error('error al actualizar likes');
+              console.log('error al actualizar likes');
             });
         } else {
           console.log('probando no deberias salir');

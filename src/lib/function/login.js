@@ -12,6 +12,7 @@ const contentLogin = {
         const emailVerified = user.emailVerified;
         if (emailVerified === true) {
           window.location = ('#/muro');
+          console.log(`este es el user  ${user}`);
         } else {
           alert('verifica tu correo');
         }
