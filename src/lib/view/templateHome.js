@@ -18,10 +18,10 @@ export const home = () => {
     <br>
     <br>
     </form>
-    <button type="button" id="loginMail">Ingresar</button>
+    <button type="button" id="loginMail" class="loginMail">Ingresar</button>
     <br>
     <br>
-    <h2>¿Aún no eres miembro?</h2>
+    <h3 class="miembrologin">¿Aún no eres miembro?</h3>
     
     <button class = "btn_register"><a href="#/register" class="btn">Únete ahora</a></button>
     <br>
