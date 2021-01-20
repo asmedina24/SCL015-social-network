@@ -356,6 +356,7 @@ const contentMuro = {
     btnLike.addEventListener('click', (e) => {
       const postRef = firestore.collection('coment').doc(e.target.value);
       postRef.get().then((doc) => {
+        console.log(doc.data());
         if (doc.exists && doc.id === e.target.value) {
           firestore.collection('likes').add({
             docuid: doc.id,
