@@ -12,4 +12,5 @@ const init = () => {
     contentLogin.estadoLogin();
   });
 };
+
 window.addEventListener('load', init());

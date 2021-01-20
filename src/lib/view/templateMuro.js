@@ -8,13 +8,8 @@ export const muro = () => {
   </div>
   <form id ="form_muro"><h3 class="titulo_muro">¿Qué estas pensando?</h3>
   <textarea name="" id="coment_muro" cols="20" rows="10"></textarea>
-  <div id="muro fotos">
-  <label class="customFile">
-  <input type="file" id="img_muro" class="img_muro"> <button id="btn_subir">Subir</button>
-  </label>
-  <br>
-  </div>
-  <button id="btn_muro">Publicar</button>
+  <input type="file" id="img_muro" class="img_muro"> <br> <button id="btn_subir">Adjuntar</button>
+   <button id="btn_muro">Publicar</button>
   </form>
    <div id="public_muro"></div>
 
@@ -28,12 +23,12 @@ export const muro = () => {
          `;
 
   divMuro.innerHTML = ViewMuro;
-  firebase.auth().onAuthStateChanged((user) => {
+  firebase.auth().onAuthStateChanged((user) => { // Autenticar usuario
     if (user !== null) {
       const nombre = document.querySelector('#nameUser');
       nombre.innerHTML = `
       <p class="saludo">Hola ${user.displayName}</p>
-      <button id="singOut" class="titulo_muro">Cerrar Sesion</button>
+      <button id="singOut">Cerrar Sesion</button>
       `;
       // User is signed in.
     } else {
@@ -53,12 +48,11 @@ export const muro = () => {
       const formMuro = document.getElementById('form_muro');
       // contentMuro.imagen(user.uid);
       contentMuro.urlImg(user.uid, user.displayName);
-
       formMuro.reset();
     });
+
     contentMuro.contenidoMuro(user.uid, user.displayName);
   });
 
-  // contentMuro.editar();
   return divMuro;
 };

@@ -1,29 +1,77 @@
-
+/* Pantalla Movil */
 @media (min-width : 350px) and (max-width: 768px) {
-
 body {
     display: block;
     margin: 0px;
     /* overflow: hidden; */
 }
-.postdiv{
+.ocultar{
+    display: none;
+}
+.total_huella {
+    width: 20px;
+}
+.btnContenMuro {
+    background-color: coral;
+}
+.saludo {
+    margin-left: 107px;
+} 
+.btnlike{
+    position: absolute;
+    margin-left: 114px;
+    margin-top: -22px;
+}
+
+#nameUser{
+ top: -28px;
+ display: flex;
+ position: absolute;
+ flex-flow:wrap-reverse;
+ width: 100%;
+};
+
+#singOut {
+    position: absolute;
+    /* margin-top: 23px; */
+    display: flex;
+    margin-left: 252px;
+    top: 1%;
+    width: 28%;
+}
+#btn_muro {
+    position: relative;
+    display: list-item;
+    margin-bottom: -28px;
+    margin-left: 4px;
+    margin-top: 9px;
+}
+
+.postdiv {
     background-color: white;
-    border-color: gray;
+    border-color: orange;
     border-width: 1px;
-    border-style: dotted;
+    justify-content: center;
+    border: solid;
+    justify-items: center;
+    width: 94%;
+    top: 27%;
+    border: ridge;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    line-height: 17px;
 }
 .text-area{
     background-color: white;
     border: groove;
-    width: 350px;
-    height: 100px;
+    height: 71px;
     border-radius: 20px;
-    background-color: white;
-    border: groove;
-    width: 350px;
-    height: 100px;
-    border-radius: 20px;
-    display: -webkit-box;
+    text-align: center;
+    margin: 1%;
+    width: 90%;
+    padding: 3%;
+    border-color: orange;
+    background: whitesmoke;
+    line-height: 17px;
 }
 
 .linea_fieldset {
@@ -44,29 +92,27 @@ body {
     top: 0px;
  }
 
- #coment_muro{
-    border-radius: 5%;
-    width: 60%;
+ #coment_muro {
+    border-radius: 5px;
+    width: 50%;
+    height: 50px;
     border-color: red;
-   
+    max-width: 500px;
+    max-height: 300px;
+    box-shadow: 0 10px 20px rgba(250,6,6,0.19), 0 6px 6px rgba(0,0,0,0.23);
  }
-#muro{
-    position: relative;
-    top: 300px;
-    /* left: 20px; */
+#muro {
+    position: absolute;
+    top: 303px;
     display: flex;
-    position: relative;
-    justify-content: center;
-    /* top: 250px; */
+    /* position: relative; */
+    /* justify-content: center; */
     background-image: url(../img/fondo_2.png);
     background-size: cover;
     flex-direction: column;
     width: 100%;
-    height: 100%;
 } 
-.saludo{
-    background-color: white;
-}
+
 #form_muro{
     position: relative;
     text-align: -webkit-center;
@@ -77,11 +123,6 @@ ul {
     display: flex;
     margin-left: -150px;
     font-weight: 900;
-    /* margin-top: -10%; */
-    /* width: 100%; */
-    /* padding: 0px; */
-    /* position: relative; */
-    /* background-color: #ECA12C; */
     justify-content: flex-end;
     position: relative;
 }
@@ -90,11 +131,9 @@ a {
     color: white;
     letter-spacing: 1px;
     text-decoration: none;
-    padding-left: 8px;
-    padding-right: 4px;
+    padding-left: 0px;
+    padding-right: 8px;
 }
-
-
 .login {
     margin: 10px;
     margin-top: -102%;
@@ -115,10 +154,9 @@ a {
     display: flex;
     width: 100%;
     max-width: fit-content;
-    /* height: 100%; */
-    /* margin-top: 0px; */
     position: absolute;
-    margin: 10px;
+    margin: 8px;
+    margin-left: -24px;
 }
 
 .contenc_home {
@@ -136,9 +174,10 @@ a {
 
 .img_centerpet {
     width: 100%;
-
 }
-
+.total_huellas{
+    text-align: center;
+}
 .caja {
     position: relative;
     display: inline-block;
@@ -146,20 +185,17 @@ a {
 }
 
 .caja_login {
-    margin-top: -20%;
-    text-align: -webkit-center;
+   margin-top: -20%;
+   text-align: -webkit-center;
 }
 
 #public_muro {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    list-style-type: disc;
-    /* margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px; */
-    padding-inline-start: 40px;
-    text-decoration: none;
+    list-style-type: disc; */
+    padding-inline-start: 30px;
+    /* text-decoration: none; */
+    margin-top: 35px;
 }  
 
 .img_circulo {
@@ -204,12 +240,10 @@ a {
 }
 #loginGoogle{
     position: relative;
-    /* background: url(./src/img/LogoGoogle.png); */
     background-repeat: no-repeat;
     background-size: 37px;
     text-align: center;
     line-height: 25px;
-
 }
 .img_face{
     width: 25px;
@@ -223,7 +257,6 @@ a {
     background-size: 37px;
     text-align: center;
     line-height: 25px;
-
 }
 .caja_register{
     display: flex;
@@ -232,7 +265,6 @@ a {
     top: 250px;
     background-image: url(../img/fondo_2.png);
     background-size: cover;
-
 }
 .contenedor_register{
     display: flex;
@@ -242,7 +274,6 @@ a {
     margin-top: 50px;
     margin-bottom: 320px;
     z-index: 1000;
-    
 }
 #root1{
     position: relative;
@@ -271,9 +302,7 @@ a {
 }
 .circulo_registro{
     position: absolute;
-    /* z-index: 500; */
     top: 400px;
-    /* opacity: 80%; */
     height: 60%;
 }
 .modal{
@@ -348,8 +377,17 @@ button.close {
     width: 290px;
     height: 50px;
 }
-.user{
+.user {
+    font-family: 'Circular-Loom';
+    font-weight: 500;
     background-color: white;
+    border: groove;
+    /* width: 331px; */
+    /* height: 100px; */
+    border-radius: 20px;
+    /* display: -webkit-box; */
+    /* margin: 5px; */
+    border: none;
 }
 .date{
     font-size: 12px;
@@ -359,8 +397,12 @@ button.close {
     color: gray;
     text-align: end;
 }
-
+#nav {
+    margin-right: 17px;
 }
+}
+
+/* Pantalla PC */
 
 @media (min-width : 769px) and (max-width: 1640px) {
 
@@ -369,7 +411,90 @@ button.close {
         margin: 0px;
         /* overflow: hidden; */
     }
+    .modalBorrar{
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: none;
+        background-color: rgb(230 223 223 / 96%) !important;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #nav {
+        margin-right: 31px;
+    }
+    .total_huella {
+        width: 20px;
+    }
+    .btnContenMuro {
+        background-color: coral;
+    }
+    .saludo {
+        margin-right: 13px; 
+    } 
+    .btnlike{
+        position: absolute;
+        margin-left: 114px;
+        margin-top: -22px;
     
+    }
+    .saludoCierre{
+     top: -28px;
+     display: flex;
+     position: absolute;
+     flex-flow: row-reverse;
+     width: 100%;
+    };
+    
+    .btnSingOut{
+        border: none;
+        background-color: #ECA12C;
+        color: white;
+        opacity: 73%;
+    }
+    #btn_muro {
+        position: relative;
+        display: list-item;
+        margin-bottom: -28px;
+        margin-left: 4px;
+        margin-top: 9px;
+    }
+    
+    .postdiv {
+        background-color: white;
+        border-color: orange;
+        border-width: 1px;
+        justify-content: center;
+        border: solid;
+        justify-items: center;
+        width: 94%;
+        top: 27%;
+        border: ridge;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        line-height: 17px;
+    }
+    .text-area{
+        background-color: white;
+        border: groove;
+        width: 250px;
+        height: 71px;
+        border-radius: 20px;
+        text-align: center;
+        margin: 1%;
+        width: 90%;
+        padding: 3%;
+        border-color: orange;
+        background: whitesmoke;
+        line-height: 17px;
+    }
+     .user {
+        font-family: 'Circular-Loom';
+        font-weight: 500;
+    }
     .linea_fieldset {
         border: 0;
         border-top: 1px solid;
@@ -388,26 +513,29 @@ button.close {
         top: 0px;
      }
     
-     #coment_muro{
-        border-radius: 5%;
-        width: 60%;
+     #coment_muro {
+        border-radius: 5px;
+        width: 50%;
+        height: 50px;
         border-color: red;
-       
+        max-width: 500px;
+        max-height: 300px;
+        box-shadow: 0 10px 20px rgba(250,6,6,0.19), 0 6px 6px rgba(0,0,0,0.23);
      }
-    #muro{
-        position: relative;
-        top: 300px;
-        /* left: 20px; */
+    #muro {
+        position: absolute;
+        top: 303px;
         display: flex;
-        position: relative;
-        justify-content: center;
-        /* top: 250px; */
+        /* position: relative; */
+        /* justify-content: center; */
         background-image: url(../img/fondo_2.png);
         background-size: cover;
+        /* background-size: cover; */
         flex-direction: column;
         width: 100%;
-        height: 100%;
+        /* height: 100%;*/
     } 
+    
     #form_muro{
         position: relative;
         text-align: -webkit-center;
@@ -418,11 +546,6 @@ button.close {
         display: flex;
         margin-left: -150px;
         font-weight: 900;
-        /* margin-top: -10%; */
-        /* width: 100%; */
-        /* padding: 0px; */
-        /* position: relative; */
-        /* background-color: #ECA12C; */
         justify-content: flex-end;
         position: relative;
     }
@@ -431,11 +554,9 @@ button.close {
         color: white;
         letter-spacing: 1px;
         text-decoration: none;
-        padding-left: 8px;
-        padding-right: 4px;
+        padding-left: 0px;
+        padding-right: 15px;
     }
-    
-    
     .login {
         margin: 10px;
         margin-top: -102%;
@@ -456,10 +577,9 @@ button.close {
         display: flex;
         width: 100%;
         max-width: fit-content;
-        /* height: 100%; */
-        /* margin-top: 0px; */
         position: absolute;
-        margin: 10px;
+        margin: 8px;
+        margin-left: -20px;
     }
     
     .contenc_home {
@@ -477,9 +597,10 @@ button.close {
     
     .img_centerpet {
         width: 100%;
-    
     }
-    
+    .total_huellas{
+        text-align: center;
+    }
     .caja {
         position: relative;
         display: inline-block;
@@ -487,20 +608,17 @@ button.close {
     }
     
     .caja_login {
-        margin-top: -20%;
-        text-align: -webkit-center;
+       margin-top: -20%;
+       text-align: -webkit-center;
     }
     
     #public_muro {
-        display: flex;
+        /* display: flex;
         flex-direction: column;
-        list-style-type: disc;
-        /* margin-block-start: 1em;
-        margin-block-end: 1em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px; */
-        padding-inline-start: 40px;
-        text-decoration: none;
+        list-style-type: disc; */
+        padding-inline-start: 30px;
+        /* text-decoration: none; */
+        margin-top: 35px;
     }  
     
     .img_circulo {
@@ -545,12 +663,10 @@ button.close {
     }
     #loginGoogle{
         position: relative;
-        /* background: url(./src/img/LogoGoogle.png); */
         background-repeat: no-repeat;
         background-size: 37px;
         text-align: center;
         line-height: 25px;
-    
     }
     .img_face{
         width: 25px;
@@ -564,7 +680,6 @@ button.close {
         background-size: 37px;
         text-align: center;
         line-height: 25px;
-    
     }
     .caja_register{
         display: flex;
@@ -573,7 +688,6 @@ button.close {
         top: 250px;
         background-image: url(../img/fondo_2.png);
         background-size: cover;
-    
     }
     .contenedor_register{
         display: flex;
@@ -583,7 +697,6 @@ button.close {
         margin-top: 50px;
         margin-bottom: 320px;
         z-index: 1000;
-        
     }
     #root1{
         position: relative;
@@ -612,265 +725,439 @@ button.close {
     }
     .circulo_registro{
         position: absolute;
-        /* z-index: 500; */
         top: 400px;
-        /* opacity: 80%; */
         height: 60%;
     }
+    .modal{
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: none;
+        background-color: rgb(230 223 223 / 96%) !important;
+        justify-content: center;
+        align-items: center;
     }
-    @media (min-width : 1641px) and (max-width: 2900px) {
+    .close{
+        float: right;
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1;
+        cursor: pointer;
+        color: red;
+        width: 40px;
+        z-index: 4000;
+        
+        font-family: 'pokemon-solid';
+        text-shadow: 3px 3px 3px white;
+    }
+    button.close {
+        padding: 0;
+        background-color: transparent;
+        border: 0;
+        -webkit-appearance: none;
+    }
+    .contenedor_modal_{
+        width: 100%;
+        margin-left: 30%;
+        margin-top: 10%;
+        margin-right: 30%;
+        margin-bottom: 20%;
+        background: rgb(212 249 5 / 49%);
+        border: 3px solid #F5ED02;
+        box-sizing: border-box;
+        border-radius: 20px;
+        padding: 10px;
+        color: white ;
+        font-family: monospace;
+        text-align: center;
+    }
+    .cuerpo_modal_{
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        width: 300px;
+        height: 100px;
+    }
+    .modal_coment{
+        width: 290px;
+        height: 50px;
+    }
+    .user{
+        background-color: white;
+        margin: 5px;
+    }
+    .date{
+        font-size: 12px;
+    }
+    .date_edit{
+        font-size: 12px;
+        color: gray;
+        text-align: end;
+    }
+    }
+    /* Pantalla Grande */
+ @media (min-width : 1641px) and (max-width: 2900px) {
 
-        body {
-            display: block;
-            margin: 0px;
-            /* overflow: hidden; */
-        }
+    body {
+        display: block;
+        margin: 0px;
+        /* overflow: hidden; */
+    }
+    
+    .saludo{
+        margin-right: 13px; 
+    } 
+    .saludoCierre{
+     top: -28px;
+     display: flex;
+     position: absolute;
+     flex-flow: row-reverse;
+     width: 100%;
+    };
+    
+    .btnSingOut {
+        border: none;
+        background-color: #ECA12C;
+        color: white;
+        opacity: 73%;
+     }
+     
+    
+    .postdiv{
+        background-color: white;
+        border-color: orange;
+        border-width: 1px;
+        justify-content: center;
+        border: solid;
+        justify-items: center;
+        width: 94%;
+        border: ridge;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        line-height: 17px;
+    }
+    .text-area{
+        background-color: white;
+        border: groove;
+        width: 250px;
+        height: 71px;
+        border-radius: 20px;
+        text-align: center;
+        margin: 1%;
+        width: 90%;
+        padding: 3%;
+        border-color: orange;
+        background: whitesmoke;
+        line-height: 17px;
+    }
+       
+    .user{
+        font-family: 'Circular-Loom';
+        font-weight: 500;
+    }
+    .linea_fieldset {
+        border: 0;
+        border-top: 1px solid;
+    }
+    .navegacion{
+        background-color: #ECA12C;
+        width: 100%;
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+     }
+    
+     #root {
+        position: absolute;
+        z-index: 2000;
+        top: 0px;
+     }
+    
+     #coment_muro {
+        border-radius: 5px;
+        width: 50%;
+        height: 50px;
+        border-color: red;
+        max-width: 500px;
+        max-height: 300px;
+        box-shadow: 0 10px 20px rgba(250,6,6,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    
+       
+     }
+    #muro{
+        position: absolute;
+        top: 303px;
+        display: flex;
+        /* position: relative; */
+        /* justify-content: center; */
+        background-image: url(../img/fondo_2.png);
+        background-size: cover;
+        /* background-size: cover; */
+        flex-direction: column;
+        width: 100%;
+        /* height: 100%;*/
+    } 
+    
+    #form_muro{
+        position: relative;
+        text-align: -webkit-center;
+    }
+    
+    ul {
+        font-size: x-large;
+        display: flex;
+        margin-left: -150px;
+        font-weight: 900;
+        justify-content: flex-end;
+        position: relative;
+    }
+    
+    a {
+        color: white;
+        letter-spacing: 1px;
+        text-decoration: none;
+        padding-left: 0px;
+        padding-right: 15px;
+    }
+    .login {
+        margin: 10px;
+        margin-top: -102%;
+        text-align: center;
+        width: 70%;
+        background-color: white;
+        border: none;
+        position: relative;
+    }
+    
+    .btn_register {
+        background-color: #5FA9B6;
+        font-size: larger;
+        margin-top: -10px;
+    }
+    
+    .img_infopet {
+        display: flex;
+        width: 100%;
+        max-width: fit-content;
+        position: absolute;
+        margin: 8px;
+        margin-left: -20px;
+    }
+    
+    .contenc_home {
+        display: flex;
+        text-align: center;
+        margin-top: -40%;
+        position: absolute;
+        color: black;
+        margin-left: 20%;
+    }
+    .home_style{
+        position: relative;
+        top: 250px;
+    }
+    
+    .img_centerpet {
+        width: 100%;
+    }
+    .total_huellas{
+        text-align: center;
+    }
+    .caja {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+    }
+    
+    
+    .caja_login {
+       margin-top: -20%;
+       text-align: -webkit-center;
+    }
+    
+    #public_muro {
+        /* display: flex;
+        flex-direction: column;
+        list-style-type: disc; */
+        padding-inline-start: 30px;
+        /* text-decoration: none; */
+    }  
+    
+    .img_circulo {
+        margin-top: -7%;
+        width: 100%;
+    
+    }
+    .img_mail{
+        position: relative;
+        top: 50px;
+        left: -50px;
+    }
+    .img_pass{
+        position: relative;
+        top: 43px;
+        left: -45px;
+    }
+    #form_login{
+        display: inline-grid;
+        margin-top: -100px;
+    }
+    #login{
+        position: relative;
+        width: 109px;
+        height: 34px;
+        left: 35px;
+        color: white;
+        background: #ECA12C;
+        border: 1px solid #ECA12C;
+        box-sizing: border-box;
+        margin-top: -20px;
+    }
+    .input_login{
+        border: 0;
+        border-bottom: 1px solid;
+    }
+    .img_google{
+        width: 25px;
+        position: relative;
+        top: 5px;
+        left: -3px;
+    }
+    #loginGoogle{
+        position: relative;
+        background-repeat: no-repeat;
+        background-size: 37px;
+        text-align: center;
+        line-height: 25px;
+    }
+    .img_face{
+        width: 25px;
+        position: relative;
+        top: 5px;
+        left: -3px;
+    }
+    #loginFace{
+        position: relative;
+        background-repeat: no-repeat;
+        background-size: 37px;
+        text-align: center;
+        line-height: 25px;
+    }
+    .caja_register{
+        display: flex;
+        position: relative;
+        justify-content: center;
+        top: 250px;
+        background-image: url(../img/fondo_2.png);
+        background-size: cover;
+    }
+    .contenedor_register{
+        display: flex;
+        text-align: center;
+        background-color: white;
+        height: 300px;
+        margin-top: 50px;
+        margin-bottom: 320px;
+        z-index: 1000;
+    }
+    #root1{
+        position: relative;
+        top: -200px;
+    }
+    #registrar{
+        position: relative;
+        width: 109px;
+        height: 34px;
+        color: white;
+        background:  #5FA9B6;
+        border: 1px solid  #5FA9B6;
+        box-sizing: border-box;
+    }
+    .titulo_muro{
+        background-color: navajowhite;
+    }
+    .contenido_muro{
+        background-color: white;
+        margin: 50px;
+    }
+    .perritos_registro{
+        width: 60%;
+        top: 450px;
+        position: absolute;
+    }
+    .circulo_registro{
+        position: absolute;
+        top: 400px;
+        height: 60%;
+    }
+    .modal{
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: none;
+        background-color: rgb(230 223 223 / 96%) !important;
+        justify-content: center;
+        align-items: center;
+    }
+    .close{
+        float: right;
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1;
+        cursor: pointer;
+        color: red;
+        width: 40px;
+        z-index: 4000;
         
-        .linea_fieldset {
-            border: 0;
-            border-top: 1px solid;
-        }
-        .navegacion{
-            background-color: #ECA12C;
-            width: 100%;
-            position: fixed;
-            display: flex;
-            flex-direction: column;
-         }
-        
-         #root {
-            position: absolute;
-            z-index: 2000;
-            top: 0px;
-         }
-        
-         #coment_muro{
-            border-radius: 5%;
-            width: 60%;
-            border-color: red;
-           
-         }
-        #muro{
-            position: relative;
-            top: 300px;
-            /* left: 20px; */
-            display: flex;
-            position: relative;
-            justify-content: center;
-            /* top: 250px; */
-            background-image: url(../img/fondo_2.png);
-            background-size: cover;
-            flex-direction: column;
-            width: 100%;
-            height: 100%;
-        } 
-        #form_muro{
-            position: relative;
-            text-align: -webkit-center;
-        }
-        
-        ul {
-            font-size: x-large;
-            display: flex;
-            margin-left: -150px;
-            font-weight: 900;
-            /* margin-top: -10%; */
-            /* width: 100%; */
-            /* padding: 0px; */
-            /* position: relative; */
-            /* background-color: #ECA12C; */
-            justify-content: flex-end;
-            position: relative;
-        }
-        
-        a {
-            color: white;
-            letter-spacing: 1px;
-            text-decoration: none;
-            padding-left: 8px;
-            padding-right: 4px;
-        }
-        
-        
-        .login {
-            margin: 10px;
-            margin-top: -102%;
-            text-align: center;
-            width: 70%;
-            background-color: white;
-            border: none;
-            position: relative;
-        }
-        
-        .btn_register {
-            background-color: #5FA9B6;
-            font-size: larger;
-            margin-top: -10px;
-        }
-        
-        .img_infopet {
-            display: flex;
-            width: 100%;
-            max-width: fit-content;
-            /* height: 100%; */
-            /* margin-top: 0px; */
-            position: absolute;
-            margin: 10px;
-        }
-        
-        .contenc_home {
-            display: flex;
-            text-align: center;
-            margin-top: -40%;
-            position: absolute;
-            color: black;
-            margin-left: 20%;
-        }
-        .home_style{
-            position: relative;
-            top: 250px;
-        }
-        
-        .img_centerpet {
-            width: 100%;
-        
-        }
-        
-        .caja {
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-        
-        .caja_login {
-            margin-top: -20%;
-            text-align: -webkit-center;
-        }
-        
-        #public_muro {
-            display: flex;
-            flex-direction: column;
-            list-style-type: disc;
-            /* margin-block-start: 1em;
-            margin-block-end: 1em;
-            margin-inline-start: 0px;
-            margin-inline-end: 0px; */
-            padding-inline-start: 40px;
-            text-decoration: none;
-        }  
-        
-        .img_circulo {
-            margin-top: -7%;
-            width: 100%;
-        
-        }
-        .img_mail{
-            position: relative;
-            top: 50px;
-            left: -50px;
-        }
-        .img_pass{
-            position: relative;
-            top: 43px;
-            left: -45px;
-        }
-        #form_login{
-            display: inline-grid;
-            margin-top: -100px;
-        }
-        #login{
-            position: relative;
-            width: 109px;
-            height: 34px;
-            left: 35px;
-            color: white;
-            background: #ECA12C;
-            border: 1px solid #ECA12C;
-            box-sizing: border-box;
-            margin-top: -20px;
-        }
-        .input_login{
-            border: 0;
-            border-bottom: 1px solid;
-        }
-        .img_google{
-            width: 25px;
-            position: relative;
-            top: 5px;
-            left: -3px;
-        }
-        #loginGoogle{
-            position: relative;
-            /* background: url(./src/img/LogoGoogle.png); */
-            background-repeat: no-repeat;
-            background-size: 37px;
-            text-align: center;
-            line-height: 25px;
-        
-        }
-        .img_face{
-            width: 25px;
-            position: relative;
-            top: 5px;
-            left: -3px;
-        }
-        #loginFace{
-            position: relative;
-            background-repeat: no-repeat;
-            background-size: 37px;
-            text-align: center;
-            line-height: 25px;
-        
-        }
-        .caja_register{
-            display: flex;
-            position: relative;
-            justify-content: center;
-            top: 250px;
-            background-image: url(../img/fondo_2.png);
-            background-size: cover;
-        
-        }
-        .contenedor_register{
-            display: flex;
-            text-align: center;
-            background-color: white;
-            height: 300px;
-            margin-top: 50px;
-            margin-bottom: 320px;
-            z-index: 1000;
-            
-        }
-        #root1{
-            position: relative;
-            top: -200px;
-        }
-        #registrar{
-            position: relative;
-            width: 109px;
-            height: 34px;
-            color: white;
-            background:  #5FA9B6;
-            border: 1px solid  #5FA9B6;
-            box-sizing: border-box;
-        }
-        .titulo_muro{
-            background-color: navajowhite;
-        }
-        .contenido_muro{
-            background-color: white;
-            margin: 50px;
-        }
-        .perritos_registro{
-            width: 60%;
-            top: 450px;
-            position: absolute;
-        }
-        .circulo_registro{
-            position: absolute;
-            /* z-index: 500; */
-            top: 400px;
-            /* opacity: 80%; */
-            height: 60%;
-        }
+        font-family: 'pokemon-solid';
+        text-shadow: 3px 3px 3px white;
+    }
+    button.close {
+        padding: 0;
+        background-color: transparent;
+        border: 0;
+        -webkit-appearance: none;
+    }
+    .contenedor_modal_{
+        width: 100%;
+        margin-left: 30%;
+        margin-top: 10%;
+        margin-right: 30%;
+        margin-bottom: 20%;
+        background: rgb(212 249 5 / 49%);
+        border: 3px solid #F5ED02;
+        box-sizing: border-box;
+        border-radius: 20px;
+        padding: 10px;
+        color: white ;
+        font-family: monospace;
+        text-align: center;
+    }
+    .cuerpo_modal_{
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        width: 300px;
+        height: 100px;
+    }
+    .modal_coment{
+        width: 290px;
+        height: 50px;
+    }
+    .user{
+        background-color: white;
+    }
+    .date{
+        font-size: 12px;
+    }
+    .date_edit{
+        font-size: 12px;
+        color: gray;
+        text-align: end;
+    }
         }

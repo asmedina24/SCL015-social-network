@@ -1,57 +1,7 @@
 const firestore = firebase.firestore();
 const contentMuro = {
-  ocultarbtn: (documento, usuario) => {
-    firestore.collection('coment').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const elemento = `contenedorBotones${documento}`;
-        const evento = document.getElementById(elemento);
-        if (doc.data().userid === usuario) {
-
-          evento.style.display = 'block';
-        } else {
-          evento.style.display = 'none';
-        }
-      });
-    });
-  },
-  obtnerRespuest: (documento) => {
-    firestore.collection('responder').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
-      const lista = document.querySelector(`#contenedor_respuesta_${documento}`);
-      lista.innerHTML = '';
-      querySnapshot.forEach((response) => {
-        if (response.data().idComent === documento) {
-          lista.innerHTML += `
-          <div id="postRes_${response.id}">
-          <p class="user">Usuario: ${response.data().nombre}</p>
-            <p class="date"> ${response.data().date}</p>
-            <div class="text-area">
-            <p class="coment"> ${response.data().comentarios}</p>
-            </div>
-            </div>`;
-        } else {
-          console.log('pudrete');
-        }
-      });
-    });
-  },
-  btnComentario: (documento) => {
-    firestore.collection('coment').onSnapshot(() => {
-      const idbtResp = document.querySelectorAll(`#Comentarios_${documento}`);
-      idbtResp.forEach((respComent) => {
-        respComent.addEventListener('click', () => {
-          const elemento = document.querySelector(`#contenedor_respuesta_${documento}`);
-          if (!elemento) {
-            return true;
-          }
-          if (elemento.style.display === 'none') {
-            elemento.style.display = 'block';
-          } else {
-            elemento.style.display = 'none';
-          }
-          return true;
-        });
-      });
-    });
+  obtnerRespuest: () => {
+  
   },
   btnRespoComen: (documento) => {
     firestore.collection('coment').onSnapshot(() => {
@@ -65,8 +15,6 @@ const contentMuro = {
             const nombreModal = `modalResponde_${documento.id}`;
             const modal = document.getElementById(nombreModal);
             modal.style.display = 'flex';
-            const inputResp = document.getElementById(`respuesta_modal_${documento.id}`);
-            inputResp.value = '';
           } else {
             console.log('No such document!');
           }
@@ -264,6 +212,9 @@ const contentMuro = {
       });
   },
   contenidoMuro: (uid, name) => {
+    // const currentUserData = firebase.auth().currentUser;
+    // const name = currentUserData.displayName;
+    // const uid = currentUserData.uid;
     firestore.collection('coment').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
       const lista = document.querySelector('#public_muro');
       lista.innerHTML = '';
@@ -279,16 +230,13 @@ const contentMuro = {
           </div>
           <div class= "btnContenMuro">
           <div id="contenedor_cantidad_likes_${response.id}"></div>
-         <div id="contenedorBotones${response.id}">
           <button id="delete_${response.id}" value="${response.id}">Borrar</button> 
           <button id="btn_edit_${response.id}" value="${response.id}">Editar</button>
-          </div>
           <div id="contenedor_botnes_like_${response.id}"></div>
           <button id="responder_${response.id}" value="${response.id}">Responder</button>
-          <button id="Comentarios_${response.id}" value="${response.id}">Mostrar Comentario</button>
-          <div id="contenedor_respuesta_${response.id}" class="ocultar"></div>
-          </div>
-         <br>`;
+        </div>
+        
+        <br>`;
         contentMuro.getDetailLike(response.id, uid);
         contentMuro.getCantidadLikes(response.id);
         contentMuro.modal(response, uid, name);
@@ -297,9 +245,6 @@ const contentMuro = {
         contentMuro.btnBorrar(response, uid);
         contentMuro.btnRespoComen(response);
         contentMuro.modalRespuesta(response, uid, name);
-        contentMuro.obtnerRespuest(response.id);
-        contentMuro.btnComentario(response.id);
-        contentMuro.ocultarbtn(response.id, uid);
       });
     });
   },
@@ -511,7 +456,6 @@ const contentMuro = {
     btnLike.addEventListener('click', (e) => {
       const postRef = firestore.collection('coment').doc(e.target.value);
       postRef.get().then((doc) => {
-        console.log(doc.data());
         if (doc.exists && doc.id === e.target.value) {
           firestore.collection('likes').add({
             docuid: doc.id,
