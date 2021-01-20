@@ -3,7 +3,7 @@ import contentLogin from '../function/login.js';
 export const menu = () => {
   const ViewMenu = ` 
   <nav class="navegacion">
-  <img class="img_infopet" src="./img/group_2.png">
+  <img class="img_infopet" src="https://i.imgur.com/kIhEsP5.png">
   <div id='nav' class="nav">   
     <ul> 
       <a href="#/home">Home</a>

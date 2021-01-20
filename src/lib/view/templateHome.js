@@ -17,8 +17,8 @@ export const home = () => {
     <input type="password" class="input_login" id = "pass_login" alt="" value="" name="" required>
     <br>
     <br>
-    <button id="login">Ingresar</button>
     </form>
+    <button type="button" id="loginMail">Ingresar</button>
     <br>
     <br>
     <h2>¿Aún no eres miembro?</h2>
@@ -48,9 +48,10 @@ export const home = () => {
   btnFace.addEventListener('click', () => {
     contentLogin.loginFace();
   });
-  const loginNew = divHome.querySelector('#login');
+  const loginNew = divHome.querySelector('#loginMail');
 
   loginNew.addEventListener('click', () => {
+    console.log('Hola');
     const mailLogin = document.getElementById('mail_login').value;
     const passLogin = document.getElementById('pass_login').value;
     contentLogin.login(mailLogin, passLogin);

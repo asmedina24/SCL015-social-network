@@ -1,6 +1,5 @@
 import contentMuro from '../function/muro.js';
 
-
 export const muro = () => {
   const divMuro = document.createElement('div');
   const ViewMuro = `<div id="muro">
