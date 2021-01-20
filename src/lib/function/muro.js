@@ -1,15 +1,12 @@
 const firestore = firebase.firestore();
 const contentMuro = {
-  ocultarbtn: (documento, usuario) => {
-    firestore.collection('coment').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const elemento = `contenedorBotones${documento}`;
-        const evento = document.getElementById(elemento);
-        if (doc.data().userid === usuario) {
-
+  ocultarbtn: (usuario) => {
+    firestore.collection('coment').onSnapshot((querySnapshot) => {
+      querySnapshot.forEach((response) => {
+        if (response.data().userid === usuario) {
+          const elemento = `contenedorBotones${response.id}`;
+          const evento = document.getElementById(elemento);
           evento.style.display = 'block';
-        } else {
-          evento.style.display = 'none';
         }
       });
     });
@@ -28,8 +25,6 @@ const contentMuro = {
             <p class="coment"> ${response.data().comentarios}</p>
             </div>
             </div>`;
-        } else {
-          console.log('pudrete');
         }
       });
     });
@@ -279,7 +274,7 @@ const contentMuro = {
           </div>
           <div class= "btnContenMuro">
           <div id="contenedor_cantidad_likes_${response.id}"></div>
-         <div id="contenedorBotones${response.id}">
+         <div id="contenedorBotones${response.id}" class="ocultar">
           <button id="delete_${response.id}" value="${response.id}">Borrar</button> 
           <button id="btn_edit_${response.id}" value="${response.id}">Editar</button>
           </div>
@@ -291,7 +286,6 @@ const contentMuro = {
          <br>`;
         contentMuro.getDetailLike(response.id, uid);
         contentMuro.getCantidadLikes(response.id);
-        contentMuro.modal(response, uid, name);
         contentMuro.modalBorrar(response, uid);
         contentMuro.btnEditar(response, uid);
         contentMuro.btnBorrar(response, uid);
@@ -299,7 +293,8 @@ const contentMuro = {
         contentMuro.modalRespuesta(response, uid, name);
         contentMuro.obtnerRespuest(response.id);
         contentMuro.btnComentario(response.id);
-        contentMuro.ocultarbtn(response.id, uid);
+        contentMuro.ocultarbtn(uid);
+        contentMuro.modal(response, uid, name);
       });
     });
   },
@@ -523,7 +518,7 @@ const contentMuro = {
             contentMuro.getCantidadLikes(doc.id);
           })
             .catch(() => {
-              console.error('error al actualizar likes');
+              console.log('error al actualizar likes');
             });
         } else {
           console.log('probando no deberias salir');

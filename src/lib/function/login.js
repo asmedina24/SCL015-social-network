@@ -1,3 +1,5 @@
+import contentMuro from './muro.js';
+
 const contentLogin = {
   login: (mail, pass) => {
     firebase.auth().signInWithEmailAndPassword(mail, pass)
@@ -12,6 +14,7 @@ const contentLogin = {
         const emailVerified = user.emailVerified;
         if (emailVerified === true) {
           window.location = ('#/muro');
+          console.log(`este es el user  ${user}`);
         } else {
           alert('verifica tu correo');
         }

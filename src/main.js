@@ -9,7 +9,6 @@ const init = () => {
   window.addEventListener('hashchange', () => {
     document.getElementById('root1').innerHTML = '';
     changeroute(window.location.hash);
-    contentLogin.estadoLogin();
   });
 };
 
