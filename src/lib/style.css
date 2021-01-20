@@ -5,6 +5,9 @@ body {
     margin: 0px;
     /* overflow: hidden; */
 }
+.ocultar{
+    display: none;
+}
 .total_huella {
     width: 20px;
 }
@@ -12,29 +15,29 @@ body {
     background-color: coral;
 }
 .saludo {
-    margin-right: 13px; 
+    margin-left: 107px;
 } 
 .btnlike{
     position: absolute;
     margin-left: 114px;
     margin-top: -22px;
-
 }
-.saludoCierre{
+
+#nameUser{
  top: -28px;
  display: flex;
  position: absolute;
- flex-flow: row-reverse;
+ flex-flow:wrap-reverse;
  width: 100%;
 };
 
 #singOut {
-    border: none;
-    background-color: #ECA12C;
-    color: white;
-    opacity: 73%;
-    margin-right: 13px;
-    margin-left: 5px;
+    position: absolute;
+    /* margin-top: 23px; */
+    display: flex;
+    margin-left: 252px;
+    top: 1%;
+    width: 28%;
 }
 #btn_muro {
     position: relative;
@@ -60,7 +63,6 @@ body {
 .text-area{
     background-color: white;
     border: groove;
-    width: 250px;
     height: 71px;
     border-radius: 20px;
     text-align: center;
@@ -71,16 +73,7 @@ body {
     background: whitesmoke;
     line-height: 17px;
 }
- .user {
-    font-family: 'Circular-Loom';
-    font-weight: 500;
-    background-color: white;
-    border: groove;
-    width: 350px;
-    height: 100px;
-    border-radius: 20px;
-    display: -webkit-box;
-}
+
 .linea_fieldset {
     border: 0;
     border-top: 1px solid;
@@ -116,10 +109,8 @@ body {
     /* justify-content: center; */
     background-image: url(../img/fondo_2.png);
     background-size: cover;
-    /* background-size: cover; */
     flex-direction: column;
     width: 100%;
-    /* height: 100%;*/
 } 
 
 #form_muro{
@@ -141,7 +132,7 @@ a {
     letter-spacing: 1px;
     text-decoration: none;
     padding-left: 0px;
-    padding-right: 9px;
+    padding-right: 8px;
 }
 .login {
     margin: 10px;
@@ -386,9 +377,17 @@ button.close {
     width: 290px;
     height: 50px;
 }
-.user{
+.user {
+    font-family: 'Circular-Loom';
+    font-weight: 500;
     background-color: white;
-    margin: 5px;
+    border: groove;
+    /* width: 331px; */
+    /* height: 100px; */
+    border-radius: 20px;
+    /* display: -webkit-box; */
+    /* margin: 5px; */
+    border: none;
 }
 .date{
     font-size: 12px;
@@ -411,6 +410,18 @@ button.close {
         display: block;
         margin: 0px;
         /* overflow: hidden; */
+    }
+    .modalBorrar{
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: none;
+        background-color: rgb(230 223 223 / 96%) !important;
+        justify-content: center;
+        align-items: center;
     }
 
     #nav {

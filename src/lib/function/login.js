@@ -4,12 +4,7 @@ const contentLogin = {
       .then(() => {
         contentLogin.emailOk(mail, pass);
         // contentLogin.estadoLogin();
-        const usuario = firebase.auth().currentUser.uid;
-        const nombre = firebase.auth().currentUser.displayName;
-        const correo = firebase.auth().currentUser.email;
-        window.cookie = `usuario=${usuario};nombre=${nombre};correo=${correo}`;
       });
-    return window.cookie;
   },
   emailOk: () => {
     firebase.auth().onAuthStateChanged((user) => {
