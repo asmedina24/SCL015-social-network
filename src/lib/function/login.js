@@ -1,5 +1,3 @@
-import contentMuro from './muro.js';
-
 const contentLogin = {
   login: (mail, pass) => {
     firebase.auth().signInWithEmailAndPassword(mail, pass)

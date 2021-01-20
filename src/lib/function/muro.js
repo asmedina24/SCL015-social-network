@@ -491,6 +491,7 @@ const contentMuro = {
             const nomobreModal = `modal_${documento.id}`;
             const modal = document.getElementById(nomobreModal);
             modal.style.display = 'none';
+            document.getElementById('seccion_modal').innerHTML = '';
             console.log('editado, publicado');
           } else {
             console.log('no publico editado');
