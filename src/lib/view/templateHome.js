@@ -4,7 +4,6 @@ export const home = () => {
   const divHome = document.createElement('div');
   const viewHome = ` <div class = "home_style">
   <img class = "img_centerpet" src="./img/Fondo.jpg">
-<h1 class = "contenc_home"></h1> 
 <div class= "caja_login">
 <img class="img_circulo" src="./img/Ellipse_2.png">
 <fieldset class= "login">

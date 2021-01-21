@@ -1,61 +1,60 @@
 /* Pantalla Movil */
 @media (min-width : 350px) and (max-width: 768px) {
 body {
-    display: block;
-    margin: 0px;
-    /* overflow: hidden; */
+   display: block;
+   margin: 0px;
+   /* overflow: hidden; */
 }
 .miembrologin{
-        line-height: 1px;
+   line-height: 7px;
 }
 #postRes_{
-    background: #5FA9B6;
+   background: #5FA9B6;
 }
 .btn-modal-borrar {
-    margin-bottom: 6px;
+   margin-bottom: 6px;
 }
 .ocultar{
-    display: none;
-    margin-bottom: 12px;
+   display: none;
+   margin-bottom: 12px;
 }
 .total_huella {
-    width: 20px;
+   width: 20px;
 }
 .user-res{
-    font-size: smaller;
-    margin-left: 146px;
-    line-height: 4px;
+   font-size: smaller;
+   margin-left: 146px;
+   line-height: 4px;
 }
 .date-resp{
-font-size: 12px;
-margin-left: 180px;
-margin-top: -6px;
+   font-size: 12px;
+   margin-left: 180px;
+   margin-top: -6px;
 }
-
 .saludo {
     margin-left: 107px;
 } 
 .btnlike{
-    position: absolute;
-    margin-left: 223px;
-    margin-top: 0px;
+  position: absolute;
+  margin-left: 223px;
+  margin-top: 0px;
 }
 
 #nameUser{
- top: -28px;
- display: flex;
- position: absolute;
- flex-flow:wrap-reverse;
- width: 100%;
+  top: -28px;
+  display: flex;
+  position: absolute;
+  flex-flow:wrap-reverse;
+  width: 100%;
 };
 
 #singOut {
-    position: absolute;
-    /* margin-top: 23px; */
-    display: flex;
-    margin-left: 252px;
-    top: 1%;
-    width: 28%;
+   position: absolute;
+   /* margin-top: 23px; */
+   display: flex;
+   margin-left: 252px;
+   top: 1%;
+   width: 28%;
 }
 #btn_muro {
     position: relative;
@@ -161,20 +160,19 @@ ul {
 
 a {
     color: white;
-    letter-spacing: 1px;
     text-decoration: none;
     padding-left: 0px;
     padding-right: 8px;
 }
 .login {
-    margin: 10px;
-    margin-top: -106%;
+    margin: 7px; 
+    margin-top: -99%;
     text-align: center;
-    width: 59%;
+    width: 55%;
     background-color: white;
     border: none;
-    position: absolute;
-    margin-left: 60px;
+    position: relative;
+    margin-left: 8px;
     line-height: 8px;
 }
 
@@ -235,7 +233,6 @@ a {
 .img_circulo {
     margin-top: -7%;
     width: 100%;
-
 }
 .img_mail{
     position: relative;
@@ -254,15 +251,15 @@ a {
 
 }
 .loginMail{
-    position: relative;
-    width: 107px;
-    height: 33px;
-    left: 1px;
+    position: absolute;
+    /* width: 100px; */
+    height: 31px;
+    left: 83px;
     color: white;
     background: #ECA12C;
     border: 1px solid #ECA12C;
     box-sizing: border-box;
-    margin-top: -9px;
+    margin-top: 106px;
 }
 .input_login{
     border: 0;
@@ -636,7 +633,7 @@ button.close {
     }
     .home_style{
         position: relative;
-        top: 250px;
+        top: 216px;
     }
     
     .img_centerpet {

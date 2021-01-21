@@ -28,8 +28,8 @@ export const register = () => {
     `;
 
   divRegister.innerHTML = viewRegister;
-  const enviar = divRegister.querySelector('#form_register');
-  enviar.addEventListener('submit', () => {
+  const enviar = divRegister.querySelector('#registrar');
+  enviar.addEventListener('click', () => {
     const mail = document.getElementById('mail_register').value;
     const pass = document.getElementById('pass_register').value;
     const name = document.getElementById('name_register').value;
