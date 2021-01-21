@@ -21,9 +21,9 @@ export const home = () => {
     <button type="button" id="loginMail">Ingresar</button>
     <br>
     <br>
-    <h2>¿Aún no eres miembro?</h2>
+    <h3>¿Aún no eres miembro?</h3>
     
-    <button class = "btn_register"><a href="#/register" class="btn">Únete ahora</a></button>
+    <button class = "btn_register"><a href="#/register" class="btn_register">Únete ahora</a></button>
     <br>
     <br>
     <fieldset class= "linea_fieldset">
