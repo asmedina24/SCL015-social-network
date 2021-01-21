@@ -56,6 +56,7 @@ export const register = () => {
       })
       .then(() => {
         const user = firebase.auth().currentUser;
+        alert('verifica tu correo');
         console.log(user);
         const uid = user.uid;
         return user.updateProfile({

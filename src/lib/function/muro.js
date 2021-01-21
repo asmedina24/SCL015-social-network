@@ -71,7 +71,7 @@ const contentMuro = {
             }
           });
         });
-      });
+      }); 
     });
   },
   modalRespuesta: (documento, usuario, name) => {
@@ -248,8 +248,9 @@ const contentMuro = {
          <button id="like_${documento}" class ="btn_like" value="${documento}">Like</button>
         </div >
         <div id="div_dislike_${documento}" style="display:${(objeto.size > 0 ? 'block' : 'none')};">
-          <button id="deslike_${documento}" class="btn_dislike" value="${documento}">Dislike</button>
-        </div> </div>`;
+          <button id="deslike_${documento}" class="btn_dislike" value="${documento}">Dislike </button>
+        </div> </div>
+        `;
         contentMuro.likes(documento, usuario);
         contentMuro.dislike(documento, usuario);
       });
@@ -259,7 +260,7 @@ const contentMuro = {
       .get()
       .then((objeto) => {
         document.getElementById(`contenedor_cantidad_likes_${documento}`).innerHTML = `
-        <p><img class="total_huella" src="https://i.imgur.com/7R2Ce8p.png">  ${objeto.size}</p></div>`;
+        <p><img class="total_huella" src="https://i.imgur.com/zXE100l.png">${objeto.size}</p></div>`;
       });
   },
   contenidoMuro: (uid, name) => {
