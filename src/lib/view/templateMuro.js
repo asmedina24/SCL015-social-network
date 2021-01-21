@@ -8,8 +8,8 @@ export const muro = () => {
   <form id ="form_muro"><h3 class="titulo_muro">¿Qué estas pensando?</h3>
   <textarea name="" id="coment_muro" cols="20" rows="10"></textarea>
   <input type="file" id="img_muro" class="img_muro"> <br> <button id="btn_subir">Adjuntar</button>
-   <button id="btn_muro">Publicar</button>
   </form>
+  <button id="btn_muro">Publicar</button>
    <div id="public_muro"></div>
 
  

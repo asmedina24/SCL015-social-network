@@ -10,8 +10,8 @@ export const menu = () => {
       <a href="#/register">Registro</a>
     </ul> 
   </div>
-  <div id='navLogin' class="navLogin">   
-    <button id="singOut" class="cerrar_sesion">Cerrar Sesion</button>
+  <div id='navLogin' class="navLogin">
+   <button id="singOut" class="cerrar_sesion">Cerrar Sesion</button>
   </div>
   </nav>
     

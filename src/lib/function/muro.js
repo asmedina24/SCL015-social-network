@@ -54,17 +54,20 @@ const contentMuro = {
       const btnResponder = `#responder_${documento.id}`;
       const responderComet = lista.querySelectorAll(btnResponder);
       responderComet.forEach((respComent) => {
-        respComent.addEventListener('click', () => {
-          if (documento.exists) {
-            console.log('funciona boton');
-            const nombreModal = `modalResponde_${documento.id}`;
-            const modal = document.getElementById(nombreModal);
-            modal.style.display = 'flex';
-            const inputResp = document.getElementById(`respuesta_modal_${documento.id}`);
-            inputResp.value = '';
-          } else {
-            console.log('No such document!');
-          }
+        respComent.addEventListener('click', (e) => {
+          const postRef = firestore.collection('coment').doc(e.target.value);
+          postRef.get().then((doc) => {
+            if (doc.exists && doc.id === e.target.value) {
+              console.log('funciona boton');
+              const nombreModal = `modalResponde_${documento.id}`;
+              const modal = document.getElementById(nombreModal);
+              modal.style.display = 'flex';
+              const inputResp = document.getElementById(`respuesta_modal_${documento.id}`);
+              inputResp.value = '';
+            } else {
+              console.log('No such document!');
+            }
+          });
         });
       });
     });
@@ -152,7 +155,7 @@ const contentMuro = {
     if (!imgMuro) {
       console.log('no subio foto');
     } else {
-      const storageRef = storage.ref(`user/${imgMuro.name}`);
+      const storageRef = storage.ref(`coment/${imgMuro.name}`);
       const uploadTask = storageRef.put(imgMuro);
       uploadTask.on('state_changed', (snapshot) => {
         const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -254,7 +257,7 @@ const contentMuro = {
       .get()
       .then((objeto) => {
         document.getElementById(`contenedor_cantidad_likes_${documento}`).innerHTML = `
-        <p><img class="total_huella" src="../img/like.png">  ${objeto.size}</p></div>`;
+        <p><img class="total_huella" src="https://i.imgur.com/7R2Ce8p.png">  ${objeto.size}</p></div>`;
       });
   },
   contenidoMuro: (uid, name) => {
