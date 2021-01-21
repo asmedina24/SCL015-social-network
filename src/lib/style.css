@@ -8,9 +8,12 @@ body {
 .miembrologin{
    line-height: 7px;
 }
-#postRes_{
-   background: #5FA9B6;
+.resp-post{
+display: flex;
+flex-direction: column;
+flex-wrap: wrap-reverse;
 }
+
 .btn-modal-borrar {
    margin-bottom: 6px;
 }
@@ -18,18 +21,32 @@ body {
    display: none;
    margin-bottom: 12px;
 }
+.navLogin{
+    display: none;
+    margin: 30px;
+      
+}
+.nav{
+    display: block;
+}
 .total_huella {
    width: 20px;
 }
 .user-res{
-   font-size: smaller;
-   margin-left: 146px;
-   line-height: 4px;
+    font-size: smaller;
+    /* margin-left: 146px; */
+    line-height: 4px;
+    /* position: relative; */
+    /* display: block; */
+    text-align: end;
 }
 .date-resp{
-   font-size: 12px;
-   margin-left: 180px;
-   margin-top: -6px;
+    font-size: 12px;
+    /* margin-left: 180px; */
+    /* margin-top: -6px; */
+    /* display: block; */
+    text-align: end;
+    line-height: 3px;
 }
 .saludo {
     margin-left: 107px;
@@ -40,29 +57,106 @@ body {
   margin-top: 0px;
 }
 
-#nameUser{
+#nameUser {
   top: -28px;
   display: flex;
   position: absolute;
   flex-flow:wrap-reverse;
   width: 100%;
-};
+}
 
-#singOut {
-   position: absolute;
-   /* margin-top: 23px; */
-   display: flex;
-   margin-left: 252px;
-   top: 1%;
-   width: 28%;
+.btn {
+    box-sizing: border-box;
+    appearance: none;
+    background-color: transparent;
+    border: 3px solid #ffc300;
+    border-radius: 0.6em;
+    color:black;
+    /* cursor: pointer; */
+    /* display: flex; */
+    align-self: center;
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 1;
+    /* margin: 3px; */
+    padding: 0.9em 2.0em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
 }
-#btn_muro {
-    position: relative;
-    display: list-item;
-    margin-bottom: -28px;
-    margin-left: 4px;
+  
+.btn:hover,.btn:focus {
+      color: black;
+      outline: 0;
+    }
+  .btn.letter
+  
+ .first {
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.first:hover {
+      box-shadow: 0 0 40px 40px #ffc300;
+}
+  
+.btn_cerrar {
+    position: absolute;
+    margin-top: 23px;
+    display: flex;
+    margin-left: 233px;
+    top: 1%;
+    width: 28%;
+}
+}
+/* #btn_muro {
+    flex-flow: row;
+    display: flex;
+    align-self: center;
     margin-top: 9px;
-}
+   
+} */
+.button{
+    background: #f9844a;
+    color: #fff;
+    border: 8px;
+    border-radius: 49px;
+    position: relative;
+    height: 41px;
+    font-size: 18px;
+    padding: 0 2em;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+    width: 45%;
+    align-self: center;
+    margin-top: 7px;
+    margin-bottom: -18px;
+  }
+.button:hover{
+    background:#fff;
+    color:#1AAB8A;
+  }
+.button:before, .button:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #1AAB8A;
+    transition:400ms ease all;
+  }
+.button:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+.button:hover:before, .button:hover:after{
+    width:100%;
+    transition:800ms ease all;
+  }
 
 .postdiv {
     background-color: white;
@@ -90,19 +184,15 @@ body {
     border-color: orange;
     background: whitesmoke;
     line-height: 17px;
+    display: flex;
 }
 .text-area-respuesta{
     border: inset;
-    height: 45px;
     border-radius: 20px;
-    text-align: center;
-    margin: 1%;
-    margin-left: 122px;
     width: 50%;
-    padding: 3%;
     border-color: rgb(33, 45, 209);
     background: floralwhite;
-    line-height: 7px;
+    text-align-last: center;
 }
 
 .linea_fieldset {
@@ -136,8 +226,6 @@ body {
     position: absolute;
     top: 303px;
     display: flex;
-    /* position: relative; */
-    /* justify-content: center; */
     background-image: url(../img/fondo_2.png);
     background-size: cover;
     flex-direction: column;
@@ -403,6 +491,9 @@ button.close {
     text-align: center;
     font-weight: bold;
 }
+.btn-modal-resp{
+    margin-top: 11px;
+}
 
 #btn_responder_{
     margin-top: 10px;
@@ -417,6 +508,9 @@ button.close {
 .modal_coment{
     width: 290px;
     height: 50px;
+}
+.coment{
+    margin-left: 20px;
 }
 .user {
     font-family: 'Circular-Loom';
@@ -434,12 +528,10 @@ button.close {
     font-size: 12px;
 }
 .date_edit{
-    font-size: 12px;
+    font-size: 9px;
     color: gray;
     text-align: end;
-}
-#nav {
-    margin-right: 17px;
+    margin-top: 43px;
 }
 }
 
@@ -983,7 +1075,7 @@ button.close {
         width: 100%;
         max-width: fit-content;
         position: absolute;
-        margin: 8px;
+        margin: 3px;
         margin-left: -20px;
     }
     

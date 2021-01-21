@@ -18,9 +18,11 @@ const contentMuro = {
       querySnapshot.forEach((response) => {
         if (response.data().idComent === documento) {
           lista.innerHTML += `
-          <div id="postRes_${response.id}">
+          <div class = "resp-post"id="postRes_${response.id}">
+          <div class= "respuesta-dtos">
           <p class="user-res">Usuario: ${response.data().nombre}</p>
             <p class="date-resp"> ${response.data().date}</p>
+            </div>
             <div class="text-area-respuesta">
             <p class="coment"> ${response.data().comentarios}</p>
             </div>
@@ -84,7 +86,7 @@ const contentMuro = {
           <form id ="form_modal">
             <input type= "text" class="modal_coment" id="respuesta_modal_${documento.id}">
           </form>
-          <button id="btn_responder_${documento.id}" value="${documento.id}">Responder</button>
+          <button class="btn-modal-resp" id="btn_responder_${documento.id}" value="${documento.id}">Responder</button>
         </div>
       </div>
     </div>`;
@@ -277,8 +279,8 @@ const contentMuro = {
           <div class= "btnContenMuro">
           <div id="contenedor_cantidad_likes_${response.id}"></div>
          <div id="contenedorBotones${response.id}" class="ocultar">
-          <button id="delete_${response.id}" value="${response.id}">Borrar</button> 
-          <button id="btn_edit_${response.id}" value="${response.id}">Editar</button>
+          <button  class= "btn first"id="delete_${response.id}" value="${response.id}">Borrar</button> 
+          <button class= "btn first" id="btn_edit_${response.id}" value="${response.id}">Editar</button>
           </div>
           <div id="contenedor_botnes_like_${response.id}"></div>
           <button id="responder_${response.id}" value="${response.id}">Responder</button>

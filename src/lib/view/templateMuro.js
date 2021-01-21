@@ -9,7 +9,7 @@ export const muro = () => {
   <textarea name="" id="coment_muro" cols="20" rows="10"></textarea>
   <input type="file" id="img_muro" class="img_muro"> <br> <button id="btn_subir">Adjuntar</button>
   </form>
-  <button id="btn_muro">Publicar</button>
+  <button id="btn_muro" class="button">Publicar</button>
    <div id="public_muro"></div>
 
  

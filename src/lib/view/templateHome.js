@@ -22,7 +22,7 @@ export const home = () => {
     <br>
     <h3 class="miembrologin">¿Aún no eres miembro?</h3>
     
-    <button class = "btn_register"><a href="#/register" class="btn">Únete ahora</a></button>
+    <button class = "btn_register"><a href="#/register">Únete ahora</a></button>
     <br>
     <br>
     <fieldset class= "linea_fieldset">
