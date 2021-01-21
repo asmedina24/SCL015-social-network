@@ -1,3 +1,5 @@
+import contentLogin from '../function/login.js';
+
 export const register = () => {
   const divRegister = document.createElement('div');
   const viewRegister = `<div class= "caja_register">
@@ -19,8 +21,8 @@ export const register = () => {
       title="Debe contener mas de 6 caracteres" required>
       <br>
       <br>
-      <button type="submit" id="registrar">Registrar</button>
       </form>
+      <button type="button" id="registrar">Registrar</button>
       </fieldset> 
       <img class="circulo_registro" src="./img/Ellipse_2.png">
       <img src="./img/image_7.png" class="perritos_registro" alt="">
@@ -28,8 +30,8 @@ export const register = () => {
     `;
 
   divRegister.innerHTML = viewRegister;
-  const enviar = divRegister.querySelector('#form_register');
-  enviar.addEventListener('submit', () => {
+  const enviar = divRegister.querySelector('#registrar');
+  enviar.addEventListener('click', () => {
     const mail = document.getElementById('mail_register').value;
     const pass = document.getElementById('pass_register').value;
     const name = document.getElementById('name_register').value;
@@ -48,15 +50,16 @@ export const register = () => {
             userid: uid,
           })
             .then(() => {
-              window.location = ('#/home');
+              contentLogin.cerrarsesion();
             });
         });
       })
       .then(() => {
         const user = firebase.auth().currentUser;
+        console.log(user);
         const uid = user.uid;
         return user.updateProfile({
-          displayName: name + lastName,
+          displayName: `${name}   ${lastName}`,
           userid: uid,
           email: mail,
           password: pass,

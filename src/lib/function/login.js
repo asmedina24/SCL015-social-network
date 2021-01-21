@@ -4,20 +4,25 @@ const contentLogin = {
     firebase.auth().signInWithEmailAndPassword(mail, pass)
       .then(() => {
         console.log('entro');
-        contentLogin.emailOk(mail, pass);
+        contentLogin.emailOk();
         // contentLogin.estadoLogin();
       });
   },
   emailOk: () => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        console.log('si esta el usuario');
         const emailVerified = user.emailVerified;
         if (emailVerified === true) {
           console.log('si esta ingresando');
-          window.location.href = '#/muro';
+          window.location = ('#/muro');
         } else {
           alert('verifica tu correo');
+          firebase.auth().signOut()
+            .then(() => {
+              console.log('Sesion cerrada correctamente');
+            }).catch((error) => {
+              console.log('no puede cerrar sesion', error);
+            });
         }
       }
     });
