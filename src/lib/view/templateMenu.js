@@ -4,14 +4,14 @@ export const menu = () => {
   const ViewMenu = ` 
   <nav class="navegacion">
   <img class="img_infopet" src="https://i.imgur.com/kIhEsP5.png">
-  <div id='nav' class="nav">   
+  <div id="nav" class="nav">   
     <ul> 
       <a href="#/home">Home</a>
       <a href="#/register">Registro</a>
     </ul> 
   </div>
-  <div id='navLogin' class="navLogin">
-   <button id="singOut" class="cerrar_sesion">Cerrar Sesion</button>
+  <div id="navLogin" class="navLogin">
+   <button id="singOut" class= "btn_cerrar">Cerrar Sesion</button>
   </div>
   </nav>
     

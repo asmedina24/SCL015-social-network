@@ -4,7 +4,6 @@ export const home = () => {
   const divHome = document.createElement('div');
   const viewHome = ` <div class = "home_style">
   <img class = "img_centerpet" src="./img/Fondo.jpg">
-<h1 class = "contenc_home"></h1> 
 <div class= "caja_login">
 <img class="img_circulo" src="./img/Ellipse_2.png">
 <fieldset class= "login">
@@ -18,12 +17,12 @@ export const home = () => {
     <br>
     <br>
     </form>
-    <button type="button" id="loginMail">Ingresar</button>
+    <button type="button" id="loginMail" class="loginMail">Ingresar</button>
     <br>
     <br>
-    <h3>¿Aún no eres miembro?</h3>
+    <h3 class="miembrologin">¿Aún no eres miembro?</h3>
     
-    <button class = "btn_register"><a href="#/register" class="btn_register">Únete ahora</a></button>
+    <button class = "btn_register"><a href="#/register">Únete ahora</a></button>
     <br>
     <br>
     <fieldset class= "linea_fieldset">

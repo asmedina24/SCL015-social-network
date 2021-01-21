@@ -1,1 +1,0 @@
-const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
