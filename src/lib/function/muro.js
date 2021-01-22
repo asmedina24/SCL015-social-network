@@ -13,7 +13,7 @@ const contentMuro = {
   },
   obtnerRespuest: (documento) => {
     firestore.collection('responder').orderBy('date', 'desc').onSnapshot((querySnapshot) => {
-      const lista = document.querySelector(`#contenedor_respuesta_${documento}`);
+      const lista = document.getElementById(`contenedor_respuesta_${documento}`);
       lista.innerHTML = '';
       querySnapshot.forEach((response) => {
         if (response.data().idComent === documento) {
@@ -281,7 +281,7 @@ const contentMuro = {
       querySnapshot.forEach((response) => {
         lista.innerHTML += `
         <div id="postDiv-${response.id}" class="postdiv">
-        <p class="user">Usuario: ${response.data().nombre}</p>
+        <p class="user">${response.data().nombre}</p>
           <p class="date"> ${response.data().date}</p>
           <div class="text-area">
           <img class="img_coment" src="${response.data().photoUrl}" alt="">
@@ -296,8 +296,8 @@ const contentMuro = {
               </div> 
               <div class="div_ocultar">
                   <div id="contenedorBotones${response.id}" class="ocultar">
-                  <button  class="style_btns" id="delete_${response.id}" value="${response.id}"><img class="img_btns" src="https://i.imgur.com/0vvMvaZ.png" alt=""></button> 
-                  <button class="style_btns" id="btn_edit_${response.id}" value="${response.id}"><img class="img_btns" src="https://i.imgur.com/paRdDE7.png" alt=""></button>
+                  <button  class="style_btns" id="delete_${response.id}" value="${response.id}"><img class="img_btns2" src="https://i.imgur.com/0vvMvaZ.png" alt=""></button> 
+                  <button class="style_btns" id="btn_edit_${response.id}" value="${response.id}"><img class="img_btns2" src="https://i.imgur.com/paRdDE7.png" alt=""></button>
                   </div>
               </div>
           </div> 
@@ -349,10 +349,36 @@ const contentMuro = {
   borrar: (value) => {
     firestore.collection('coment').doc(value).delete()
       .then(() => {
-        console.log('si funciono');
+        console.log('se borro comentario');
       })
       .catch((error) => {
         console.error('Error removing document: ', error);
+      });
+  },
+  borrarResp: (documento) => {
+    firestore.collection('responder').where('idComent', '==', documento)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          doc.ref.delete().then(() => {
+            console.log('se borraron respuestas con comentarios');
+          }).catch((error) => {
+            console.error('Error removing document: ', error);
+          });
+        });
+      });
+  },
+  borrarLike: (documento) => {
+    firestore.collection('likes').where('docuid', '==', documento)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          doc.ref.delete().then(() => {
+            console.log('likes borrado con el documento');
+          }).catch((error) => {
+            console.error('Error removing document: ', error);
+          });
+        });
       });
   },
   modalBorrar: (documento, usuario) => {
@@ -385,6 +411,8 @@ const contentMuro = {
             modal.style.display = 'none';
             console.log('borrado correctamente');
             contentMuro.borrar(e.target.value);
+            contentMuro.borrarResp(documento.id);
+            contentMuro.borrarLike(documento.id);
           } else {
             console.log('no borro comentario');
           }
