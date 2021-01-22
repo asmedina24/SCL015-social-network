@@ -7,10 +7,14 @@ export const muro = () => {
   </div>
   <form id ="form_muro"><h3 class="titulo_muro">¿Qué estas pensando?</h3>
   <textarea name="" id="coment_muro" cols="20" rows="10"></textarea>
-  <input type="file" id="img_muro" class="img_muro"> <br> <button id="btn_subir">Adjuntar</button>
+  <div class="container_img_muro">
+  <input type="file" id="img_muro" class="img_muro">
+  </div> 
+  <br> 
   </form>
+  <button class="boton_adjuntar" id="btn_subir"><img class="img_adjuntar" src="https://i.imgur.com/IjHVTxc.png" alt=""></button>
   <button id="btn_muro" class="button">Publicar</button>
-   <div id="public_muro"></div>
+   <div id="public_muro" class="muro"></div>
 
  
   <br>

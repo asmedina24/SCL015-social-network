@@ -55,23 +55,21 @@ const contentMuro = {
       const lista = document.querySelector('#public_muro');
       const btnResponder = `#responder_${documento.id}`;
       const responderComet = lista.querySelectorAll(btnResponder);
-      responderComet.forEach((respComent) => {
-        respComent.addEventListener('click', (e) => {
-          const postRef = firestore.collection('coment').doc(e.target.value);
-          postRef.get().then((doc) => {
-            if (doc.exists && doc.id === e.target.value) {
-              console.log('funciona boton');
-              const nombreModal = `modalResponde_${documento.id}`;
-              const modal = document.getElementById(nombreModal);
-              modal.style.display = 'flex';
-              const inputResp = document.getElementById(`respuesta_modal_${documento.id}`);
-              inputResp.value = '';
-            } else {
-              console.log('No such document!');
-            }
-          });
+      responderComet.forEach((respbutton) => {
+        respbutton.addEventListener('click', () => {
+          console.log(documento.exists);
+          if (documento.exists) {
+            console.log('funciona boton');
+            const nombreModal = `modalResponde_${documento.id}`;
+            const modal = document.getElementById(nombreModal);
+            modal.style.display = 'flex';
+            const inputResp = document.getElementById(`respuesta_modal_${documento.id}`);
+            inputResp.value = '';
+          } else {
+            console.log('llego al else');
+          }
         });
-      }); 
+      });
     });
   },
   modalRespuesta: (documento, usuario, name) => {
@@ -185,7 +183,7 @@ const contentMuro = {
         (`00${date.getMinutes()}`).slice(-2)}:${
         (`00${date.getSeconds()}`).slice(-2)}`;
       const storage = firebase.storage();
-      const storageimg = storage.ref(`user/${imgMuro.name}`);
+      const storageimg = storage.ref(`coment/${imgMuro.name}`);
       storageimg.getDownloadURL().then((url) => {
         console.log(url);
         firestore.collection('coment').add({
@@ -243,14 +241,15 @@ const contentMuro = {
     firestore.collection('likes').where('docuid', '==', documento).where('userid', '==', usuario)
       .get()
       .then((objeto) => {
-        document.getElementById(`contenedor_botnes_like_${documento}`).innerHTML = `<div class= "btnlike" >
-        <div id="div_like_${documento}" style="display:${(objeto.size > 0 ? 'none' : 'block')};">
-         <button id="like_${documento}" class ="btn_like" value="${documento}">Like</button>
-        </div >
-        <div id="div_dislike_${documento}" style="display:${(objeto.size > 0 ? 'block' : 'none')};">
-          <button id="deslike_${documento}" class="btn_dislike" value="${documento}">Dislike </button>
-        </div> </div>
-        `;
+        document.getElementById(`contenedor_botnes_like_${documento}`).innerHTML = `
+        <div class= "" >
+          <div id="div_like_${documento}" style="display:${(objeto.size > 0 ? 'none' : 'block')};">
+          <button id="like_${documento}" class ="btn_like" value="${documento}">Like</button>
+          </div >
+          <div id="div_dislike_${documento}" style="display:${(objeto.size > 0 ? 'block' : 'none')};">
+            <button id="deslike_${documento}" class="btn_dislike" value="${documento}">Dislike</button>
+          </div> 
+        </div>`;
         contentMuro.likes(documento, usuario);
         contentMuro.dislike(documento, usuario);
       });
@@ -259,8 +258,20 @@ const contentMuro = {
     firestore.collection('likes').where('docuid', '==', documento)
       .get()
       .then((objeto) => {
-        document.getElementById(`contenedor_cantidad_likes_${documento}`).innerHTML = `
-        <p><img class="total_huella" src="https://i.imgur.com/zXE100l.png">${objeto.size}</p></div>`;
+        document.getElementById(`contenedor_cantidad_likes_${documento}`).innerHTML = `<div>
+        <p><img class="total_huella" src="https://i.imgur.com/7R2Ce8p.png">  ${objeto.size}</p></div>`;
+      });
+  },
+  getDetailrespuesta: (documento) => {
+    firestore.collection('responder').where('idComent', '==', documento)
+      .get()
+      .then((objeto) => {
+        document.getElementById(`contenedor_boton_respuesta_${documento}`).innerHTML = `<div class= "btnmostrar" >
+        <div id="div_mostrar_${documento}" class="ord_mostrar">
+        <p>${objeto.size}</p>
+        <button class="style_btns" id="Comentarios_${documento}" value="${documento}"><img class="img_btns" src="https://i.imgur.com/8n9cacP.png" alt=""> </button>
+        </div >`;
+        contentMuro.btnComentario(documento);
       });
   },
   contenidoMuro: (uid, name) => {
@@ -278,28 +289,34 @@ const contentMuro = {
           <p class="date_edit"> ${response.data().dateEditado}</p>
           </div>
           <div class= "btnContenMuro">
-          <div id="contenedor_cantidad_likes_${response.id}"></div>
-         <div id="contenedorBotones${response.id}" class="ocultar">
-          <button  class= "btn first"id="delete_${response.id}" value="${response.id}">Borrar</button> 
-          <button class= "btn first" id="btn_edit_${response.id}" value="${response.id}">Editar</button>
-          </div>
-          <div id="contenedor_botnes_like_${response.id}"></div>
-          <button id="responder_${response.id}" value="${response.id}">Responder</button>
-          <button id="Comentarios_${response.id}" value="${response.id}">Mostrar Comentario</button>
+          <div class="contenedor_btns">
+              <div class="div_likes">
+                  <div id="contenedor_botnes_like_${response.id}"></div>
+                  <div id="contenedor_cantidad_likes_${response.id}" class="cantidadlikes"></div>
+              </div> 
+              <div class="div_ocultar">
+                  <div id="contenedorBotones${response.id}" class="ocultar">
+                  <button  class="style_btns" id="delete_${response.id}" value="${response.id}"><img class="img_btns" src="https://i.imgur.com/0vvMvaZ.png" alt=""></button> 
+                  <button class="style_btns" id="btn_edit_${response.id}" value="${response.id}"><img class="img_btns" src="https://i.imgur.com/paRdDE7.png" alt=""></button>
+                  </div>
+              </div>
+          </div> 
+          <div id="contenedor_boton_respuesta_${response.id}"></div>
+          <button class="style_btns" id="responder_${response.id}" value="${response.id}"><img class="img_btns" src="https://i.imgur.com/ne7Kzgc.png" alt=""></button>
           <div id="contenedor_respuesta_${response.id}" class="ocultar"></div>
           </div>
          <br>`;
-        contentMuro.getDetailLike(response.id, uid);
-        contentMuro.getCantidadLikes(response.id);
+        contentMuro.ocultarbtn(uid);
+        contentMuro.modal(response, uid, name);
         contentMuro.modalBorrar(response, uid);
         contentMuro.btnEditar(response, uid);
         contentMuro.btnBorrar(response, uid);
         contentMuro.btnRespoComen(response);
         contentMuro.modalRespuesta(response, uid, name);
         contentMuro.obtnerRespuest(response.id);
-        contentMuro.btnComentario(response.id);
-        contentMuro.ocultarbtn(uid);
-        contentMuro.modal(response, uid, name);
+        contentMuro.getDetailLike(response.id, uid);
+        contentMuro.getCantidadLikes(response.id);
+        contentMuro.getDetailrespuesta(response.id);
       });
     });
   },
@@ -312,25 +329,19 @@ const contentMuro = {
       const borrar = lista.querySelectorAll(btnBorrar);
 
       borrar.forEach((deletebutton) => {
-        deletebutton.addEventListener('click', (e) => {
-          const postRef = firestore.collection('coment').doc(e.target.value);
-          postRef.get().then((doc) => {
-            if (doc.exists) {
-              console.log('Document data:', doc.data());
-              if (doc.data().userid !== usuario) {
-                alert('no es tu comentario');
-              } else {
-                console.log('paso hacia el modal de borrar');
-                const nombreModal = `modal_borrar_${documento.id}`;
-                const modal = document.getElementById(nombreModal);
-                modal.style.display = 'flex';
-              }
+        deletebutton.addEventListener('click', () => {
+          if (documento.exists) {
+            if (documento.data().userid !== usuario) {
+              alert('no es tu comentario');
             } else {
-              console.log('No such document!');
+              console.log('paso hacia el modal de borrar');
+              const nombreModal = `modal_borrar_${documento.id}`;
+              const modal = document.getElementById(nombreModal);
+              modal.style.display = 'flex';
             }
-          }).catch((error) => {
-            console.log('Error getting document:', error);
-          });
+          } else {
+            console.log('no llego al else');
+          }
         });
       });
     });
@@ -359,7 +370,7 @@ const contentMuro = {
       </div>
     </div>`;
     contentMuro.btnBorrar(usuario);
-    contentMuro.aceptarBorrar(documento, usuario);
+    contentMuro.aceptarBorrar(documento);
     contentMuro.cerrarBorrar(documento, usuario);
   },
   aceptarBorrar: (documento) => {
@@ -397,7 +408,7 @@ const contentMuro = {
               modal.style.display = 'none';
             }
           } else {
-            console.log('No such document!');
+            console.log('No se cerro el modal');
           }
         });
       });
@@ -512,7 +523,10 @@ const contentMuro = {
     btnLike.addEventListener('click', (e) => {
       const postRef = firestore.collection('coment').doc(e.target.value);
       postRef.get().then((doc) => {
-        console.log(doc.data());
+        console.log('este es el doc.id', doc.id);
+        console.log('este es el documento', documento.id);
+        console.log('doc.exist', doc.exists);
+        console.log('este es el e.target', e.target.value);
         if (doc.exists && doc.id === e.target.value) {
           firestore.collection('likes').add({
             docuid: doc.id,
@@ -528,6 +542,7 @@ const contentMuro = {
             });
         } else {
           console.log('probando no deberias salir');
+          console.log(doc);
         }
       }).catch((error) => {
         console.log('Error getting document:', error);

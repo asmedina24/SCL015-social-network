@@ -8,6 +8,90 @@ body {
 .miembrologin{
    line-height: 7px;
 }
+.style_btns{
+    appearance: none;
+    border: none;
+    background-color: white;
+    border-color: white;
+    outline:none;
+    transition: all 0.2s ease;
+}
+.img_adjuntar{
+    width: 100px;
+}
+.boton_adjuntar{
+    appearance: none;
+    border: none;
+    background-color: white;
+    border-color: white;
+    outline: none;
+    margin-left: 245px;
+    margin-top: 10px;
+    margin-right: 51px;
+}
+.img_adjuntar{
+     width: 45px;
+   
+}
+.container_img_muro{
+    top: 152px;
+    left: 159px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+.img_muro{
+    font-size: 12px;
+    background: white;
+    border-radius: 50px;
+    box-shadow: 5px 5px 10px black;
+    width: 157px;
+    outline: none;
+    height: 37px;
+}
+/* .img_muro::-webkit-file-upload-button{
+    width: 80px;
+    color: white;
+    background: #206a5d;
+    padding: 20px;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 1px 0 1px 1px #6b4559;
+    outline: none;
+} */
+.img_muro::-webkit-file-upload-button{
+   visibility: hidden;
+}
+.img_muro::before{
+    content: url('https://i.imgur.com/yDzPqHG.png');
+    display: inline-block;
+    background: -webkit-linear-gradient( rgb(233, 119, 119), rgb(250, 174, 131));
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 400;
+    font-size: 5pt;
+    appearance: none;
+}
+.img_muro:hover::before {
+    border-color: black;
+  }
+.img_muro:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  }
+.ord_mostrar{
+    display: flex;
+    margin-top: -6px;
+}
+
+.img_btns{
+    width: 30px;
+    transition: all 0.2s ease;
+}
 .resp-post{
 display: flex;
 flex-direction: column;
@@ -19,7 +103,15 @@ flex-wrap: wrap-reverse;
 }
 .ocultar{
    display: none;
-   margin-bottom: 12px;
+}
+.div_ocultar{
+    /* text-align: -webkit-match-parent; */
+    position: absolute;
+    /* top: -75px; */
+    margin-left: 191px;
+}
+.contenedor_btns{
+    display: flex;
 }
 .navLogin{
     display: none;
@@ -51,18 +143,27 @@ flex-wrap: wrap-reverse;
 .saludo {
     margin-left: 107px;
 } 
-.btnlike{
-  position: absolute;
-  margin-left: 223px;
-  margin-top: 0px;
+.btnmostrar{
+    position: absolute;
+    margin-left: 45px;
+    margin-top: 0px;
 }
-
+.div_likes{
+    margin-left: 7px;
+    margin-top: -10px;
+    display: flex;
+    align-items: center;
+}
+.cantidadlikes{
+    margin-left: 6px;
+}
 #nameUser {
-  top: -28px;
-  display: flex;
-  position: absolute;
-  flex-flow:wrap-reverse;
-  width: 100%;
+    top: -28px;
+    display: flex;
+    position: absolute;
+    /* flex-flow: wrap-reverse; */
+    width: 100%;
+    justify-content: center;
 }
 
 .btn {
@@ -104,11 +205,12 @@ flex-wrap: wrap-reverse;
     position: absolute;
     margin-top: 23px;
     display: flex;
-    margin-left: 233px;
-    top: 1%;
+    margin-left: 204px;
+    top: -14%;
     width: 28%;
-
+ 
 }
+
 /* #btn_muro {
     flex-flow: row;
     display: flex;
@@ -275,8 +377,8 @@ a {
     width: 100%;
     max-width: fit-content;
     position: absolute;
-    margin: 8px;
-    margin-left: -24px;
+    margin: 2px;
+    margin-left: -10px;
 }
 
 .contenc_home {
@@ -401,13 +503,15 @@ a {
     top: -200px;
 }
 #registrar{
-    position: relative;
+    position: absolute;
     width: 109px;
     height: 34px;
     color: white;
     background:  #5FA9B6;
     border: 1px solid  #5FA9B6;
     box-sizing: border-box;
+    margin-top: 243px;
+    margin-left: 35px;
 }
 .titulo_muro{
     background-color: navajowhite;
@@ -548,6 +652,90 @@ button.close {
      .miembrologin{
         line-height: 7px;
      }
+     .style_btns{
+         appearance: none;
+         border: none;
+         background-color: white;
+         border-color: white;
+         outline:none;
+         transition: all 0.2s ease;
+     }
+     .img_adjuntar{
+         width: 100px;
+     }
+     .boton_adjuntar{
+         appearance: none;
+         border: none;
+         background-color: white;
+         border-color: white;
+         outline: none;
+         margin-left: 245px;
+         margin-top: 10px;
+         margin-right: 51px;
+     }
+     .img_adjuntar{
+          width: 45px;
+        
+     }
+     .container_img_muro{
+         top: 152px;
+         left: 159px;
+         transform: translate(-50%, -50%);
+         position: absolute;
+     }
+     .img_muro{
+         font-size: 12px;
+         background: white;
+         border-radius: 50px;
+         box-shadow: 5px 5px 10px black;
+         width: 157px;
+         outline: none;
+         height: 37px;
+     }
+     /* .img_muro::-webkit-file-upload-button{
+         width: 80px;
+         color: white;
+         background: #206a5d;
+         padding: 20px;
+         border: none;
+         border-radius: 50px;
+         box-shadow: 1px 0 1px 1px #6b4559;
+         outline: none;
+     } */
+     .img_muro::-webkit-file-upload-button{
+        visibility: hidden;
+     }
+     .img_muro::before{
+         content: url('https://i.imgur.com/yDzPqHG.png');
+         display: inline-block;
+         background: -webkit-linear-gradient( rgb(233, 119, 119), rgb(250, 174, 131));
+         border: 1px solid #999;
+         border-radius: 3px;
+         padding: 5px 8px;
+         outline: none;
+         white-space: nowrap;
+         -webkit-user-select: none;
+         cursor: pointer;
+         text-shadow: 1px 1px #fff;
+         font-weight: 400;
+         font-size: 5pt;
+         appearance: none;
+     }
+     .img_muro:hover::before {
+         border-color: black;
+       }
+     .img_muro:active::before {
+         background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+       }
+     .ord_mostrar{
+         display: flex;
+         margin-top: -6px;
+     }
+     
+     .img_btns{
+         width: 30px;
+         transition: all 0.2s ease;
+     }
      .resp-post{
      display: flex;
      flex-direction: column;
@@ -559,7 +747,15 @@ button.close {
      }
      .ocultar{
         display: none;
-        margin-bottom: 12px;
+     }
+     .div_ocultar{
+         /* text-align: -webkit-match-parent; */
+         position: absolute;
+         /* top: -75px; */
+         margin-left: 191px;
+     }
+     .contenedor_btns{
+         display: flex;
      }
      .navLogin{
          display: none;
@@ -591,18 +787,27 @@ button.close {
      .saludo {
          margin-left: 107px;
      } 
-     .btnlike{
-       position: absolute;
-       margin-left: 223px;
-       margin-top: 0px;
+     .btnmostrar{
+         position: absolute;
+         margin-left: 45px;
+         margin-top: 0px;
      }
-     
+     .div_likes{
+         margin-left: 7px;
+         margin-top: -10px;
+         display: flex;
+         align-items: center;
+     }
+     .cantidadlikes{
+         margin-left: 6px;
+     }
      #nameUser {
-       top: -28px;
-       display: flex;
-       position: absolute;
-       flex-flow:wrap-reverse;
-       width: 100%;
+        top: -28px;
+    display: flex;
+    position: absolute;
+    /* flex-flow: wrap-reverse; */
+    width: 100%;
+    justify-content: center;
      }
      
      .btn {
@@ -641,14 +846,15 @@ button.close {
      }
        
      .btn_cerrar {
-         position: absolute;
-         margin-top: 23px;
-         display: flex;
-         margin-left: 233px;
-         top: 1%;
-         width: 28%;
-     
+        position: absolute;
+        margin-top: 23px;
+        display: flex;
+        margin-left: 859px;
+        top: -14%;
+        width: 9%;
+      
      }
+     
      /* #btn_muro {
          flex-flow: row;
          display: flex;
@@ -815,8 +1021,8 @@ button.close {
          width: 100%;
          max-width: fit-content;
          position: absolute;
-         margin: 8px;
-         margin-left: -24px;
+         margin: 2px;
+         margin-left: -10px;
      }
      
      .contenc_home {
@@ -941,13 +1147,15 @@ button.close {
          top: -200px;
      }
      #registrar{
-         position: relative;
+         position: absolute;
          width: 109px;
          height: 34px;
          color: white;
          background:  #5FA9B6;
          border: 1px solid  #5FA9B6;
          box-sizing: border-box;
+         margin-top: 243px;
+         margin-left: 35px;
      }
      .titulo_muro{
          background-color: navajowhite;
