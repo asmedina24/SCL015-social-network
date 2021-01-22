@@ -92,6 +92,10 @@ body {
     width: 30px;
     transition: all 0.2s ease;
 }
+.img_btns2{
+    width: 22px;
+    transition: all 0.2s ease;
+}
 .resp-post{
 display: flex;
 flex-direction: column;
@@ -103,6 +107,8 @@ flex-wrap: wrap-reverse;
 }
 .ocultar{
    display: none;
+   margin-top: 5px;
+   margin-left: 28px;
 }
 .div_ocultar{
     /* text-align: -webkit-match-parent; */
@@ -204,8 +210,8 @@ flex-wrap: wrap-reverse;
     position: absolute;
     margin-top: 23px;
     display: flex;
-    margin-left: 233px;
-    top: 1%;
+    margin-left: 204px;
+    top: -14%;
     width: 28%;
 }
 
@@ -275,8 +281,8 @@ flex-wrap: wrap-reverse;
 .text-area{
     background-color: white;
     border: groove;
-    height: 71px;
-    border-radius: 20px;
+    height: auto;
+    /* border-radius: 20px; */
     text-align: center;
     margin: 1%;
     width: 90%;
@@ -285,6 +291,8 @@ flex-wrap: wrap-reverse;
     background: whitesmoke;
     line-height: 17px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .text-area-respuesta{
     border: inset;
@@ -375,8 +383,8 @@ a {
     width: 100%;
     max-width: fit-content;
     position: absolute;
-    margin: 8px;
-    margin-left: -24px;
+    margin: 2px;
+    margin-left: -10px;
 }
 
 .contenc_home {
@@ -501,13 +509,15 @@ a {
     top: -200px;
 }
 #registrar{
-    position: relative;
+    position: absolute;
     width: 109px;
     height: 34px;
     color: white;
-    background:  #5FA9B6;
-    border: 1px solid  #5FA9B6;
+    background: #5FA9B6;
+    border: 1px solid #5FA9B6;
     box-sizing: border-box;
+    margin-top: 243px;
+    margin-left: 35px;
 }
 .titulo_muro{
     background-color: navajowhite;
@@ -542,7 +552,9 @@ a {
 margin: 3px;
 }
 .img_coment{
-    width: 100px;
+    width: inherit;
+    height: auto;
+    border-radius: 10px;
 }
 .modalBorrar{
     position: fixed;
@@ -609,9 +621,7 @@ button.close {
     width: 290px;
     height: 50px;
 }
-.coment{
-    margin-left: 20px;
-}
+
 .user {
     font-family: 'Circular-Loom';
     font-weight: 500;
@@ -621,11 +631,12 @@ button.close {
     /* height: 100px; */
     border-radius: 20px;
     /* display: -webkit-box; */
-    /* margin: 5px; */
+    margin: 5px;
     border: none;
 }
 .date{
     font-size: 12px;
+    margin-left: 13px;
 }
 .date_edit{
     font-size: 9px;
