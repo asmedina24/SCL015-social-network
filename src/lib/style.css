@@ -597,6 +597,19 @@ background-color: rgb(230 223 223 / 96%) !important;
 justify-content: center;
 align-items: center;
 }
+#seccion_carga_imagen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modalCarga{
+    font-weight: bold;
+    text-align: center;
+    background: white;
+    font-size: 20px;
+    width: 281px;
+    color: blue;
+ }
 #acept_borrar_{
 margin: 3px;
 }
@@ -714,6 +727,19 @@ margin: 0px;
     transition: all 0.2s ease;
     margin-left: 48px;  
 }
+#seccion_carga_imagen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modalCarga{
+    font-weight: bold;
+    text-align: center;
+    background: white;
+    font-size: 20px;
+    width: 281px;
+    color: blue;
+ }
 .style_btns_aceptar{
     appearance: none;
     border: none;
@@ -1033,20 +1059,19 @@ width: 26px;
 }
 
 .postdiv {
-max-width: 1200px;
-/* height: 92%; */
-background-color: white;
-border-color: orange;
-border-width: 1px;
-justify-content: center;
-border: solid;
-justify-items: center;
-width: 94%;
-top: 27%;
-margin-bottom: 15px;
-border: ridge;
-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-line-height: 17px;
+    max-width: 680px;
+    background-color: white;
+    border-color: orange;
+    border-width: 1px;
+    justify-content: center;
+    border: solid;
+    justify-items: center;
+    width: 94%;
+    top: 27%;
+    margin-bottom: 15px;
+    border: ridge;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    line-height: 17px;
 }
 .text-area{
     background-color: white;
@@ -1431,6 +1456,19 @@ margin: 0px;
 font-size: larger;
 margin: auto;
 }
+#seccion_carga_imagen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modalCarga{
+    font-weight: bold;
+    text-align: center;
+    background: white;
+    font-size: 20px;
+    width: 281px;
+    color: blue;
+ }
 .style_btns_borrar{
     appearance: none;
     border: none;
@@ -1739,19 +1777,19 @@ width: 26px;
 }
 
 .postdiv {
-max-width: 1200px;
-background-color: white;
-border-color: orange;
-border-width: 1px;
-justify-content: center;
-border: solid;
-justify-items: center;
-width: 94%;
-top: 27%;
-margin-bottom: 15px;
-border: ridge;
-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-line-height: 17px;
+    max-width: 868px;
+    background-color: white;
+    border-color: orange;
+    border-width: 1px;
+    justify-content: center;
+    border: solid;
+    justify-items: center;
+    width: 94%;
+    top: 27%;
+    margin-bottom: 15px;
+    border: ridge;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    line-height: 17px;
 }
 .text-area{
     background-color: white;

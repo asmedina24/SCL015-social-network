@@ -159,14 +159,29 @@ const contentMuro = {
       const uploadTask = storageRef.put(imgMuro);
       uploadTask.on('state_changed', (snapshot) => {
         const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log(progress);
+        const calculoPorcentaje = Math.round(progress);
+        contentMuro.modalCarga(calculoPorcentaje);
       }, (error) => {
         console.log(error);
       }, () => {
         console.log('se subio a storage');
-        alert('se subio imagen con exito');
       });
     }
+  },
+  modalCarga: (porcentaje) => {
+    const modalCarga = document.querySelector('#seccion_carga_imagen');
+    modalCarga.innerHTML = `
+    <div id="modalGuardar" class="modalCarga">
+      <p> Porcentaje de subida: ${porcentaje} %</p>
+    </div>`;
+  },
+  btnAceptarCarga: () => {
+    const carga = document.getElementById('btn_carga');
+    carga.addEventListener('click', () => {
+      console.log('cerro modal de carga');
+      const modal = document.getElementById('modalGuardar');
+      modal.style.display = 'none';
+    });
   },
   urlImg: (usuario, nombremio) => {
     const imgMuro = document.querySelector('#img_muro').files[0];
