@@ -110,6 +110,11 @@ flex-wrap: wrap-reverse;
    margin-top: 5px;
    margin-left: 28px;
 }
+.ocultarbotones{
+    display: none;
+    margin-top: 5px;
+    margin-left: 28px;
+ }
 .div_ocultar{
     /* text-align: -webkit-match-parent; */
     position: absolute;
@@ -146,9 +151,6 @@ flex-wrap: wrap-reverse;
     text-align: end;
     line-height: 3px;
 }
-.saludo {
-    margin-left: 107px;
-} 
 .btnmostrar{
     position: absolute;
     margin-left: 45px;
@@ -164,11 +166,12 @@ flex-wrap: wrap-reverse;
     margin-left: 6px;
 }
 #nameUser {
-  top: -28px;
-  display: flex;
-  position: absolute;
-  flex-flow:wrap-reverse;
-  width: 100%;
+    top: -28px;
+    display: flex;
+    position: absolute;
+    flex-flow: wrap-reverse;
+    width: 100%;
+    justify-content: center;
 }
 
 .btn {

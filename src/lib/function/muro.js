@@ -295,7 +295,7 @@ const contentMuro = {
                   <div id="contenedor_cantidad_likes_${response.id}" class="cantidadlikes"></div>
               </div> 
               <div class="div_ocultar">
-                  <div id="contenedorBotones${response.id}" class="ocultar">
+                  <div id="contenedorBotones${response.id}" class="ocultarbotones">
                   <button  class="style_btns" id="delete_${response.id}" value="${response.id}"><img class="img_btns2" src="https://i.imgur.com/0vvMvaZ.png" alt=""></button> 
                   <button class="style_btns" id="btn_edit_${response.id}" value="${response.id}"><img class="img_btns2" src="https://i.imgur.com/paRdDE7.png" alt=""></button>
                   </div>
