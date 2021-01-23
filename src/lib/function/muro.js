@@ -285,7 +285,9 @@ const contentMuro = {
           <p class="date"> ${response.data().date}</p>
           <div class="text-area">
           <img class="img_coment" src="${response.data().photoUrl}" alt="">
+          <div class= "contendorPost">
           <p class="coment"> ${response.data().comentarios}</p>
+          </div>
           <p class="date_edit"> ${response.data().dateEditado}</p>
           </div>
           <div class= "btnContenMuro">
@@ -295,7 +297,7 @@ const contentMuro = {
                   <div id="contenedor_cantidad_likes_${response.id}" class="cantidadlikes"></div>
               </div> 
               <div class="div_ocultar">
-                  <div id="contenedorBotones${response.id}" class="ocultar">
+                  <div id="contenedorBotones${response.id}" class="ocultarbotones">
                   <button  class="style_btns" id="delete_${response.id}" value="${response.id}"><img class="img_btns2" src="https://i.imgur.com/0vvMvaZ.png" alt=""></button> 
                   <button class="style_btns" id="btn_edit_${response.id}" value="${response.id}"><img class="img_btns2" src="https://i.imgur.com/paRdDE7.png" alt=""></button>
                   </div>
@@ -390,8 +392,13 @@ const contentMuro = {
         </div>
         <div class="cuerpo_modal_">
         <p>¿Estas seguro que quieres eliminar este comentario?</p>
-        <button id="acept_borrar_${documento.id}" class="btn-modal-borrar" value="${documento.id}">Aceptar</button>
-        <button type="button" id="cance_borrar_${documento.id}" value="${documento.id}">Cancelar</button>
+        <div class = "modal-btn-borrar">
+        <button id="acept_borrar_${documento.id}" class="style_btns_aceptar" value="${documento.id}"></button>
+        
+      
+        <button type="button" id="cance_borrar_${documento.id}" class="style_btns_borrar" value="${documento.id}"><img class="bt-acep-borrar" src="https://i.imgur.com/l0gJx5N.png" alt=""></button>
+      
+        </div>
         </div>
       </div>
     </div>`;
