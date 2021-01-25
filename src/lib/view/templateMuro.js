@@ -13,7 +13,9 @@ export const muro = () => {
   <br> 
   </form>
   <button class="boton_adjuntar" id="btn_subir"><img class="img_adjuntar" src="https://i.imgur.com/IjHVTxc.png" alt=""></button>
+  <div id="seccion_carga_imagen"></div>
   <button id="btn_muro" class="button">Publicar</button>
+  
    <div id="public_muro" class="muro"></div>
 
  
@@ -38,7 +40,6 @@ export const muro = () => {
       // User is signed out.
 
     }
-
     const subir = divMuro.querySelector(('#btn_subir'));
     subir.addEventListener('click', () => {
       contentMuro.imagen();
@@ -47,6 +48,8 @@ export const muro = () => {
     publicar.addEventListener('click', () => {
       const formMuro = document.getElementById('form_muro');
       // contentMuro.imagen(user.uid);
+      const modalCarga = document.querySelector('#seccion_carga_imagen');
+      modalCarga.innerHTML = '';
       contentMuro.urlImg(user.uid, user.displayName);
       formMuro.reset();
     });
