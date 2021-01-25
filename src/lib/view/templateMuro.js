@@ -15,10 +15,7 @@ export const muro = () => {
   <button class="boton_adjuntar" id="btn_subir"><img class="img_adjuntar" src="https://i.imgur.com/IjHVTxc.png" alt=""></button>
   <div id="seccion_carga_imagen"></div>
   <button id="btn_muro" class="button">Publicar</button>
-  
-   <div id="public_muro" class="muro"></div>
-
- 
+     <div id="public_muro" class="muro"></div>
   <br>
   <br>
   <br>
@@ -33,7 +30,6 @@ export const muro = () => {
       const nombre = document.querySelector('#nameUser');
       nombre.innerHTML = `
       <p class="saludo">Hola ${user.displayName}</p>
-
       `;
       // User is signed in.
     } else {

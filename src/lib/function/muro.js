@@ -155,11 +155,11 @@ const contentMuro = {
     if (!imgMuro) {
       console.log('no subio foto');
     } else {
-      const storageRef = storage.ref(`coment/${imgMuro.name}`);
+      const storageRef = storage.ref(`coment/${imgMuro.name}`); // ref agregar a la coleccion
       const uploadTask = storageRef.put(imgMuro);
-      uploadTask.on('state_changed', (snapshot) => {
-        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        const calculoPorcentaje = Math.round(progress);
+      uploadTask.on('state_changed', (snapshot) => { // on verificar el stado de subida de la foto
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100; // mostar en % img
+        const calculoPorcentaje = Math.round(progress); // redondear %
         contentMuro.modalCarga(calculoPorcentaje);
       }, (error) => {
         console.log(error);
@@ -175,17 +175,8 @@ const contentMuro = {
       <p> Porcentaje de subida: ${porcentaje} %</p>
     </div>`;
   },
-  btnAceptarCarga: () => {
-    const carga = document.getElementById('btn_carga');
-    carga.addEventListener('click', () => {
-      console.log('cerro modal de carga');
-      const modal = document.getElementById('modalGuardar');
-      modal.style.display = 'none';
-    });
-  },
   urlImg: (usuario, nombremio) => {
-    const imgMuro = document.querySelector('#img_muro').files[0];
-
+    const imgMuro = document.querySelector('#img_muro').files[0]; // valor de la img
     if (!imgMuro) {
       contentMuro.guardar(usuario, nombremio);
     } else {
@@ -199,8 +190,7 @@ const contentMuro = {
         (`00${date.getSeconds()}`).slice(-2)}`;
       const storage = firebase.storage();
       const storageimg = storage.ref(`coment/${imgMuro.name}`);
-      storageimg.getDownloadURL().then((url) => {
-        console.log(url);
+      storageimg.getDownloadURL().then((url) => { // obtener url de img
         firestore.collection('coment').add({
           comentarios: comentario,
           date: fecha,
@@ -221,12 +211,6 @@ const contentMuro = {
           // Handle any errors
         });
     }
-
-    // storageimg.putString('data_url').then((snapshot) => {
-    //   const miurl = snapshot.downloadURL;
-    //   console.log(`Uploaded a data_url string!${miurl}`);
-    //   // add it to firestore
-    // });
   },
   guardar: (usuario, name) => {
     const comentario = document.querySelector('#coment_muro').value;
@@ -404,15 +388,12 @@ const contentMuro = {
     <div id="modal_borrar_${documento.id}" class="modalBorrar">
       <div class="contenedor_modal_">
         <div class="header_modal_">
-        </div>
+      </div>
         <div class="cuerpo_modal_">
-        <p>¿Estas seguro que quieres eliminar este comentario?</p>
+         <p>¿Estas seguro que quieres eliminar este comentario?</p>
         <div class = "modal-btn-borrar">
-        <button id="acept_borrar_${documento.id}" class="style_btns_aceptar" value="${documento.id}"></button>
-        
-      
-        <button type="button" id="cance_borrar_${documento.id}" class="style_btns_borrar" value="${documento.id}"><img class="bt-acep-borrar" src="https://i.imgur.com/l0gJx5N.png" alt=""></button>
-      
+         <button id="acept_borrar_${documento.id}" class="style_btns_aceptar" value="${documento.id}"></button>
+         <button type="button" id="cance_borrar_${documento.id}" class="style_btns_borrar" value="${documento.id}"><img class="bt-acep-borrar" src="https://i.imgur.com/l0gJx5N.png" alt=""></button>
         </div>
         </div>
       </div>
@@ -535,7 +516,6 @@ const contentMuro = {
   },
   guardarCambios: (documento) => {
     const comentModal = `#coment_modal_${documento.id}`;
-
     firestore.collection('coment').onSnapshot(() => {
       const btnPublicar = `#btn_modal_${documento.id}`;
       const publicar = document.querySelectorAll(btnPublicar);
@@ -571,12 +551,8 @@ const contentMuro = {
     const contenedorDislike = `div_dislike_${documento}`;
     const btnLike = document.getElementById(`like_${documento}`);
     btnLike.addEventListener('click', (e) => {
-      const postRef = firestore.collection('coment').doc(e.target.value);
+      const postRef = firestore.collection('coment').doc(e.target.value); // id del boton
       postRef.get().then((doc) => {
-        console.log('este es el doc.id', doc.id);
-        console.log('este es el documento', documento.id);
-        console.log('doc.exist', doc.exists);
-        console.log('este es el e.target', e.target.value);
         if (doc.exists && doc.id === e.target.value) {
           firestore.collection('likes').add({
             docuid: doc.id,

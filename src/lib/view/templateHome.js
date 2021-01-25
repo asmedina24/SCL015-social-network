@@ -50,9 +50,7 @@ export const home = () => {
     contentLogin.loginFace();
   });
   const loginNew = divHome.querySelector('#loginMail');
-
   loginNew.addEventListener('click', () => {
-    console.log('Hola');
     const mailLogin = document.getElementById('mail_login').value;
     const passLogin = document.getElementById('pass_login').value;
     contentLogin.login(mailLogin, passLogin);

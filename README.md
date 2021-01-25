@@ -18,16 +18,14 @@ Infopet es la red social, donde podrás encontrar y compartir información sobre
 
 ## 2. Planificación del Proyecto, diseño y prototipo.
 ### Prototipo Papel
-![Prototipo papel](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/prototipo-papel.JPG?raw=true)
+![Prototipo papel](https://i.imgur.com/ZAVFBHq.jpg)
 
 ### Planificacion Trello
-![Planificacion con Trello](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/trello-red-social.JPG?raw=true)
+![Planificacion con Trello](https://i.imgur.com/oqh9CUA.jpg)
 
 ### Prototipo de Alta Fidelidad
 * Este prototipo se presento a distintas personas recibiendo feeback realizar las modificaciones e  implementarlas el codigo.
-![Figma](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/pantalla-cel.JPG?raw=true)
-![Figma](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/pantalla-registro.JPG?raw=true)
-![Figma](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/pantalla-muro.JPG?raw=true)
+![Figma](https://i.imgur.com/TV8WlWX.jpg)
 
 
 ## 3. Historia de Usuario
@@ -119,15 +117,19 @@ Definición de Terminado
 
 ## 4. Diseño Final
 ### Mobile
- ![Mobile](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/proyecto-final-mobil.JPG?raw=true)
- ![Mobile](https://github.com/asmedina24/SCL015-social-network/blob/master/src/img/img-readme/proyecto-final-mobil-muro.JPG?raw=true)
+ ![Mobile](https://i.imgur.com/RFupGMq.jpg)
+ ![Mobile](https://i.imgur.com/snar4mu.jpg)
 
-### Lapto
 
 ### Desktop
+ ![Desktop](https://i.imgur.com/Lh5FQiV.jpg)
+ ![Desktop](https://i.imgur.com/stGxNcp.jpg)
+
+
 
 ## 5. Acceso a la Plataforma
 
+![Acceso a red social](https://caroline-jeldres.github.io/SCL015-social-network/src/#/home)
 
 ## 6. Autores
 

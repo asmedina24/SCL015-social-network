@@ -28,7 +28,6 @@ const showtemplate = (hash) => {
 };
 
 export const changeroute = (hash) => {
-  console.log(hash);
   if (hash === '') {
     console.log('hash es vacio');
     return showtemplate(hash);

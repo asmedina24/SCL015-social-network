@@ -39,20 +39,21 @@ export const register = () => {
     firebase.auth().createUserWithEmailAndPassword(mail, pass)
       .then(() => {
         const user = firebase.auth().currentUser;
-        user.sendEmailVerification().then(() => {
-          const firestore = firebase.firestore();
-          const currentUserData = firebase.auth().currentUser;
-          const uid = currentUserData.uid;
-          firestore.collection('user').add({
-            nombre: `${name}   ${lastName}`,
-            correo: mail,
-            contraseña: pass,
-            userid: uid,
-          })
-            .then(() => {
-              contentLogin.cerrarsesion();
-            });
-        });
+        user.sendEmailVerification()
+          .then(() => {
+            const firestore = firebase.firestore();
+            const currentUserData = firebase.auth().currentUser;
+            const uid = currentUserData.uid;
+            firestore.collection('user').add({
+              nombre: `${name}   ${lastName}`,
+              correo: mail,
+              contraseña: pass,
+              userid: uid,
+            })
+              .then(() => {
+                contentLogin.cerrarsesion();
+              });
+          });
       })
       .then(() => {
         const user = firebase.auth().currentUser;
@@ -72,10 +73,6 @@ export const register = () => {
         // eslint-disable-next-line no-unused-vars
         const errorMensagge = error.message;
       });
-    // firebase.auth().signOut().then(() => {
-    //   // eslint-disable-next-line no-alert
-    //   alert('verifica tu correo');
-    // });
   });
   return divRegister;
 };

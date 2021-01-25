@@ -1,30 +1,26 @@
+/* eslint-disable no-unused-vars */
 const contentLogin = {
   login: (mail, pass) => {
-    console.log('llego al login');
     firebase.auth().signInWithEmailAndPassword(mail, pass)
       .then(() => {
-        console.log('entro');
         contentLogin.emailOk();
-        // contentLogin.estadoLogin();
       });
   },
+  // Observador de verificacion si esta logeado o no
   emailOk: () => {
     firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        const emailVerified = user.emailVerified;
-        if (emailVerified === true) {
-          console.log('si esta ingresando');
-          window.location = ('#/muro');
-        } else {
-          alert('verifica tu correo');
-          firebase.auth().signOut()
-            .then(() => {
-              window.location = ('#/home');
-              console.log('Sesion cerrada correctamente');
-            }).catch((error) => {
-              console.log('no puede cerrar sesion', error);
-            });
-        }
+      console.log(user);
+      const emailVerified = user.emailVerified;
+      if (emailVerified === true) {
+        window.location = ('#/muro');
+      } else {
+        alert('verifica tu correo');
+        firebase.auth().signOut() // le cierre sesion hasta q verifique email
+          .then(() => {
+            window.location = ('#/home');
+          }).catch((error) => {
+            alert('no puede cerrar sesion', error);
+          });
       }
     });
   },
@@ -32,12 +28,16 @@ const contentLogin = {
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('https://www.googleapis.com/auth/plus.login');
     firebase.auth().signInWithPopup(provider).then((result) => {
+      // eslint-disable-next-line no-unused-vars
       const token = result.credential.accessToken;
+      // eslint-disable-next-line no-unused-vars
       const user = result.user;
       window.location = ('#/muro');
       // ...
     }).catch((error) => {
+      // eslint-disable-next-line no-unused-vars
       const errorCode = error.code;
+      // eslint-disable-next-line no-unused-vars
       const errorMessage = error.message;
       const email = error.email;
       const credential = error.credential;
@@ -73,10 +73,9 @@ const contentLogin = {
   cerrarsesion: () => {
     firebase.auth().signOut()
       .then(() => {
-        console.log('Sesion cerrada correctamente');
         window.location = ('#/home');
       }).catch((error) => {
-        console.log('no puede cerrar sesion', error);
+        alert('no puede cerrar sesion', error);
       });
   },
 };
