@@ -1440,6 +1440,9 @@ margin: auto;
     transition: all 0.2s ease;
     margin-left: 48px;  
 }
+.home_2{
+    width: 600px;
+}
 .btns_face{
     width: 184px;
     margin-left: 43px;
